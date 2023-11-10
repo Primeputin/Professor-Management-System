@@ -23,6 +23,8 @@ DROP TABLE IF EXISTS ratings;
 CREATE TABLE IF NOT EXISTS ratings (
   explanation INT NOT NULL,
   kindness INT NOT NULL,
+  knowlegeability INT NOT NULL,
+  approachability INT NOT NULL,
   review VARCHAR(100) NOT NULL,
   rate_date DATE NOT NULL,
   professor_id INT NOT NULL,
@@ -36,6 +38,7 @@ CREATE TABLE IF NOT EXISTS ratings (
 
 DROP TABLE IF EXISTS subject;
 CREATE TABLE IF NOT EXISTS subject (
+  subject_id INT PRIMARY KEY,
   subject_name VARCHAR(45),
   class_name VARCHAR(15) NOT NULL,
   units FLOAT NOT NULL,
@@ -57,6 +60,15 @@ INSERT INTO student
 	VALUES (1, 'John', 'Smith', 4.0, '2021'),
 		   (2, 'Johnson', 'Johnson', 3.2, '2020'),
            (3, 'Light', 'Yagami', 3.90, '2020'),
-           (4, '黑', '鬼', 2.69, '2021');
+           (4, 'hei', 'gui', 2.69, '2021'),
+           (5, 'Schneider', 'Dan', 1.2, 2020);
+
+INSERT INTO ratings
+	VALUES (4, 5, 6, 4, 'Mid', '2020-03-05', 1, 1),
+		   (8, 7, 5, 9, 'Very nice', '2020-03-05', 1, 2),
+           (1, 2, 3, 1, 'I don\' like the vibe', '2020-03-07', 1, 3);
+           
+INSERT INTO subject
+	VALUES (1, 'English', 'e1', 3.0, 3, 1, '2020', 3);
            
 
