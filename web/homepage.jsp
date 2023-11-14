@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "java.util.*, professormanagement.*"%>
+<%@page import = "java.util.*, profmanagement.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -213,34 +213,105 @@
        </a>
 
     <h2>Subjects</h2>
+    
+       <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" /> 
+       
+        <% subject.loadRecord(); %>
+        
+        <form action="searchsubject.jsp" method="POST">
+            Select subject -
+            <select name="subjects">
+                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                    <option value="<%=subject.subject_idList.get(i)%>">
+                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                    </option>
+                <% } %>
+            </select><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Search and view subjects
-         </button>
-       </a>
+            <input type="submit" value="Search and view subject"/>
+        </form>
+            
+            <br><br>
+            
+        <form action="filtersubject.jsp" method="POST">
+            Select subject prefix:
+            <select name="prefix">
+                <% 
+                    ArrayList<String> prefixes = subject.getDistinctPrefixes(); 
+                    
+                    for (String prefix : prefixes) { %>
+                    <option value="<%=prefix%>"><%=prefix%></option>
+                <% } %>
+            </select>
 
-       <input/>
+            <input type="submit" value="Filter and list subjects"/>
+        </form>
+        
+        <br><br>
+
+        <form action="addsubject.jsp" method="POST">
+            <label for="subjectname">Subject Name:</label>
+            <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
+
+            <label for="units">Units:</label>
+            <input type="number" min="1" max="5" name="units" placeholder="Units" required>
+            
+            <br>
+            <label for="professorid">Professor:</label>
+            <select name="professorid">
+                <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                    <option value="<%=prof.professor_idList.get(i)%>">
+                        <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
+                    </option>
+                <% } %>
+            </select><br>
+
+
+            <input type="submit" value="Add a subject" />
+        </form>
 
        <br><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Filter and list subjects
-         </button>
-       </a>
+        <form action="rmsubject.jsp" method="POST">
+            Select a subject -
+            <select name="subject">
+                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                    <option value="<%=subject.subject_idList.get(i)%>">
+                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                    </option>
+                <% } %>
+            </select><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Add subject
-         </button>
-       </a>
+            <input type="submit" value="Remove a subject"/>
+        </form>
 
-       <a href = "" class="button_link">
-         <button>
-           Remove subject
-         </button>
-       </a>
+       <br><br>
+        <form action="modsubject.jsp" method="POST">
+             Select a subject -
+             <select name="subjects">
+                 <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                     <option value="<%=subject.subject_idList.get(i)%>">
+                         <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                     </option>
+                 <% } %>
+             </select><br>
+
+             <label for="subjectname">New Subject Name:</label>
+            <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
+
+            <label for="units">Units:</label>
+            <input type="number" min="1" max="5" name="units" placeholder="Units" required>
+             <br>
+             <label for="professor">New Professor:</label>
+             <select name="professor">
+                 <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                     <option value="<%=prof.professor_idList.get(i)%>">
+                         <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
+                     </option>
+                 <% } %>
+             </select><br>
+             <input type="submit" value="Modify a subject"/>
+         </form>
 
        <br><br>
 

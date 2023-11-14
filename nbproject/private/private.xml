@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/searchprof.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/src/java/profmanagement/Professor.java</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/rmstudent.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/searchstudent.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/src/java/profmanagement/Student.java</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/homepage.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/rmprof.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/src/java/profmanagement/Subject.java</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/addsubject.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/homepage.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/modsubject.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/searchsubject.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/filtersubject.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/rmsubject.jsp</file>
+            <file>file:/home/ccslearner/Desktop/gitlocation/Professor-Management-System/web/searchstudent.jsp</file>
         </group>
     </open-files>
 </project-private>
