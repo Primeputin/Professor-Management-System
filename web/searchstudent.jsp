@@ -6,26 +6,26 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "java.util.*, profmanagement.*"%>
-<!DOCTYPE html>S
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Search and view professor</title>
+        <title>Search and view student</title>
     </head>
     <body>
-        <h1>Search and view professor</h1>
-        <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
+        <h1>Search and view student</h1>
+        <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
         <%
             String prof_id = request.getParameter("professors");
-            prof.professor_id = Integer.parseInt(prof_id);
-            prof.viewRecord();
+            student.student_id = Integer.parseInt(prof_id);
+            student.viewRecord();
         %>    
         Searched Results <br>
         <% 
-            for (int i=0; i < prof.professor_idList.size(); i++) { %>
-                Professor ID: <%=prof.professor_idList.get(i)%><br>
-                First Name: <%=prof.first_nameList.get(i)%><br>
-                Last Name: <%=prof.last_nameList.get(i)%><br>
+            for (int i=0; i < student.student_idList.size(); i++) { %>
+                Professor ID: <%=student.student_idList.get(i)%><br>
+                First Name: <%=student.first_nameList.get(i)%><br>
+                Last Name: <%=student.last_nameList.get(i)%><br>
         <%  } %><br>
         click <a href="homepage.jsp">here to go back to home page</a><br>
     </body>

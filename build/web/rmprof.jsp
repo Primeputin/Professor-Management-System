@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "java.util.*, professormanagement.*"%>
+<%@page import = "java.util.*, profmanagement.*"%>
 <!DOCTYPE html>
 <html>
     <head>
