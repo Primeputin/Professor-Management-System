@@ -14,7 +14,7 @@
 
       <style>
         body {
-            font-family: 'comic sans ms'; /* Use the custom font */
+            font-family: 'Arial'; /* Use the custom font */
             color: black;
         }
 
@@ -108,6 +108,22 @@
 
         </form>
     <h2>Student</h2>
+    
+        <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
+ 
+
+        <% student.loadRecord(); %>
+        <form action="searchstudent.jsp" method="POST">
+            Select student - 
+                <select name="students"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+                </select><br>
+  
+            <input type="submit" value="Search and view professor"/>
+        </form>
 
        <a href = "" class="button_link">
          <button>
@@ -124,18 +140,47 @@
            Filter and list student
          </button>
        </a>
+       
+       <br/><br/>
+       
+       <form action="addstudent.jsp" method="POST">
+       
+    	     <label for="firstname">First name:</label>
+    	     <input type="text" name="firstname" placeholder="First Name" required>
 
-       <a href = "" class="button_link">
-         <button>
-           Add student
-         </button>
-       </a>
+   	     <label for="lastname">Last name:</label>
+   	     <input type="text" name="lastname" placeholder="Last Name" required>
+             
+             <br/>
+             <label id="gpa-label">0.0</label>
+             <label for="gpa">GPA:</label>
 
-       <a href = "" class="button_link">
-         <button>
-           Remove student
-         </button>
-       </a>
+   	     <input type="range" min="0.0" max="4.0" step="0.1" oninput="changeGPAValue(this.value)" name="gpa" placeholder="Last Name" required>
+             
+             <label for="cur_year">Current Year:</label>
+   	     <input type="number" name="cur_year" placeholder="Current Year" required>
+  
+             <br/><br/>
+            <input type="submit" value="Add a student" />
+
+       </form>
+       
+       <br/>
+       
+        <form action="rmstudent.jsp" method="POST">
+             Select a student -
+    	     <select name="student"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+             </select><br>
+             
+             <input type="submit" value="Remove student" />
+
+        </form>
+                
+
 
     <h2>Ratings</h2>
 
@@ -248,3 +293,13 @@
     </ul>
     </body>
 </html>
+
+<script>
+    
+    function changeGPAValue(value) {
+        document.getElementById("gpa-label").innerHTML = value;
+    }
+    
+</script>
+    
+    

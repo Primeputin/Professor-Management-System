@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "java.util.*, professormanagement.*"%>
-<!DOCTYPE html>
+<%@page import = "java.util.*, profmanagement.*"%>
+<!DOCTYPE html>S
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
