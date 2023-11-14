@@ -16,8 +16,8 @@
         <h1>Search and view student</h1>
         <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
         <%
-            String prof_id = request.getParameter("professors");
-            student.student_id = Integer.parseInt(prof_id);
+            String student_id = request.getParameter("student");
+            student.student_id = Integer.parseInt(student_id);
             student.viewRecord();
         %>    
         Searched Results <br>
@@ -26,6 +26,8 @@
                 Professor ID: <%=student.student_idList.get(i)%><br>
                 First Name: <%=student.first_nameList.get(i)%><br>
                 Last Name: <%=student.last_nameList.get(i)%><br>
+                GPA: <%=student.gpaList.get(i)%><br>
+                Current Year: <%=student.cur_yearList.get(i)%><br>
         <%  } %><br>
         click <a href="homepage.jsp">here to go back to home page</a><br>
     </body>
