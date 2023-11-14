@@ -199,12 +199,42 @@
            Filter and list ratings
          </button>
        </a>
+       <form action="addrating.jsp" method="POST">
+            <h3>Rate a professor</h3>
 
-       <a href = "" class="button_link">
-         <button>
-           Add rating
-         </button>
-       </a>
+            <h4>Student ID</h4>
+            <input type="number" name="student_id" placeholder="###" required/>
+       
+            <h4>Professor ID</h4>
+            <input type="number" name="prof_id" placeholder="###" required/><br>
+            
+            <label id="explanation-label">5</label>
+            <label for="explanation">Explanation:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+            
+            <label id="kindness-label">5</label>
+            <label for="kindness">Kindness:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+            
+            <label id="knowledgability-label">5</label>
+            <label for="knowledgability">Knowledgability:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+            
+            <label id="approachability-label">5</label>
+            <label for="approachability">Approachability:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+
+            <h4>Review Description</h4>
+            <input type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
+
+            <a href ="" class="button_link">
+                <button>
+                Confirm
+            </button>
+            </a>
+       </form>
+       
+       <br/><br/>
 
        <a href = "" class="button_link">
          <button>
@@ -262,28 +292,7 @@
 
        <br/><br/>
 
-       <h2>Rate a professor</h2>
-
-       <h4>Professor ID</h4>
-       <input placeholder="###"/>
-
-       <h4>Explanation</h4>
-       <input placeholder="1 - 10"/>
-
-       <h4>Kindness</h4>
-       <input placeholder="1 - 10"/>
-
-       <h4>Approachability</h4>
-       <input placeholder="1 - 10"/> <br/><br/>
-
-       <h4>Knowledgability</h4>
-       <input placeholder="1 - 10"/> <br/><br/>
-
-       <a href ="" class="button_link">
-         <button>
-           Confirm
-         </button>
-       </a>
+       
 
     <h1> Report </h1>
 
@@ -300,6 +309,21 @@
         document.getElementById("gpa-label").innerHTML = value;
     }
     
+    function changeExplanationValue(value) {
+        document.getElementById("explanation-label").innerHTML = value;
+    }
+    
+    function changeKindnessValue(value) {
+        document.getElementById("kindness-label").innerHTML = value;
+    }
+    
+    function changeApproachabilityValue(value) {
+        document.getElementById("approachability-label").innerHTML = value;
+    }
+    
+    function changeKnowledgabilityValue(value) {
+        document.getElementById("knowledgability-label").innerHTML = value;
+    }
 </script>
     
     
