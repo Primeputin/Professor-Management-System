@@ -21,12 +21,17 @@ public class Subject {
     public String subject_name;
     public int units;
     public int professor_id;
+    public int subject_year;
+    public int term;
 
 
     public ArrayList<Integer> subject_idList = new ArrayList<>();
     public ArrayList<String> subject_nameList = new ArrayList<>();
     public ArrayList<Integer> unitsList = new ArrayList<>();
     public ArrayList<Integer> professor_idList = new ArrayList<>();
+    public ArrayList<Integer> subject_yearList = new ArrayList<>();
+    public ArrayList<Integer> termList = new ArrayList<>();
+
 
     public int addRecord() {
         try {
@@ -43,11 +48,13 @@ public class Subject {
                 subject_id = rs.getInt("new_id");
             }
 
-            pstmt = conn.prepareStatement("INSERT INTO subject VALUES (?,?,?,?)");
+            pstmt = conn.prepareStatement("INSERT INTO subject VALUES (?,?,?,?,?,?)");
             pstmt.setInt(1, subject_id);
             pstmt.setString(2, subject_name);
             pstmt.setInt(3, units);
             pstmt.setInt(4, professor_id);
+            pstmt.setInt(5, subject_year);
+            pstmt.setInt(6, term);
 
 
             pstmt.executeUpdate();
@@ -68,11 +75,20 @@ public class Subject {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
             System.out.println("Connection Successful");
 
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE subject SET subject_name = ?, units = ?, professor_id = ? WHERE subject_id = ?");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE subject " +
+                                                            "SET subject_name = ?," +
+                                                            "    units = ?," +
+                                                            "    professor_id = ?," +
+                                                            "    subject_year = ?," +
+                                                            "    term = ? " +
+                                                            "WHERE subject_id = ?");
             pstmt.setString(1, subject_name);
             pstmt.setInt(2, units);
             pstmt.setInt(3, professor_id);
-            pstmt.setInt(4, subject_id);
+            pstmt.setInt(4, subject_year);
+            pstmt.setInt(5, term);
+
+            pstmt.setInt(6, subject_id);
 
             pstmt.executeUpdate();
             pstmt.close();
@@ -124,18 +140,24 @@ public class Subject {
             subject_nameList.clear();
             unitsList.clear();
             professor_idList.clear();
+            subject_yearList.clear();
+            termList.clear();
 
             while (rs.next()) {
                 subject_id = rs.getInt("subject_id");
                 subject_name = rs.getString("subject_name");
                 units = rs.getInt("units");
                 professor_id = rs.getInt("professor_id");
+                subject_year = rs.getInt("subject_year");
+                term = rs.getInt("term");
 
 
                 subject_idList.add(subject_id);
                 subject_nameList.add(subject_name);
                 unitsList.add(units);
                 professor_idList.add(professor_id);
+                subject_yearList.add(subject_year);
+                termList.add(term);
             }
 
             rs.close();
@@ -189,18 +211,24 @@ public class Subject {
             subject_nameList.clear();
             unitsList.clear();
             professor_idList.clear();
-
+            subject_yearList.clear();
+            termList.clear();
+            
             while (rs.next()) {
                 subject_id = rs.getInt("subject_id");
                 subject_name = rs.getString("subject_name");
                 units = rs.getInt("units");
                 professor_id = rs.getInt("professor_id");
+                subject_year = rs.getInt("subject_year");
+                term = rs.getInt("term");
 
 
                 subject_idList.add(subject_id);
                 subject_nameList.add(subject_name);
                 unitsList.add(units);
                 professor_idList.add(professor_id);
+                subject_yearList.add(subject_year);
+                termList.add(term);
             }
 
             rs.close();
@@ -228,6 +256,8 @@ public class Subject {
             subject_nameList.clear();
             unitsList.clear();
             professor_idList.clear();
+            subject_yearList.clear();
+            termList.clear();
 
 
             while (rs.next()) {
@@ -235,11 +265,16 @@ public class Subject {
                 subject_name = rs.getString("subject_name");
                 units = rs.getInt("units");
                 professor_id = rs.getInt("professor_id");
+                subject_year = rs.getInt("subject_year");
+                term = rs.getInt("term");
+
 
                 subject_idList.add(subject_id);
                 subject_nameList.add(subject_name);
                 unitsList.add(units);
                 professor_idList.add(professor_id);
+                subject_yearList.add(subject_year);
+                termList.add(term);
             }
 
             rs.close();

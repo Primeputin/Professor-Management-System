@@ -371,6 +371,11 @@
                 <% } %>
             </select><br>
 
+            <label for="subject_year">Subject Year:</label>
+            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+
+            <label for="term">Term:</label>
+            <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
 
             <input type="submit" value="Add a subject" />
         </form>
@@ -415,6 +420,13 @@
                      </option>
                  <% } %>
              </select><br>
+             
+            <label for="subject_year">New Subject Year:</label>
+            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+
+            <label for="term">New Term:</label>
+            <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
+
              <input type="submit" value="Modify a subject"/>
          </form>
 

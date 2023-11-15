@@ -22,11 +22,15 @@
             String subject_name = request.getParameter("subjectname");
             String units = request.getParameter("units");
             String professor_id = request.getParameter("professor");
+            String subject_year = request.getParameter("subject_year");
+            String term = request.getParameter("term");
             
             subject.subject_id = Integer.parseInt(subject_id);
             subject.subject_name = subject_name;
             subject.units = Integer.parseInt(units);
             subject.professor_id = Integer.parseInt(professor_id);
+            subject.subject_year = Integer.parseInt(subject_year);
+            subject.term = Integer.parseInt(term);
             
             professor.professor_id = subject.professor_id;
             professor.viewRecord();
@@ -38,7 +42,8 @@
 
                 Subject Name: <%=subject.subject_name%><br>
                 Units: <%=subject.units%><br>
-                Professor Name: <%=professor.first_name%> <%=professor.last_name%>
+                Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
+                Year: <%=subject.subject_year%>, Term <%=subject.term%><br>
 
         <br>
         click <a href="homepage.jsp">here to go back to home page</a><br>

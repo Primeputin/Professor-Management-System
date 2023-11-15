@@ -31,7 +31,8 @@
                     professor.professor_id = subject.professor_idList.get(i);
                     professor.viewRecord();
                 %>
-                Professor Name: <%=professor.first_name%> <%=professor.last_name%><br><br>
+                Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
+                Year: <%=subject.subject_yearList.get(i)%>, Term <%=subject.termList.get(i)%><br><br>
             <% } %><br><br>
         click <a href="homepage.jsp">here to go back to home page</a><br>
     </body>

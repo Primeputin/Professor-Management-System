@@ -32,11 +32,12 @@
            
             subject.delRecord();
         %>    
-        Removed professor Success! <br>
+        Removed professor Success! <br><br>
 
-        Subject Name: <%=subject.subject_name%><br>
-                Units: <%=subject.units%><br>
-                Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
+            Subject Name: <%=subject.subject_name%><br>
+            Units: <%=subject.units%><br>
+            Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
+            Year: <%=subject.subject_year%>, Term <%=subject.term%><br>
         <br>
         click <a href="homepage.jsp">here to go back to home page</a><br>
     </body>
