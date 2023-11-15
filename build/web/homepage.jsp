@@ -205,33 +205,107 @@
 
     <h2>Ratings</h2>
 
-       <a href = "" class="button_link">
-         <button>
-           Search and view ratings
-         </button>
-       </a>
+       <form action="searchrating.jsp" method="POST">
+           <h3>Search and View a Rating</h3>
+             Select a student -
+    	     <input type="number" name="student_id" placeholder="###" required/><br>
+             
+             Select a professor - 
+             <input type="number" name="prof_id" placeholder="###" required/><br>
+             
+             <a href ="" class="button_link">
+                <button>
+                Search
+            </button>
+            </a>
 
-       <input/>
+        </form>
 
        <br><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Filter and list ratings
-         </button>
-       </a>
+       <form action="filter_rating_by_student.jsp" method="POST">
+           <h3>Filter Rating by Student</h3>
+            Enter Student ID -
+            <input type="number"  name="student_id" placeholder="###" required><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Add rating
-         </button>
-       </a>
+            <a href ="" class="button_link">
+                <button>
+                Filter by Student
+            </button>
+            </a>
 
-       <a href = "" class="button_link">
-         <button>
-           Remove rating
-         </button>
-       </a>
+        </form>
+       
+        <br><br>
+        
+        <form action="filter_rating_by_prof.jsp" method="POST">
+           <h3>Filter Rating by Professor</h3>
+            Enter Professor ID -
+            <input type="number"  name="prof_id" placeholder="###" required><br>
+
+            <a href ="" class="button_link">
+                <button>
+                Filter by Professor
+            </button>
+            </a>
+
+        </form>
+       
+        <br><br>
+      
+       <form action="addrating.jsp" method="POST">
+            <h3>Rate a professor</h3>
+
+            <h4>Student ID</h4>
+            <input type="number" name="student_id" placeholder="###" required/>
+       
+            <h4>Professor ID</h4>
+            <input type="number" name="prof_id" placeholder="###" required/><br>
+            
+            <label id="explanation-label">5</label>
+            <label for="explanation">Explanation:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+            
+            <label id="kindness-label">5</label>
+            <label for="kindness">Kindness:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+            
+            <label id="knowledgability-label">5</label>
+            <label for="knowledgability">Knowledgability:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+            
+            <label id="approachability-label">5</label>
+            <label for="approachability">Approachability:</label>
+            <input type="range" min="1" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+
+            <h4>Review Description</h4>
+            <input type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
+
+            <a href ="" class="button_link">
+                <button>
+                Confirm
+            </button>
+            </a>
+       </form>
+       
+       <br/><br/>
+
+       
+       <form action="rmrating.jsp" method="POST">
+           <h3>Remove a Rating</h3>
+             Select a student -
+    	     <input type="number" name="student_id" placeholder="###" required/><br>
+             
+             Select a professor - 
+             <input type="number" name="prof_id" placeholder="###" required/><br>
+             
+             <a href ="" class="button_link">
+                <button>
+                Remove rating
+            </button>
+            </a>
+
+        </form>
 
     <h2>Subjects</h2>
     
@@ -354,28 +428,7 @@
 
        <br/><br/>
 
-       <h2>Rate a professor</h2>
-
-       <h4>Professor ID</h4>
-       <input placeholder="###"/>
-
-       <h4>Explanation</h4>
-       <input placeholder="1 - 10"/>
-
-       <h4>Kindness</h4>
-       <input placeholder="1 - 10"/>
-
-       <h4>Approachability</h4>
-       <input placeholder="1 - 10"/> <br/><br/>
-
-       <h4>Knowledgability</h4>
-       <input placeholder="1 - 10"/> <br/><br/>
-
-       <a href ="" class="button_link">
-         <button>
-           Confirm
-         </button>
-       </a>
+       
 
     <h1> Report </h1>
 
@@ -387,15 +440,25 @@
 </html>
 
 <script>
-    
     function changeGPAValue(value) {
         document.getElementById("gpa-label").innerHTML = value;
     }
     
-    function changeGPAValueModify(value) {
-        document.getElementById("gpa-label-modify").innerHTML = value;
+    function changeExplanationValue(value) {
+        document.getElementById("explanation-label").innerHTML = value;
     }
     
+    function changeKindnessValue(value) {
+        document.getElementById("kindness-label").innerHTML = value;
+    }
+    
+    function changeApproachabilityValue(value) {
+        document.getElementById("approachability-label").innerHTML = value;
+    }
+    
+    function changeKnowledgabilityValue(value) {
+        document.getElementById("knowledgability-label").innerHTML = value;
+    }
 </script>
     
     

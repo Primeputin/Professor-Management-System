@@ -21,27 +21,30 @@ CREATE TABLE IF NOT EXISTS student (
 
 DROP TABLE IF EXISTS ratings;
 CREATE TABLE IF NOT EXISTS ratings (
+  student_id INT NOT NULL,
+  professor_id INT NOT NULL,
   explanation INT NOT NULL,
   kindness INT NOT NULL,
-  knowlegeability INT NOT NULL,
+  knowledgability INT NOT NULL,
   approachability INT NOT NULL,
   review VARCHAR(100) NOT NULL,
   rate_date DATE NOT NULL,
-  professor_id INT NOT NULL,
-  student_id INT NOT NULL,
-  FOREIGN KEY	(professor_id)
-    REFERENCES	professor(professor_id),
   FOREIGN KEY	(student_id)
-    REFERENCES	student(student_id)
+    REFERENCES	student(student_id),
+  FOREIGN KEY	(professor_id)
+    REFERENCES	professor(professor_id)
 );
 
 
 DROP TABLE IF EXISTS subject;
 CREATE TABLE IF NOT EXISTS subject (
   subject_id INT PRIMARY KEY,
-  subject_name VARCHAR(7),
-  units INT NOT NULL,
+  subject_name VARCHAR(45),
+  class_name VARCHAR(15) NOT NULL,
+  units FLOAT NOT NULL,
   professor_id INT NOT NULL,
+  subject_year YEAR NOT NULL,
+  term INT NOT NULL,
   FOREIGN KEY	(professor_id)
     REFERENCES	professor(professor_id)
 );
@@ -71,9 +74,9 @@ INSERT INTO student
            (5, 'Schneider', 'Dan', 1.2, 2020);
 
 INSERT INTO ratings
-	VALUES (4, 5, 6, 4, 'Mid', '2020-03-05', 1, 1),
-		   (8, 7, 5, 9, 'Very nice', '2020-03-05', 1, 2),
-           (1, 2, 3, 1, 'I don\' like the vibe', '2020-03-07', 1, 3);
+	VALUES (1, 1, 4, 5, 6, 4, 'Mid', '2020-03-05'),
+		   (2, 1, 8, 7, 5, 9, 'Very nice', '2020-03-05'),
+           (3, 1, 1, 2, 3, 1, 'I don\' like the vibe', '2020-03-07');
            
 INSERT INTO subject
 	VALUES (1, 'CCPROG1', 3, 1),
@@ -83,5 +86,3 @@ INSERT INTO subject_list
 	VALUES (1, 1),
            (2, 1),
            (3, 1);
-
-
