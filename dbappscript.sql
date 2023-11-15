@@ -40,7 +40,6 @@ DROP TABLE IF EXISTS subject;
 CREATE TABLE IF NOT EXISTS subject (
   subject_id INT PRIMARY KEY,
   subject_name VARCHAR(45),
-  class_name VARCHAR(15) NOT NULL,
   units FLOAT NOT NULL,
   professor_id INT NOT NULL,
   subject_year YEAR NOT NULL,
@@ -79,8 +78,8 @@ INSERT INTO ratings
            (3, 1, 1, 2, 3, 1, 'I don\' like the vibe', '2020-03-07');
            
 INSERT INTO subject
-	VALUES (1, 'CCPROG1', 3, 1),
-		   (2, 'CCPROG3', 5, 2);
+	VALUES (1, 'CCPROG1', 3, 1, '2019', 1),
+		   (2, 'CCPROG3', 5, 2, '2019', 3);
 
 INSERT INTO subject_list
 	VALUES (1, 1),
