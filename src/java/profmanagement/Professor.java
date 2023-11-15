@@ -96,9 +96,28 @@ public class Professor {
             // 3. Indicate a notice of successful connection
             System.out.println("Connection Successful");
             
+            // get all subjects handled by the professor
+            ArrayList<Integer> subject_idList = new ArrayList<>();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT subject_id FROM subject WHERE professor_id=?");
+            pstmt.setInt    (1, professor_id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                subject_idList.add(rs.getInt("subject_id"));
+   
+            }
+            rs.close();
+            
+//             delete all subject list handled by the professor
+            for (int i = 0; i < subject_idList.size(); i++)
+            {
+                pstmt = conn.prepareStatement("DELETE FROM subject_list WHERE subject_id=?");
+                pstmt.setInt    (1, subject_idList.get(i));
+                pstmt.executeUpdate();
+            }
             
             // delete subject table corresponding to the professor
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM subject WHERE professor_id=?");
+            pstmt = conn.prepareStatement("DELETE FROM subject WHERE professor_id=?");
             pstmt.setInt    (1, professor_id);
             pstmt.executeUpdate();
             
@@ -110,7 +129,7 @@ public class Professor {
             // delete professor
             pstmt = conn.prepareStatement("DELETE FROM professor WHERE professor_id=?");
             pstmt.setInt    (1, professor_id);
-            
+
             pstmt.executeUpdate();
             pstmt.close();
             conn.close();
@@ -233,6 +252,6 @@ public class Professor {
             return 0;
         }
     }
-   
+  
 }
 

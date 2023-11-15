@@ -29,12 +29,12 @@
             
             professor.professor_id = subject.professor_id;
             professor.viewRecord();
-            
+           
             subject.delRecord();
         %>    
         Removed professor Success! <br>
 
-                Subject Name: <%=subject.subject_name%><br>
+        Subject Name: <%=subject.subject_name%><br>
                 Units: <%=subject.units%><br>
                 Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
         <br>

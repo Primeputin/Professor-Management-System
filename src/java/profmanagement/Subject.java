@@ -91,8 +91,12 @@ public class Subject {
             // 2. Connect to your DB
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
             System.out.println("Connection Successful");
-
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM subject WHERE subject_id = ?");
+                
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM subject_list WHERE subject_id = ?");
+            pstmt.setInt(1, subject_id);
+            pstmt.executeUpdate();
+            
+            pstmt = conn.prepareStatement("DELETE FROM subject WHERE subject_id = ?");
             pstmt.setInt(1, subject_id);
             pstmt.executeUpdate();
             pstmt.close();
