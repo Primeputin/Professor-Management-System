@@ -221,7 +221,7 @@
     	     <input type="number" name="student_id" placeholder="###" required/><br>
              
              Select a professor - 
-             <input type="number" name="prof_id" placeholder="###" required/><br>
+             <input type="number" name="prof_id" placeholder="###" re-190quired/><br>
              
              <a href ="" class="button_link">
                 <button>
@@ -453,11 +453,23 @@
        
 
     <h1> Report </h1>
+    
+    <form action="rankofprofofsub.jsp" method="POST">
+            Select subject -
+            <select name="subjects">
+                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                    <option value="<%=subject.subject_idList.get(i)%>">
+                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                    </option>
+                <% } %>
+            </select><br>
 
-    <ul>
-        <li><a>Rankings of Professors per subject in a year</a></li>
-        <li><a>Rankings of Professors per subject based on a single attribute in a year</a></li>
-    </ul>
+            <label for="subject_year">Subject Year:</label>
+            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+
+            <input type="submit" value="Rankings of Professors per subject in a year" />
+        </form>
+        <h2>Rankings of Professors per subject based on a single attribute in a year</h2>
     </body>
 </html>
 
