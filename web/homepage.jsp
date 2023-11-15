@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import = "java.util.*, professormanagement.*"%>
+<%@page import = "java.util.*, profmanagement.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -184,21 +184,54 @@
 
     <h2>Ratings</h2>
 
-       <a href = "" class="button_link">
-         <button>
-           Search and view ratings
-         </button>
-       </a>
+       <form action="searchrating.jsp" method="POST">
+           <h3>Search and View a Rating</h3>
+             Select a student -
+    	     <input type="number" name="student_id" placeholder="###" required/><br>
+             
+             Select a professor - 
+             <input type="number" name="prof_id" placeholder="###" required/><br>
+             
+             <a href ="" class="button_link">
+                <button>
+                Search
+            </button>
+            </a>
 
-       <input/>
+        </form>
 
        <br><br>
 
-       <a href = "" class="button_link">
-         <button>
-           Filter and list ratings
-         </button>
-       </a>
+       <form action="filter_rating_by_student.jsp" method="POST">
+           <h3>Filter Rating by Student</h3>
+            Enter Student ID -
+            <input type="number"  name="student_id" placeholder="###" required><br>
+
+            <a href ="" class="button_link">
+                <button>
+                Filter by Student
+            </button>
+            </a>
+
+        </form>
+       
+        <br><br>
+        
+        <form action="filter_rating_by_prof.jsp" method="POST">
+           <h3>Filter Rating by Professor</h3>
+            Enter Professor ID -
+            <input type="number"  name="prof_id" placeholder="###" required><br>
+
+            <a href ="" class="button_link">
+                <button>
+                Filter by Professor
+            </button>
+            </a>
+
+        </form>
+       
+        <br><br>
+      
        <form action="addrating.jsp" method="POST">
             <h3>Rate a professor</h3>
 
@@ -236,11 +269,22 @@
        
        <br/><br/>
 
-       <a href = "" class="button_link">
-         <button>
-           Remove rating
-         </button>
-       </a>
+       
+       <form action="rmrating.jsp" method="POST">
+           <h3>Remove a Rating</h3>
+             Select a student -
+    	     <input type="number" name="student_id" placeholder="###" required/><br>
+             
+             Select a professor - 
+             <input type="number" name="prof_id" placeholder="###" required/><br>
+             
+             <a href ="" class="button_link">
+                <button>
+                Remove rating
+            </button>
+            </a>
+
+        </form>
 
     <h2>Subjects</h2>
 
