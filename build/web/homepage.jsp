@@ -48,6 +48,16 @@
 
         <br><br>
         
+        <form action="lastfilterprof.jsp" method="POST">
+
+                     <label for="lastname">Last name:</label>
+                     <input type="text"  name="lastname" placeholder="Last Name" required>
+
+
+                    <input type="submit" value="Filter and list last name of the professor"/>
+
+        </form>
+        <br><br>
         
         <form action="filterprof.jsp" method="POST">
 
