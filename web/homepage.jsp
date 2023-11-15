@@ -111,37 +111,22 @@
     
         <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
  
+        <h4>Search for a student</h4>   
 
         <% student.loadRecord(); %>
         <form action="searchstudent.jsp" method="POST">
             Select student - 
-                <select name="students"> 
+                <select name="student"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
                             <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
                     <% } %>
-                </select><br>
+                </select><br><br>
   
-            <input type="submit" value="Search and view professor"/>
+            <input type="submit" value="View Student"/>
         </form>
-
-       <a href = "" class="button_link">
-         <button>
-           Search and view student
-         </button>
-       </a>
-
-       <input/>
-
-       <br><br>
-
-       <a href = "" class="button_link">
-         <button>
-           Filter and list student
-         </button>
-       </a>
-       
-       <br/><br/>
+     
+       <h4>Add a student</h4>
        
        <form action="addstudent.jsp" method="POST">
        
@@ -167,6 +152,8 @@
        
        <br/>
        
+       <h4>Remove a student</h4>
+       
         <form action="rmstudent.jsp" method="POST">
              Select a student -
     	     <select name="student"> 
@@ -179,6 +166,40 @@
              <input type="submit" value="Remove student" />
 
         </form>
+             
+        <br><br>
+        
+        <h4>Modify a student</h4>
+       
+       <form action="modstudent.jsp" method="POST">
+           
+            Select a student -
+    	     <select name="student"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+             </select><br>
+       
+    	     <label for="firstname">First name:</label>
+    	     <input type="text" name="firstname" placeholder="First Name" required>
+
+   	     <label for="lastname">Last name:</label>
+   	     <input type="text" name="lastname" placeholder="Last Name" required>
+             
+             <br/>
+             <label id="gpa-label-modify">0.0</label>
+             <label for="gpa">GPA:</label>
+
+   	     <input type="range" min="0.0" max="4.0" step="0.1" oninput="changeGPAValueModify(this.value)" name="gpa" placeholder="Last Name" required>
+             <br/>
+             <label for="cur_year">Current Year:</label>
+   	     <input type="number" name="cur_year" placeholder="Current Year" required>
+  
+             <br/><br/>
+            <input type="submit" value="Modify Student" />
+
+       </form>
                 
 
 
@@ -298,6 +319,10 @@
     
     function changeGPAValue(value) {
         document.getElementById("gpa-label").innerHTML = value;
+    }
+    
+    function changeGPAValueModify(value) {
+        document.getElementById("gpa-label-modify").innerHTML = value;
     }
     
 </script>

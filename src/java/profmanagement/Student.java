@@ -26,6 +26,8 @@ public class Student {
     public ArrayList<Integer> student_idList = new ArrayList<>();
     public ArrayList<String> first_nameList = new ArrayList<>();
     public ArrayList<String> last_nameList = new ArrayList<>();
+    public ArrayList<Float> gpaList = new ArrayList<>();
+    public ArrayList<Integer> cur_yearList = new ArrayList<>();
     
     public int addRecord () {           // Method add a Record
         try {
@@ -74,12 +76,16 @@ public class Student {
             // 4. Prepare our INSERT Statement
             PreparedStatement pstmt = conn.prepareStatement("UPDATE student          " +
                                                             "SET    first_name   = ?," + 
-                                                            "last_name   = ? " + 
+                                                            "last_name   = ?," + 
+                                                            "gpa   = ?," + 
+                                                            "cur_year = ? " +
                                                             "WHERE  student_id = ? ");
             // 5. Supply the statement with values
             pstmt.setString (1, first_name);
             pstmt.setString (2, last_name);
-            pstmt.setInt    (3, student_id);
+            pstmt.setFloat (3, gpa);
+            pstmt.setInt (4, cur_year);
+            pstmt.setInt    (5, student_id);
             // 6. Execute the SQL Statement
             pstmt.executeUpdate();   
             pstmt.close();
@@ -138,14 +144,20 @@ public class Student {
             student_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            gpaList.clear();
+            cur_yearList.clear();
             while (rs.next()) {
                 student_id  = rs.getInt("student_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                gpa    = rs.getFloat("gpa");
+                cur_year    = rs.getInt("cur_year");
                 
                 student_idList.add(student_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                gpaList.add(gpa);
+                cur_yearList.add(cur_year);
             }
             rs.close();
             pstmt.close();
