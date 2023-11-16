@@ -214,18 +214,20 @@
 
 
     <h2>Ratings</h2>
-
-       <form action="searchrating.jsp" method="POST">
+    
+       <form action="searchrating_menu.jsp" method="POST">
            <h3>Search and View a Rating</h3>
              Select a student -
-    	     <input type="number" name="student_id" placeholder="###" required/><br>
-             
-             Select a professor - 
-             <input type="number" name="prof_id" placeholder="###" re-190quired/><br>
+    	     <select name="student_id"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+             </select><br><br>
              
              <a href ="" class="button_link">
                 <button>
-                Search
+                Proceed
             </button>
             </a>
 
@@ -235,8 +237,13 @@
 
        <form action="filter_rating_by_student.jsp" method="POST">
            <h3>Filter Rating by Student</h3>
-            Enter Student ID -
-            <input type="number"  name="student_id" placeholder="###" required><br>
+            Select student - 
+                <select name="student_id"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+                </select><br><br>
 
             <a href ="" class="button_link">
                 <button>
@@ -250,8 +257,13 @@
         
         <form action="filter_rating_by_prof.jsp" method="POST">
            <h3>Filter Rating by Professor</h3>
-            Enter Professor ID -
-            <input type="number"  name="prof_id" placeholder="###" required><br>
+             Select professor - 
+                <select name="prof_id"> 
+                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                    <% } %>
+                </select><br><br>
 
             <a href ="" class="button_link">
                 <button>
@@ -301,17 +313,37 @@
        <br/><br/>
 
        
-       <form action="rmrating.jsp" method="POST">
+       <form action="rmrating_menu.jsp" method="POST">
            <h3>Remove a Rating</h3>
              Select a student -
-    	     <input type="number" name="student_id" placeholder="###" required/><br>
-             
-             Select a professor - 
-             <input type="number" name="prof_id" placeholder="###" required/><br>
+    	     <select name="student_id"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+             </select><br><br>
              
              <a href ="" class="button_link">
                 <button>
-                Remove rating
+                Proceed
+            </button>
+            </a>
+
+        </form>
+       
+       <form action="modrating_menu.jsp" method="POST">
+           <h3>Modify a Rating</h3>
+             Select a student -
+    	     <select name="student_id"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+             </select><br><br>
+             
+             <a href ="" class="button_link">
+                <button>
+                Proceed
             </button>
             </a>
 
@@ -493,6 +525,7 @@
     function changeKnowledgabilityValue(value) {
         document.getElementById("knowledgability-label").innerHTML = value;
     }
+    
 </script>
     
     

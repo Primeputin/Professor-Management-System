@@ -290,6 +290,43 @@ public class Professor {
             return 0;
         }
     }
+    
+    public int loadRecordByRatings(int student_id) {           // Method viewing a  - Getting something
+        try {
+            // 1. Instantiate a connection variable
+            Connection conn;
+            // 2. Connect to your DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            // 3. Indicate a notice of successful connection
+            System.out.println("Connection Successful");
+            // 4. Prepare our INSERT Statement
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor p JOIN ratings r ON p.professor_id = r.professor_id WHERE r.student_id=?");
+            pstmt.setInt    (1, student_id);
+            // 5. Execute the SQL Statement
+            ResultSet rs = pstmt.executeQuery();
+
+            // 6. Get the results
+            professor_idList.clear();
+            first_nameList.clear();
+            last_nameList.clear();
+            while (rs.next()) {
+                professor_id  = rs.getInt("professor_id");
+                first_name  = rs.getString("first_name");
+                last_name    = rs.getString("last_name");
+                
+                professor_idList.add(professor_id);
+                first_nameList.add(first_name);
+                last_nameList.add(last_name);
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
   
 }
 
