@@ -15,6 +15,7 @@
     <body>
         <h1>Search and View Rating</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
+        <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
          <%
             rating.professor_id = Integer.parseInt(request.getParameter("prof_id"));
             
@@ -22,11 +23,17 @@
             
             if(res == 1){
         %>
-        Searched Results <br>
+        Searched Results <br><br>
         <% 
-            for (int i=0; i < rating.student_idlist.size(); i++) { %>
+            for (int i=0; i < rating.student_idlist.size(); i++) { 
+        
+                nr.retrieveStudentName(rating.student_idlist.get(i));
+                nr.retrieveProfName(rating.professor_idlist.get(i));
+        %>
                 Student ID: <%=rating.student_idlist.get(i)%><br>
-                Professor ID: <%=rating.professor_idlist.get(i)%><br><br>
+                Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%><br><br>
+                Professor ID: <%=rating.professor_idlist.get(i)%><br>
+                Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%><br><br>
                 Explanation: <%=rating.explanationlist.get(i)%><br>
                 Kindness: <%=rating.kindnesslist.get(i)%><br>
                 Knowledgability: <%=rating.knowledgabilitylist.get(i)%><br>
