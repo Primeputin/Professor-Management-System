@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -23,10 +24,10 @@ public class Subject {
     public int professor_id;
     public int subject_year;
     public int term;
-    
-    public String dbgStatement = ""; // remove this later
-    
-    public ArrayList<String> notTakenSubjects = new ArrayList<>();
+    public int studentToEnroll;
+    public String enrolledSubject;
+
+    public HashMap<Integer, ArrayList<String>> notTakenSubjects = new HashMap<>();
     public ArrayList<Integer> subject_idList = new ArrayList<>();
     public ArrayList<String> subject_nameList = new ArrayList<>();
     public ArrayList<Integer> unitsList = new ArrayList<>();
@@ -289,7 +290,7 @@ public class Subject {
         }
     }
     
-    public int enroll(int student_id) {
+    public int queryValidSubjects(int student_id) {
         try {
             // 1. Instantiate a connection variable
             Connection conn;
@@ -298,12 +299,13 @@ public class Subject {
             System.out.println("Connection Successful");
             
             // validate first
-            String preparedStatement = "SELECT *" +
-                                       "FROM subject" +
-                                       "WHERE subject_name NOT IN ( SELECT sb.subject_name" +
+            String preparedStatement = "SELECT * " +
+                                       "FROM subject " +
+                                       "JOIN professor ON subject.professor_id = professor.professor_id " +
+                                       "WHERE subject_name NOT IN ( SELECT sb.subject_name " +
                                        "                            FROM student st " +
-                                       "                            JOIN subject_list sl ON st.student_id = sl.student_id" +
-                                       "                            JOIN subject sb ON sl.subject_id = sb.subject_id" +
+                                       "                            JOIN subject_list sl ON st.student_id = sl.student_id " +
+                                       "                            JOIN subject sb ON sl.subject_id = sb.subject_id " +
                                        "                            WHERE st.student_id = ?);";
             
             PreparedStatement pstmt = conn.prepareStatement(preparedStatement);    
@@ -311,12 +313,16 @@ public class Subject {
             
             ResultSet rs = pstmt.executeQuery();
             
-            this.subject_id = 8;
-            
             while (rs.next()) {
+                int currSubjectId = rs.getInt("subject_id");
                 String currSubjectName = rs.getString("subject_name");
-                dbgStatement += currSubjectName;
-                notTakenSubjects.add(currSubjectName);
+                String professorName = rs.getString("first_name") + " " + rs.getString("last_name");
+                
+                ArrayList<String> values = new ArrayList<>();
+                values.add(currSubjectName);
+                values.add(professorName);
+                
+                notTakenSubjects.put(currSubjectId, values);
             }     
             
             
@@ -326,6 +332,54 @@ public class Subject {
         }
         
         return 1;
+    }
+    
+    public int enrollStudent(int student_id) {
+
+        try {
+             // 1. Instantiate a connection variable
+            Connection conn;
+            // 2. Connect to your DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            System.out.println("Connection Successful");
+
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO subject_list VALUES (?,?)");
+            pstmt.setInt(1, student_id);
+            pstmt.setInt(2, this.subject_id);
+
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+   
+    }
+    
+    public int getSubjectName(int subject_id) {
+        
+        try {
+            Connection conn;
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            System.out.println("Connection Successful");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT subject_name FROM subject WHERE subject_id = ?");
+            
+            pstmt.setInt(1, subject_id);
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                String currSubjectName = rs.getString("subject_name");
+                enrolledSubject = currSubjectName;
+            }     
+            
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        
     }
     
 }

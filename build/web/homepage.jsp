@@ -464,22 +464,21 @@
 
        <br><br>
 
-       <h2>Enroll</h2>
 
-       <h4>Subject ID</h4>
-       <input placeholder="###"/>
+       <form action="enroll.jsp" method="POST">
+           <h1> Enroll </h1>
+               
+             Select student - 
+                <select name="studentid"> 
+                    <% for (int i=0; i < student.student_idList.size(); i++) { 
+                                        %>
+                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
+                    <% } %>
+                </select><br><br>
+                
+                <input type="submit" value="enroll la"/>
 
-       <h4>Student ID</h4>
-       <input placeholder=""/>
-
-       <br/><br/>
-
-       <a href = "" class="button_link">
-         <button>
-           Enroll this nigga
-         </button>
-       </a>
-
+        </form>
        <br/><br/>
 
        
