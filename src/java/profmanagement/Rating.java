@@ -82,6 +82,53 @@ public class Rating {
         }
     }
     
+    public int modRecord(){
+        try{
+            // 1. Instantiate a connection variable
+            Connection conn;     
+            // 2. Connect to your DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            // 3. Indicate a notice of successful connection
+            System.out.println("Connection Successful");
+            // 4. Prep the UPDATE statement
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE ratings          " +
+                                                            "SET explanation= ?, kindness=?,knowledgability=?,approachability=?,review=?, rate_date=NOW()" +
+                                                            "WHERE  student_id = ? "+
+                                                            "AND professor_id =?");
+            
+            pstmt.setInt(1, explanation);
+            pstmt.setInt(2, kindness);
+            pstmt.setInt(3, knowledgability);
+            pstmt.setInt(4, approachability);
+            pstmt.setString(5, review);
+            pstmt.setInt(6, student_id);
+            pstmt.setInt(7, professor_id);
+            
+            // 6. Execute the SQL Statement
+            pstmt.executeUpdate();   
+            
+            // 6. Preparing SQL statement for getting the date
+            pstmt = conn.prepareStatement("SELECT rate_date FROM ratings WHERE student_id = ? AND professor_id = ?" );
+            pstmt.setInt(1, student_id);
+            pstmt.setInt(2, professor_id);
+            
+            
+            // 7. Execute Statement
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                rate_date = rs.getString("rate_date");
+            }
+            
+            pstmt.close();
+            conn.close();
+            return 1;
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
     public int viewRecord(){
         try{
             // 1. Instantiate a connection variable
@@ -274,18 +321,20 @@ public class Rating {
         }
     }
     
+    
+    
     public static void main(String[] args){
-        Rating r = new Rating();
-        r.student_id = 2;
-        r.professor_id = 2;
+        //Rating r = new Rating();
+        //r.student_id = 1;
+        //r.professor_id = 1;
         //r.explanation = 1;
         //r.kindness = 1;
         //r.knowledgability = 1;
         //r.approachability = 1;
         //r.review = "He's pretty cool";
         
-        int result = r.delRecord();
-        System.out.println(result);
+        //int result = r.modRecord();
+        //System.out.println(result);
         
         
         

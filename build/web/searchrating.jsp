@@ -16,7 +16,6 @@
         <h1>Search and View Rating</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
          <%
-            rating.student_id = Integer.parseInt(request.getParameter("student_id"));
             rating.professor_id = Integer.parseInt(request.getParameter("prof_id"));
             
             int res = rating.viewRecord();
