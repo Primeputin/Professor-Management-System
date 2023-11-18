@@ -320,26 +320,6 @@ public class Rating {
             return 0;
         }
     }
-    
-    
-    
-    public static void main(String[] args){
-        //Rating r = new Rating();
-        //r.student_id = 1;
-        //r.professor_id = 1;
-        //r.explanation = 1;
-        //r.kindness = 1;
-        //r.knowledgability = 1;
-        //r.approachability = 1;
-        //r.review = "He's pretty cool";
-        
-        //int result = r.modRecord();
-        //System.out.println(result);
-        
-        
-        
-        
-        
-    }
+
 }
     

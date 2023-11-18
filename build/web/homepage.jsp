@@ -80,7 +80,7 @@
 
         </form>
         <br><br>
-        <form action="addprof.jsp" method="POST">
+        <form action="professor/addprof.jsp" method="POST">
        
     	     <label for="firstname">First name:</label>
     	     <input type="text" name="firstname" placeholder="First Name" required>
@@ -93,7 +93,7 @@
 
         </form>
         <br><br>
-        <form action="rmprof.jsp" method="POST">
+        <form action="professor/rmprof.jsp" method="POST">
              Select professor - 
             <% if (prof.professor_idList.size() > 0) { %>
     	     <select name="professors"> 
@@ -142,7 +142,7 @@
         <h4>Search for a student</h4>   
 
         <% student.loadRecord(); %>
-        <form action="searchstudent.jsp" method="POST">
+        <form action="student/searchstudent.jsp" method="POST">
             Select student - 
                 <select name="student"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
@@ -156,7 +156,7 @@
      
        <h4>Add a student</h4>
        
-       <form action="addstudent.jsp" method="POST">
+       <form action="student/addstudent.jsp" method="POST">
        
     	     <label for="firstname">First name:</label>
     	     <input type="text" name="firstname" placeholder="First Name" required>
@@ -182,7 +182,7 @@
        
        <h4>Remove a student</h4>
        
-        <form action="rmstudent.jsp" method="POST">
+        <form action="student/rmstudent.jsp" method="POST">
              Select a student -
     	     <select name="student"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
@@ -199,7 +199,7 @@
         
         <h4>Modify a student</h4>
        
-       <form action="modstudent.jsp" method="POST">
+       <form action="student/modstudent.jsp" method="POST">
            
             Select a student -
     	     <select name="student"> 
@@ -257,7 +257,7 @@
 
        <br><br>
 
-       <form action="filter_rating_by_student.jsp" method="POST">
+       <form action="rating/filter_rating_by_student.jsp" method="POST">
            <h3>Filter Rating by Student</h3>
             Select student - 
             <% if (student.student_idList.size() > 0) { %>
@@ -281,7 +281,7 @@
        
         <br><br>
         
-        <form action="filter_rating_by_prof.jsp" method="POST">
+        <form action="rating/filter_rating_by_prof.jsp" method="POST">
            <h3>Filter Rating by Professor</h3>
              Select professor - 
              <% if (prof.professor_idList.size() > 0) { %>
@@ -304,7 +304,7 @@
        
         <br><br>
       
-       <form action="addrating_menu.jsp" method="POST">
+       <form action="rating/addrating_menu.jsp" method="POST">
             <h3>Rate a professor</h3>
              Select a student -
              <% if (student.student_idList.size() > 0) { %>

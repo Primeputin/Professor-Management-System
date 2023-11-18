@@ -13,7 +13,7 @@
         <title>Add a Rating</title>
     </head>
     <body>
-        <form action="addrating.jsp" method="POST">
+        <form action="rating/addrating.jsp" method="POST">
             <h3>Rate a professor</h3>
             <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
             <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />

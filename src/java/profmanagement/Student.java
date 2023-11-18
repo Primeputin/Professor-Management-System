@@ -29,22 +29,19 @@ public class Student {
     public ArrayList<Float> gpaList = new ArrayList<>();
     public ArrayList<Integer> cur_yearList = new ArrayList<>();
     
-    public int addRecord () {           // Method add a Record
+    public int addRecord () {           
+           
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
             
-            // 4. Get new id
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(student_id) + 1 as new_id FROM student" );
             ResultSet rs = pstmt.executeQuery();
+            
             while (rs.next()) {
                 student_id  = rs.getInt("new_id");
             }
-            
+
             // 5. Prepare our INSERT Statement
             pstmt = conn.prepareStatement("INSERT INTO student VALUES (?,?,?,?,?)");
             // 6. Supply the statement with values
@@ -57,10 +54,11 @@ public class Student {
             pstmt.executeUpdate();
             pstmt.close();
             conn.close();
-            return 1;
-        } catch (SQLException e) {
+            
+        return 0;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            return 0;
+            return 0x1;
         }
     }
 
@@ -218,13 +216,9 @@ public class Student {
     
     public int loadRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM student");
             // 5. Execute the SQL Statement
             ResultSet rs = pstmt.executeQuery();
