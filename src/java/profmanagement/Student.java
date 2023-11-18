@@ -111,11 +111,19 @@ public class Student {
             pstmt.setInt    (1, student_id);
             pstmt.executeUpdate();
             
-            // delete professor
+            pstmt = conn.prepareStatement("DELETE FROM ratings WHERE student_id=?");
+            pstmt.setInt    (1, student_id);
+            pstmt.executeUpdate();
+            
+            pstmt = conn.prepareStatement("DELETE FROM subject_list WHERE student_id=?");
+            pstmt.setInt    (1, student_id);
+            pstmt.executeUpdate();            
+
+            // delete student
             pstmt = conn.prepareStatement("DELETE FROM student WHERE student_id=?");
             pstmt.setInt    (1, student_id);
-            
             pstmt.executeUpdate();
+            
             pstmt.close();
             conn.close();
             return 1;
