@@ -572,7 +572,10 @@
     function changeGPAValue(value) {
         document.getElementById("gpa-label").innerHTML = value;
     }
+
+    function changeGPAValueModify(value) {
+        document.getElementById("gpa-label-modify").innerHTML = value;
+    }
     
 </script>
-    
     
