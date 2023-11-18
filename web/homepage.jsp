@@ -236,6 +236,7 @@
        <form action="searchrating_menu.jsp" method="POST">
            <h3>Search and View a Rating</h3>
              Select a student -
+             <% if (student.student_idList.size() > 0) { %>
     	     <select name="student_id"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
@@ -248,6 +249,9 @@
                 Proceed
             </button>
             </a>
+             <% } else{ %>
+                 Sorry! No Students exist!
+             <% } %>
 
         </form>
 
@@ -256,6 +260,7 @@
        <form action="filter_rating_by_student.jsp" method="POST">
            <h3>Filter Rating by Student</h3>
             Select student - 
+            <% if (student.student_idList.size() > 0) { %>
                 <select name="student_id"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
@@ -268,6 +273,9 @@
                 Filter by Student
             </button>
             </a>
+            <% } else{ %>
+                 Sorry! No Students exist!
+             <% } %>
 
         </form>
        
@@ -276,6 +284,7 @@
         <form action="filter_rating_by_prof.jsp" method="POST">
            <h3>Filter Rating by Professor</h3>
              Select professor - 
+             <% if (prof.professor_idList.size() > 0) { %>
                 <select name="prof_id"> 
                     <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                         %>
@@ -288,7 +297,9 @@
                 Filter by Professor
             </button>
             </a>
-
+             <% } else{ %>
+                 Sorry! No Professors exist!
+             <% } %>
         </form>
        
         <br><br>
@@ -296,6 +307,7 @@
        <form action="addrating_menu.jsp" method="POST">
             <h3>Rate a professor</h3>
              Select a student -
+             <% if (student.student_idList.size() > 0) { %>
     	     <select name="student_id"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
@@ -308,6 +320,9 @@
                 Proceed
             </button>
             </a>
+             <% } else{ %>
+                 Sorry! No Students exist!
+             <% } %>
        </form>
        
        <br/><br/>
@@ -316,6 +331,7 @@
        <form action="rmrating_menu.jsp" method="POST">
            <h3>Remove a Rating</h3>
              Select a student -
+             <% if (student.student_idList.size() > 0) { %>
     	     <select name="student_id"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
@@ -328,12 +344,18 @@
                 Proceed
             </button>
             </a>
+             <% } else{ %>
+                 Sorry! No Students exist!
+             <% } %>
 
         </form>
+             
+        <br/><br/>
        
        <form action="modrating_menu.jsp" method="POST">
            <h3>Modify a Rating</h3>
              Select a student -
+             <% if (student.student_idList.size() > 0) { %>
     	     <select name="student_id"> 
                     <% for (int i=0; i < student.student_idList.size(); i++) { 
                                         %>
@@ -346,8 +368,13 @@
                 Proceed
             </button>
             </a>
+            <% } else{ %>
+                 Sorry! No Students exist!
+             <% } %>
 
         </form>
+             
+        <br/><br/>
 
     <h2>Subjects</h2>
     
