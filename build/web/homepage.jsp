@@ -384,6 +384,7 @@
         
         <form action="searchsubject.jsp" method="POST">
             Select subject -
+            <% if (subject.subject_idList.size() > 0) { %>
             <select name="subjects">
                 <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
                     <option value="<%=subject.subject_idList.get(i)%>">
@@ -393,12 +394,16 @@
             </select><br>
 
             <input type="submit" value="Search and view subject"/>
+            <% } else { %>
+                No available subjects to search
+            <% } %>
         </form>
             
             <br><br>
             
         <form action="filtersubject.jsp" method="POST">
             Select subject prefix:
+            <% if (subject.subject_idList.size() > 0) { %>
             <select name="prefix">
                 <% 
                     ArrayList<String> prefixes = subject.getDistinctPrefixes(); 
@@ -409,11 +414,15 @@
             </select>
 
             <input type="submit" value="Filter and list subjects"/>
+            <% } else { %>
+                No available subjects to filter and list
+            <% } %>
         </form>
         
         <br><br>
 
         <form action="addsubject.jsp" method="POST">
+            <% if (prof.professor_idList.size() > 0) { %>
             <label for="subjectname">Subject Name:</label>
             <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
 
@@ -437,12 +446,16 @@
             <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
 
             <input type="submit" value="Add a subject" />
+            <% } else { %>
+                No available professors to teach any subject
+            <% } %>
         </form>
 
        <br><br>
 
         <form action="rmsubject.jsp" method="POST">
             Select a subject -
+            <% if (subject.subject_idList.size() > 0) { %>
             <select name="subject">
                 <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
                     <option value="<%=subject.subject_idList.get(i)%>">
@@ -451,12 +464,18 @@
                 <% } %>
             </select><br>
 
+                
+
             <input type="submit" value="Remove a subject"/>
+            <% } else { %>
+                No available subjects to remove
+             <% } %>
         </form>
 
        <br><br>
         <form action="modsubject.jsp" method="POST">
              Select a subject -
+             <% if (subject.subject_idList.size() > 0) { %>
              <select name="subjects">
                  <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
                      <option value="<%=subject.subject_idList.get(i)%>">
@@ -464,6 +483,7 @@
                      </option>
                  <% } %>
              </select><br>
+
 
              <label for="subjectname">New Subject Name:</label>
             <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
@@ -486,7 +506,10 @@
             <label for="term">New Term:</label>
             <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
 
-             <input type="submit" value="Modify a subject"/>
+            <input type="submit" value="Modify a subject"/>
+            <% } else { %>
+                No available subjects to modify
+             <% } %>
          </form>
 
        <br><br>
