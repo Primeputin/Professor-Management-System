@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/src/java/profmanagement/Subject.java</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/addsubject.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/modstudent.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/modprof.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/filter_rating_by_prof.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/homepage.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/enroll.jsp</file>
-            <file>file:/home/ccslearner/Desktop/infom/Professor-Management-System/web/enrollSuccess.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/src/java/profmanagement/NameRetriever.java</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/src/java/profmanagement/Ranking.java</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/src/java/profmanagement/Rating.java</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/web/rankofprofbyexplanation.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/src/java/profmanagement/Student.java</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/web/homepage.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/web/rankofprofbyapproachability.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/web/rankofprofbyknowledgability.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/web/rankofprofbykindness.jsp</file>
+            <file>file:/home/ccslearner/Desktop/Professor-Management-System/src/java/profmanagement/Subject.java</file>
         </group>
     </open-files>
 </project-private>

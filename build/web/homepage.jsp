@@ -467,6 +467,9 @@
 
     <h1> Report </h1>
     
+    <% subject.loadDistinctSubjects(); %>
+
+    
     <form action="rankofprofofsub.jsp" method="POST">
             Select subject -
             <select name="subjects">
@@ -482,7 +485,31 @@
 
             <input type="submit" value="Rankings of Professors per subject in a year" />
         </form>
-        <h2>Rankings of Professors per subject based on a single attribute in a year</h2>
+            <br>
+    
+    <h2>Rankings of Professors per subject based on a single attribute in a year</h2>
+    <form action="" method="POST">
+            Select subject -
+            <select name="subjectname">
+                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
+                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
+                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
+                    </option>
+                <% } %>
+            </select><br>
+            
+            <label for="subject_year">Subject Year:</label>
+            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+            
+            <button type="submit" formaction="rankofprofbyexplanation.jsp">Explanation</button>
+            <button type="submit" formaction="rankofprofbykindness.jsp">Kindness</button>
+            <button type="submit" formaction="rankofprofbyknowledgability.jsp">Knowledgeability</button>
+            <button type="submit" formaction="rankofprofbyapproachability.jsp">Approachability</button>
+        
+    </form>
+    
+  
+        
     </body>
 </html>
 

@@ -34,6 +34,7 @@ public class Subject {
     public ArrayList<Integer> professor_idList = new ArrayList<>();
     public ArrayList<Integer> subject_yearList = new ArrayList<>();
     public ArrayList<Integer> termList = new ArrayList<>();
+    public ArrayList<String> distinctSubjectNames = new ArrayList<>();
 
 
     public int addRecord() {
@@ -173,6 +174,27 @@ public class Subject {
         }
     }
     
+    public void loadDistinctSubjects() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+
+            PreparedStatement pstmt = conn.prepareStatement("SELECT DISTINCT subject_name FROM subject");
+            ResultSet rs = pstmt.executeQuery();
+
+            distinctSubjectNames.clear();
+
+            while (rs.next()) {
+                distinctSubjectNames.add(rs.getString("subject_name"));
+            }
+
+            rs.close();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ArrayList<String> getDistinctPrefixes() {
         ArrayList<String> prefixes = new ArrayList<>();
         try {
