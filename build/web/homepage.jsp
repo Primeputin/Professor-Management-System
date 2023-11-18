@@ -465,17 +465,17 @@
 
        
 
-    <h1> Report </h1>
+    <h2>Overall rankings of Professors per subject in a year</h2>
     
     <% subject.loadDistinctSubjects(); %>
 
     
     <form action="rankofprofofsub.jsp" method="POST">
             Select subject -
-            <select name="subjects">
-                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                    <option value="<%=subject.subject_idList.get(i)%>">
-                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+            <select name="subjectname">
+                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
+                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
+                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
                     </option>
                 <% } %>
             </select><br>

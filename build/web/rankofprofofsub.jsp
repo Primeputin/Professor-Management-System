@@ -16,9 +16,9 @@
         <jsp:useBean id="rank" class="profmanagement.Ranking" scope="session" />
        
         <%
-            String subject_id = request.getParameter("subjects");
+            String subject_name = request.getParameter("subjectname");
             String year = request.getParameter("subject_year");
-            rank.subject_id = Integer.parseInt(subject_id);
+            rank.subject_name = subject_name;
             rank.year = year;
             rank.showRanking();
         %>    

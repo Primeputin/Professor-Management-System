@@ -18,7 +18,6 @@ import java.util.ArrayList;
  */
 public class Ranking {
     
-    public int subject_id;
     public String year;
     public String subject_name;
     
@@ -47,12 +46,12 @@ public class Ranking {
                                                                                     "			 JOIN subject_list ON student.student_id = subject_list.student_id " +
                                                                                     "             JOIN subject ON subject_list.subject_id = subject.subject_id " +
                                                                                     "             JOIN professor ON subject.professor_id = professor.professor_id"  +
-                                                                                    "             WHERE subject.subject_year = ? AND subject.subject_id = ? " +
+                                                                                    "             WHERE subject.subject_year = ? AND subject.subject_name = ? " +
                                                                                     "GROUP BY professor.professor_id " +
                                                                                     "ORDER BY total_avg_rate DESC");
             // 5. Supply the statement with values
             pstmt.setString(1, year);
-            pstmt.setInt(2, subject_id);
+            pstmt.setString(2, subject_name);
             // 6. Execute the SQL Statement
             ResultSet rs = pstmt.executeQuery();
 
@@ -142,5 +141,5 @@ public class Ranking {
         }
            
     }
-   
+    
 }
