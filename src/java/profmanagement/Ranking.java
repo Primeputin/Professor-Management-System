@@ -20,11 +20,16 @@ public class Ranking {
     
     public int subject_id;
     public String year;
+    public String subject_name;
     
     public ArrayList<Integer> professor_idList = new ArrayList<>();
     public ArrayList<String> first_nameList = new ArrayList<>();
     public ArrayList<String> last_nameList = new ArrayList<>();
     public ArrayList<Double> total_avgList = new ArrayList<>();
+    public ArrayList<Double> explanationAvgList = new ArrayList<>();
+    public ArrayList<Double> kindnessAvgList = new ArrayList<>();
+    public ArrayList<Double> knowledgabilityAvgList = new ArrayList<>();
+    public ArrayList<Double> approachabilityAvgList = new ArrayList<>();
     
     
     public int showRanking()
@@ -72,5 +77,70 @@ public class Ranking {
             return 0;
         }
     }
-    
+        
+    public int showRankAttribute(String attributeType)
+    {
+        try {
+            // 1. Instantiate a connection variable
+            Connection conn;
+            // 2. Connect to your DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            // 3. Indicate a notice of successful connection
+            System.out.println("Connection Successful");
+            // 4. Prepare our INSERT Statement
+            PreparedStatement pstmt = conn.prepareStatement("SELECT     professor.professor_id, " +
+                                                                       "professor.first_name, " +
+                                                                       "professor.last_name, " +
+                                                                       "AVG(" + attributeType + ") AS avg_attr_rate" +
+                                                           " FROM       ratings " +
+                                                                       "JOIN student ON ratings.student_id = student.student_id " +
+                                                                       "JOIN subject_list ON student.student_id = subject_list.student_id " +
+                                                                       "JOIN subject ON subject_list.subject_id = subject.subject_id " +
+                                                                       "JOIN professor ON subject.professor_id = professor.professor_id " +
+                                                                       "WHERE subject.subject_year = ? AND subject.subject_name = ? " +
+                                                            "GROUP BY   professor.professor_id " +
+                                                            "ORDER BY   avg_attr_rate DESC" );
+            
+            // 5. Supply the statement with values
+            pstmt.setString(1, year);
+            pstmt.setString(2, subject_name);
+            // 6. Execute the SQL Statement
+            ResultSet rs = pstmt.executeQuery();
+
+            // 7. Get the results
+            professor_idList.clear();
+            first_nameList.clear();
+            last_nameList.clear();
+            explanationAvgList.clear();
+            kindnessAvgList.clear();
+            knowledgabilityAvgList.clear();
+            approachabilityAvgList.clear();
+            
+            while (rs.next()) {
+                professor_idList.add(rs.getInt("professor_id"));
+                first_nameList.add(rs.getString("first_name"));
+                last_nameList.add(rs.getString("last_name"));
+
+                if (attributeType.equals("explanation")) {
+                    explanationAvgList.add(rs.getDouble("avg_attr_rate"));
+                } else if (attributeType.equals("kindness")) {
+                    kindnessAvgList.add(rs.getDouble("avg_attr_rate"));
+                } else if (attributeType.equals("knowledgability")) {
+                    knowledgabilityAvgList.add(rs.getDouble("avg_attr_rate"));
+                } else if (attributeType.equals("approachability")) {
+                    approachabilityAvgList.add(rs.getDouble("avg_attr_rate"));
+                }
+
+        }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+           
+    }
+   
 }
