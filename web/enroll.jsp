@@ -24,7 +24,8 @@
         %>    
         Enrollment success! <br>
         
-        Select a subject my nigger: 
+        Select a subject: 
+
  
         <form action="enrollSuccess.jsp" action="POST">
             
