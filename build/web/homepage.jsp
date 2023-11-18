@@ -35,7 +35,9 @@
         <% prof.loadRecord(); %>
         <form action="searchprof.jsp" method="POST">
             Select professor - 
+            <% if (prof.professor_idList.size() > 0) { %>
                 <select name="professors"> 
+                    
                     <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                         %>
                             <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
@@ -43,6 +45,12 @@
                 </select><br>
   
             <input type="submit" value="Search and view professor"/>
+             <% } 
+            else {%>
+            Sorry! no Professors for searching and viewing
+            <% } %>
+
+             
         </form>
  
 
@@ -86,7 +94,8 @@
         </form>
         <br><br>
         <form action="rmprof.jsp" method="POST">
-             Select a professor -
+             Select professor - 
+            <% if (prof.professor_idList.size() > 0) { %>
     	     <select name="professors"> 
                     <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                         %>
@@ -96,11 +105,16 @@
 
   
             <input type="submit" value="Remove a professor"/>
+             <% } 
+            else {%>
+            No professors to remove
+            <% } %>
 
         </form>
         <br><br>
         <form action="modprof.jsp" method="POST">
-             Select a professor -
+             Select professor - 
+             <% if (prof.professor_idList.size() > 0) { %>
     	     <select name="professors"> 
                     <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                         %>
@@ -115,6 +129,10 @@
    	     <input type="text" name="lastname" placeholder="Last Name" required>
   
             <input type="submit" value="Modify a professor"/>
+            <% } 
+            else {%>
+            No professors to modify
+            <% } %>
 
         </form>
     <h2>Student</h2>
