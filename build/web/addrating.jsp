@@ -43,7 +43,7 @@
         Added Ratings Success! <br><br>
 
                 Student ID: <%=rating.student_id%><br>
-                Student Name: <%=nr.student_first_name%> <%=nr.student_last_nameList%><br><br>
+                Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%><br><br>
                 Professor ID: <%=rating.professor_id%><br>
                 Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%><br><br>
                 Explanation: <%=rating.explanation%><br>

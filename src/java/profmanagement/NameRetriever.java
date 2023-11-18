@@ -24,11 +24,6 @@ public class NameRetriever {
     public String prof_first_name;
     public String prof_last_name;
     
-    public ArrayList<String> student_first_nameList = new ArrayList<>();
-    public ArrayList<String> student_last_nameList = new ArrayList<>();
-    
-    public ArrayList<String> prof_first_nameList = new ArrayList<>();
-    public ArrayList<String> prof_last_nameList = new ArrayList<>();
     
     public int retrieveStudentName(int student_id){
         try {
@@ -46,8 +41,7 @@ public class NameRetriever {
             ResultSet rs = pstmt.executeQuery();
 
             // 7. Get the results
-            student_first_nameList.clear();
-            student_last_nameList.clear();
+            
             while (rs.next()) {
                 student_first_name  = rs.getString("first_name");
                 student_last_name   = rs.getString("last_name");
@@ -78,8 +72,6 @@ public class NameRetriever {
             ResultSet rs = pstmt.executeQuery();
 
             // 7. Get the results
-            prof_first_nameList.clear();
-            prof_last_nameList.clear();
             while (rs.next()) {
                 prof_first_name  = rs.getString("first_name");
                 prof_last_name   = rs.getString("last_name");
