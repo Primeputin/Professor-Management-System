@@ -489,7 +489,8 @@
 
     
     <form action="rankofprofofsub.jsp" method="POST">
-            Select subject -
+            Select subject - 
+            <% if (subject.distinctSubjectNames.size() > 0) { %>
             <select name="subjectname">
                 <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
                     <option value="<%=subject.distinctSubjectNames.get(i)%>">
@@ -502,12 +503,17 @@
             <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
 
             <input type="submit" value="Rankings of Professors per subject in a year" />
+            <% } 
+            else {%>
+            No available subjects to rank by in general
+            <% } %>
         </form>
             <br>
     
     <h2>Rankings of Professors per subject based on a single attribute in a year</h2>
     <form action="" method="POST">
-            Select subject -
+            Select subject - 
+            <% if (subject.distinctSubjectNames.size() > 0) { %>
             <select name="subjectname">
                 <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
                     <option value="<%=subject.distinctSubjectNames.get(i)%>">
@@ -523,6 +529,10 @@
             <button type="submit" formaction="rankofprofbykindness.jsp">Kindness</button>
             <button type="submit" formaction="rankofprofbyknowledgability.jsp">Knowledgeability</button>
             <button type="submit" formaction="rankofprofbyapproachability.jsp">Approachability</button>
+            <% } 
+            else {%>
+            No available subjects to rank by a specific attribute
+            <% } %>
         
     </form>
     
