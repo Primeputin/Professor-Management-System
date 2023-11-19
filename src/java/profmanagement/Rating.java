@@ -38,14 +38,7 @@ public class Rating {
     
     public int addRating(){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            
-            // 4. Preparing the insert statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ratings(student_id, professor_id, explanation, kindness, knowledgability, approachability, review, rate_date) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())" );
             pstmt.setInt(1, student_id);
             pstmt.setInt(2, professor_id);
@@ -84,13 +77,7 @@ public class Rating {
     
     public int modRecord(){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;     
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prep the UPDATE statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("UPDATE ratings          " +
                                                             "SET explanation= ?, kindness=?,knowledgability=?,approachability=?,review=?, rate_date=NOW()" +
                                                             "WHERE  student_id = ? "+
@@ -131,13 +118,7 @@ public class Rating {
     
     public int viewRecord(){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ratings WHERE student_id=? AND professor_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, student_id);
@@ -189,14 +170,7 @@ public class Rating {
     
     public int delRecord (){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            
-            // 4. Delete Ratings
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM ratings WHERE student_id=? AND professor_id=?");
             pstmt.setInt    (1, student_id);
             pstmt.setInt    (2, professor_id);
@@ -213,13 +187,7 @@ public class Rating {
     
     public int viewFilterRecordStudent(){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our SELECT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ratings WHERE student_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, student_id);
@@ -268,13 +236,8 @@ public class Rating {
     
     public int viewFilterRecordProf(){
         try{
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our SELECT Statement
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ratings WHERE professor_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, professor_id);

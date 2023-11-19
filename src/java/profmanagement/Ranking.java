@@ -34,13 +34,7 @@ public class Ranking {
     public int showRanking()
     {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT professor.professor_id, professor.first_name, professor.last_name, AVG((explanation + kindness +  knowledgability + approachability)) AS total_avg_rate " +
                                                                                     "FROM ratings JOIN student ON ratings.student_id = student.student_id " +
                                                                                     "			 JOIN subject_list ON student.student_id = subject_list.student_id " +
@@ -80,13 +74,7 @@ public class Ranking {
     public int showRankAttribute(String attributeType)
     {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT     professor.professor_id, " +
                                                                        "professor.first_name, " +
                                                                        "professor.last_name, " +

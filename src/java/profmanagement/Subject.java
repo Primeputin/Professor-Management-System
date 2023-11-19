@@ -39,12 +39,7 @@ public class Subject {
 
     public int addRecord() {
         try {
-             // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
-
+            Connection conn = ConnectionUtil.connect();
             // Get new subject_id
             PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(subject_id) + 1 as new_id FROM subject");
             ResultSet rs = pstmt.executeQuery();
@@ -73,11 +68,7 @@ public class Subject {
 
     public int modRecord() {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
 
             PreparedStatement pstmt = conn.prepareStatement("UPDATE subject " +
                                                             "SET subject_name = ?," +
@@ -106,11 +97,7 @@ public class Subject {
 
     public int delRecord() {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
                 
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM subject_list WHERE subject_id = ?");
             pstmt.setInt(1, subject_id);
@@ -130,12 +117,7 @@ public class Subject {
 
     public int viewRecord() {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
-
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM subject WHERE subject_id = ?");
             pstmt.setInt(1, subject_id);
             ResultSet rs = pstmt.executeQuery();
@@ -199,8 +181,8 @@ public class Subject {
         ArrayList<String> prefixes = new ArrayList<>();
         try {
             // Establish a database connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-
+            Connection conn = ConnectionUtil.connect();
+                    
             // Prepare the SELECT statement to retrieve unique prefixes
             PreparedStatement pstmt = conn.prepareStatement("SELECT DISTINCT SUBSTRING(subject_name, 1, 2) as prefix FROM subject");
 
@@ -222,11 +204,7 @@ public class Subject {
 
     public int viewFilterRecord(String prefix) {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
 
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM subject WHERE LEFT(subject_name, 2) = ?");
             pstmt.setString(1, prefix);
@@ -268,11 +246,7 @@ public class Subject {
 
     public int loadRecord() {
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
 
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM subject");
             ResultSet rs = pstmt.executeQuery();

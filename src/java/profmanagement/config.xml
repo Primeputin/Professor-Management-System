@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<root>
-    <database>
-        <url>jdbc:mysql://localhost:3306/db_app?useSSL=false</url>
-        <user>root</user>
-        <password>12345678</password>
-    </database>
-</root>

@@ -27,13 +27,7 @@ public class NameRetriever {
     
     public int retrieveStudentName(int student_id){
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM student WHERE student_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, student_id);
@@ -58,11 +52,7 @@ public class NameRetriever {
     
     public int retrieveProfName(int professor_id){
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
+            Connection conn = ConnectionUtil.connect();
             System.out.println("Connection Successful");
             // 4. Prepare our INSERT Statement
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor WHERE professor_id=?");

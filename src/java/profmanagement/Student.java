@@ -65,13 +65,7 @@ public class Student {
     public int modRecord () {           // Method modify a Record
         
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;     
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("UPDATE student          " +
                                                             "SET    first_name   = ?," + 
                                                             "last_name   = ?," + 
@@ -97,13 +91,7 @@ public class Student {
 
     public int delRecord () {           // Method delete a Record
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            
+            Connection conn = ConnectionUtil.connect();
             // delete rating corresponding to the student
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM ratings WHERE student_id=?");
             pstmt.setInt    (1, student_id);
@@ -133,13 +121,7 @@ public class Student {
 
     public int viewRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM student WHERE student_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, student_id);
@@ -177,13 +159,7 @@ public class Student {
     
     public int viewFilterRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM student WHERE first_name = ? AND last_name = ?");
             // 5. Supply the statement with values
             pstmt.setString    (1, first_name);
