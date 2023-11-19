@@ -9,11 +9,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Remove a professor</title>
     </head>
     <body>
-        <h1>Removed Professor</h1>
+        <div class="text-center">
+            <h1 class="m-5">Removed Professor</h1>
+        </div>
+        
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
         <%
             String prof_id = request.getParameter("professors");
@@ -23,11 +30,15 @@
             String last_name = prof.last_nameList.get(0);
             prof.delRecord();
         %>    
-        Removed professor Success! <br>
-
-                First Name: <%=prof.first_name%><br>
-                Last Name: <%=prof.last_name%><br>
-        <br>
-        click <a href="../homepage.jsp">here to go back to home page</a><br>
+        
+        <main class="d-flex justify-content-center">
+            <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
+                <h1> Removed professor Success! </h1><br/>
+                <label class="h5">First Name: <%=prof.first_name%><br></label><br/>
+                <label class="h5">Last Name: <%=prof.last_name%><br></label><br/>
+            <br>
+            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+             </div>
+        </main>
     </body>
 </html>

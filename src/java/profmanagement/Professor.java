@@ -194,11 +194,8 @@ public class Professor {
     public int viewFilterRecord() {           // Method viewing a  - Getting something
         try {
             // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
+            
             // 4. Prepare our INSERT Statement
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor WHERE first_name = ? AND last_name = ?");
             // 5. Supply the statement with values
@@ -327,6 +324,6 @@ public class Professor {
             return 0;
         }
     }
-  
+    
 }
 

@@ -3,35 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/index.html</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankofprofbyknowledgability.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/filterRatingByStudent.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/addRatingMenu.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/searchRating.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/addProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/searchProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/modProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/NameRetriever.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/conf/MANIFEST.MF</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/Subject.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/Rating.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankOfProfSub.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/WEB-INF/glassfish-web.xml</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/removeProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/ConnectionUtil.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankOfProfAttr.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/lastFilterProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/Ranking.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankofprofbyexplanation.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/filterProf.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankofprofbyapproachability.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/homepage.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/Student.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/subject/searchSubject.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankofprofbykindness.jsp</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/Professor.java</file>
-            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/addRating.jsp</file>
+            <file>file:/C:/Users/Vladimir%20Tang/Documents/CCINFOM/Professor-Management-System/web/professor/filterprof.jsp</file>
+            <file>file:/C:/Users/Vladimir%20Tang/Documents/CCINFOM/Professor-Management-System/src/java/profmanagement/Professor.java</file>
+            <file>file:/C:/Users/Vladimir%20Tang/Documents/CCINFOM/Professor-Management-System/web/professor/addProf.jsp</file>
+            <file>file:/C:/Users/Vladimir%20Tang/Documents/CCINFOM/Professor-Management-System/web/homepage.jsp</file>
         </group>
     </open-files>
 </project-private>

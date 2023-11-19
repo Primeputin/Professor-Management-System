@@ -9,11 +9,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Modify a professor</title>
     </head>
     <body>
-        <h1>Modify a professor</h1>
+        <div class="text-center">
+            <h1 class="m-5">Modify a professor</h1>
+        </div>
         
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
         <%
@@ -25,12 +31,16 @@
             prof.last_name = last_name;
             prof.modRecord();
         %>  
-        Modified successfully!
-        <br>
-
-                First Name: <%=prof.first_name%><br>
-                Last Name: <%=prof.last_name%><br>
-        <br>
-        click <a href="../homepage.jsp">here to go back to home page</a><br>
+        
+        <main class="d-flex justify-content-center">
+            <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
+                <h1> Modified successfully! </h1><br/>
+                <label class="h5">First Name: <%=prof.first_name%><br></label><br/>
+                <label class="h5">Last Name: <%=prof.last_name%><br></label><br/>
+            <br>
+            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+             </div>
+        </main>
+           
     </body>
 </html>
