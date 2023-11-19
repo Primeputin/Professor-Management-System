@@ -1,604 +1,374 @@
-<%-- 
-    Document   : homepage
-    Created on : 11 9, 23, 10:28:10 PM
-    Author     : ccslearner
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "java.util.*, profmanagement.*"%>
-<!DOCTYPE html>
-<html>
+
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-      <title>Professor Management System</title>
-
-      <style>
-        body {
-            font-family: 'Arial'; /* Use the custom font */
-            color: black;
-        }
-
-        .button_link {
-          color: black;
-          text-decoration: none;
-        }
-
-      </style>
-
+        <title>Professor Management System</title>
+        
+        <style>
+            #card-component {
+                height: 420px;
+            }
+        </style>
+        
     </head>
     <body>
 
-    <h2>Professor</h2>
+        <!-- Global Beans -->
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
- 
-
-        <% prof.loadRecord(); %>
-        <form action="searchprof.jsp" method="POST">
-            Select professor - 
-            <% if (prof.professor_idList.size() > 0) { %>
-                <select name="professors"> 
-                    
-                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br>
-  
-            <input type="submit" value="Search and view professor"/>
-             <% } 
-            else {%>
-            Sorry! no Professors for searching and viewing
-            <% } %>
-
-             
-        </form>
- 
-
-        <br><br>
-        
-        <form action="lastfilterprof.jsp" method="POST">
-
-                     <label for="lastname">Last name:</label>
-                     <input type="text"  name="lastname" placeholder="Last Name" required>
-
-
-                    <input type="submit" value="Filter and list last name of the professor"/>
-
-        </form>
-        <br><br>
-        
-        <form action="filterprof.jsp" method="POST">
-
-                     <label for="firstname">First name:</label>
-                     <input type="text"  name="firstname" placeholder="First Name" required>
-
-                     <label for="lastname">Last name:</label>
-                     <input type="text"  name="lastname" placeholder="Last Name" required>
-
-
-                    <input type="submit" value="Filter and list professor"/>
-
-        </form>
-        <br><br>
-        <form action="professor/addprof.jsp" method="POST">
-       
-    	     <label for="firstname">First name:</label>
-    	     <input type="text" name="firstname" placeholder="First Name" required>
-
-   	     <label for="lastname">Last name:</label>
-   	     <input type="text" name="lastname" placeholder="Last Name" required>
-
-  
-            <input type="submit" value="Add a professor" />
-
-        </form>
-        <br><br>
-        <form action="professor/rmprof.jsp" method="POST">
-             Select professor - 
-            <% if (prof.professor_idList.size() > 0) { %>
-    	     <select name="professors"> 
-                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br>
-
-  
-            <input type="submit" value="Remove a professor"/>
-             <% } 
-            else {%>
-            No professors to remove
-            <% } %>
-
-        </form>
-        <br><br>
-        <form action="modprof.jsp" method="POST">
-             Select professor - 
-             <% if (prof.professor_idList.size() > 0) { %>
-    	     <select name="professors"> 
-                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
-                    <% } %>
-              </select><br>
-               
-             <label for="firstname">First name:</label>
-    	     <input type="text" name="firstname" placeholder="First Name" required>
-
-   	     <label for="lastname">Last name:</label>
-   	     <input type="text" name="lastname" placeholder="Last Name" required>
-  
-            <input type="submit" value="Modify a professor"/>
-            <% } 
-            else {%>
-            No professors to modify
-            <% } %>
-
-        </form>
-    <h2>Student</h2>
-    
         <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
- 
-        <h4>Search for a student</h4>   
 
-        <% student.loadRecord(); %>
-        <form action="student/searchstudent.jsp" method="POST">
-            Select student - 
-                <select name="student"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br><br>
-  
-            <input type="submit" value="View Student"/>
-        </form>
-     
-       <h4>Add a student</h4>
-       
-       <form action="student/addstudent.jsp" method="POST">
-       
-    	     <label for="firstname">First name:</label>
-    	     <input type="text" name="firstname" placeholder="First Name" required>
-
-   	     <label for="lastname">Last name:</label>
-   	     <input type="text" name="lastname" placeholder="Last Name" required>
-             
-             <br/>
-             <label id="gpa-label">0.0</label>
-             <label for="gpa">GPA:</label>
-
-   	     <input type="range" min="0.0" max="4.0" step="0.1" oninput="changeGPAValue(this.value)" name="gpa" placeholder="Last Name" required>
-             
-             <label for="cur_year">Current Year:</label>
-   	     <input type="number" name="cur_year" placeholder="Current Year" required>
-  
-             <br/><br/>
-            <input type="submit" value="Add a student" />
-
-       </form>
-       
-       <br/>
-       
-       <h4>Remove a student</h4>
-       
-        <form action="student/rmstudent.jsp" method="POST">
-             Select a student -
-    	     <select name="student"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br>
-             
-             <input type="submit" value="Remove student" />
-
-        </form>
-             
-        <br><br>
+        <nav class="navbar navbar-light bg-dark justify-content-center">
+            <a class="navbar-brand" href="#" style="color: white">Professor Management System</a>
+        </nav>
         
-        <h4>Modify a student</h4>
-       
-       <form action="student/modstudent.jsp" method="POST">
-           
-            Select a student -
-    	     <select name="student"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br>
-       
-    	     <label for="firstname">First name:</label>
-    	     <input type="text" name="firstname" placeholder="First Name" required>
+        <section class="jumbotron text-center">
+            <div class="container">
+              <h1 class="jumbotron-heading">Welcome to the Professor Management System.</h1>
+              <p class="lead text-muted">To get started, kindly select an option from functions below.</p>
+              
+            </div>
+        </section>
 
-   	     <label for="lastname">Last name:</label>
-   	     <input type="text" name="lastname" placeholder="Last Name" required>
-             
-             <br/>
-             <label id="gpa-label-modify">0.0</label>
-             <label for="gpa">GPA:</label>
+        <div class="album py-5 bg-light">
+            
+            <div class="text-center mb-4">
+            <h1 class="align-self-center">Professor</h1>
+            </div>
+            <div class="container">
 
-   	     <input type="range" min="0.0" max="4.0" step="0.1" oninput="changeGPAValueModify(this.value)" name="gpa" placeholder="Last Name" required>
-             <br/>
-             <label for="cur_year">Current Year:</label>
-   	     <input type="number" name="cur_year" placeholder="Current Year" required>
-  
-             <br/><br/>
-            <input type="submit" value="Modify Student" />
+            <div class="row">
 
-       </form>
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Search for a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form  action="professor/searchProf.jsp" method="POST">
+                            <% prof.loadRecord(); %>
+                            <div class="form-group">
+                                <label>Professor - </label><br/>
+                                <select class="form-select rounded p-2 w-75" name="professors">
+                                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                        %>
+                                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                    <% } %>
+                                </select>
+                                <br/>
+                                <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
+
+                            </div>
+                        </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
                 
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Filter Professor Last Names</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/lastFilterProf.jsp" method="POST">
+
+                                     <label for="lastname">Last name - </label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
 
 
-    <h2>Ratings</h2>
-    
-       <form action="searchrating_menu.jsp" method="POST">
-           <h3>Search and View a Rating</h3>
-             Select a student -
-             <% if (student.student_idList.size() > 0) { %>
-    	     <select name="student_id"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br><br>
-             
-             <a href ="" class="button_link">
-                <button>
-                Proceed
-            </button>
-            </a>
-             <% } else{ %>
-                 Sorry! No Students exist!
-             <% } %>
-
-        </form>
-
-       <br><br>
-
-       <form action="rating/filter_rating_by_student.jsp" method="POST">
-           <h3>Filter Rating by Student</h3>
-            Select student - 
-            <% if (student.student_idList.size() > 0) { %>
-                <select name="student_id"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br><br>
-
-            <a href ="" class="button_link">
-                <button>
-                Filter by Student
-            </button>
-            </a>
-            <% } else{ %>
-                 Sorry! No Students exist!
-             <% } %>
-
-        </form>
-       
-        <br><br>
-        
-        <form action="rating/filter_rating_by_prof.jsp" method="POST">
-           <h3>Filter Rating by Professor</h3>
-             Select professor - 
-             <% if (prof.professor_idList.size() > 0) { %>
-                <select name="prof_id"> 
-                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br><br>
-
-            <a href ="" class="button_link">
-                <button>
-                Filter by Professor
-            </button>
-            </a>
-             <% } else{ %>
-                 Sorry! No Professors exist!
-             <% } %>
-        </form>
-       
-        <br><br>
-      
-       <form action="rating/addrating_menu.jsp" method="POST">
-            <h3>Rate a professor</h3>
-             Select a student -
-             <% if (student.student_idList.size() > 0) { %>
-    	     <select name="student_id"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br><br>
-             
-             <a href ="" class="button_link">
-                <button>
-                Proceed
-            </button>
-            </a>
-             <% } else{ %>
-                 Sorry! No Students exist!
-             <% } %>
-       </form>
-       
-       <br/><br/>
-
-       
-       <form action="rmrating_menu.jsp" method="POST">
-           <h3>Remove a Rating</h3>
-             Select a student -
-             <% if (student.student_idList.size() > 0) { %>
-    	     <select name="student_id"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br><br>
-             
-             <a href ="" class="button_link">
-                <button>
-                Proceed
-            </button>
-            </a>
-             <% } else{ %>
-                 Sorry! No Students exist!
-             <% } %>
-
-        </form>
-             
-        <br/><br/>
-       
-       <form action="modrating_menu.jsp" method="POST">
-           <h3>Modify a Rating</h3>
-             Select a student -
-             <% if (student.student_idList.size() > 0) { %>
-    	     <select name="student_id"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-             </select><br><br>
-             
-             <a href ="" class="button_link">
-                <button>
-                Proceed
-            </button>
-            </a>
-            <% } else{ %>
-                 Sorry! No Students exist!
-             <% } %>
-
-        </form>
-             
-        <br/><br/>
-
-    <h2>Subjects</h2>
-    
-       <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" /> 
-       
-        <% subject.loadRecord(); %>
-        
-        <form action="searchsubject.jsp" method="POST">
-            Select subject -
-            <% if (subject.subject_idList.size() > 0) { %>
-            <select name="subjects">
-                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                    <option value="<%=subject.subject_idList.get(i)%>">
-                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
-                    </option>
-                <% } %>
-            </select><br>
-
-            <input type="submit" value="Search and view subject"/>
-            <% } else { %>
-                No available subjects to search
-            <% } %>
-        </form>
-            
-            <br><br>
-            
-        <form action="filtersubject.jsp" method="POST">
-            Select subject prefix:
-            <% if (subject.subject_idList.size() > 0) { %>
-            <select name="prefix">
-                <% 
-                    ArrayList<String> prefixes = subject.getDistinctPrefixes(); 
-                    
-                    for (String prefix : prefixes) { %>
-                    <option value="<%=prefix%>"><%=prefix%></option>
-                <% } %>
-            </select>
-
-            <input type="submit" value="Filter and list subjects"/>
-            <% } else { %>
-                No available subjects to filter and list
-            <% } %>
-        </form>
-        
-        <br><br>
-
-        <form action="addsubject.jsp" method="POST">
-            <% if (prof.professor_idList.size() > 0) { %>
-            <label for="subjectname">Subject Name:</label>
-            <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
-
-            <label for="units">Units:</label>
-            <input type="number" min="1" max="5" name="units" placeholder="Units" required>
-            
-            <br>
-            <label for="professorid">Professor:</label>
-            <select name="professorid">
-                <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
-                    <option value="<%=prof.professor_idList.get(i)%>">
-                        <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
-                    </option>
-                <% } %>
-            </select><br>
-
-            <label for="subject_year">Subject Year:</label>
-            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
-
-            <label for="term">Term:</label>
-            <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
-
-            <input type="submit" value="Add a subject" />
-            <% } else { %>
-                No available professors to teach any subject
-            <% } %>
-        </form>
-
-       <br><br>
-
-        <form action="rmsubject.jsp" method="POST">
-            Select a subject -
-            <% if (subject.subject_idList.size() > 0) { %>
-            <select name="subject">
-                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                    <option value="<%=subject.subject_idList.get(i)%>">
-                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
-                    </option>
-                <% } %>
-            </select><br>
-
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
+                        </form>       
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
                 
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Filter Professor Full Name</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/filterProf.jsp" method="POST">
 
-            <input type="submit" value="Remove a subject"/>
-            <% } else { %>
-                No available subjects to remove
-             <% } %>
-        </form>
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
 
-       <br><br>
-        <form action="modsubject.jsp" method="POST">
-             Select a subject -
-             <% if (subject.subject_idList.size() > 0) { %>
-             <select name="subjects">
-                 <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                     <option value="<%=subject.subject_idList.get(i)%>">
-                         <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
-                     </option>
-                 <% } %>
-             </select><br>
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
 
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
 
-             <label for="subjectname">New Subject Name:</label>
-            <input type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
-
-            <label for="units">Units:</label>
-            <input type="number" min="1" max="5" name="units" placeholder="Units" required>
-             <br>
-             <label for="professor">New Professor:</label>
-             <select name="professor">
-                 <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
-                     <option value="<%=prof.professor_idList.get(i)%>">
-                         <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
-                     </option>
-                 <% } %>
-             </select><br>
-             
-            <label for="subject_year">New Subject Year:</label>
-            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
-
-            <label for="term">New Term:</label>
-            <input type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
-
-            <input type="submit" value="Modify a subject"/>
-            <% } else { %>
-                No available subjects to modify
-             <% } %>
-         </form>
-
-       <br><br>
-
-
-       <form action="enroll.jsp" method="POST">
-           <h1> Enroll </h1>
-               
-             Select student - 
-                <select name="studentid"> 
-                    <% for (int i=0; i < student.student_idList.size(); i++) { 
-                                        %>
-                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>            
-                    <% } %>
-                </select><br><br>
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
                 
-                <input type="submit" value="enroll la"/>
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Add a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/addProf.jsp" method="POST">
 
-        </form>
-       <br/><br/>
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
 
-       
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
 
-    <h2>Overall rankings of Professors per subject in a year</h2>
-    
-    <% subject.loadDistinctSubjects(); %>
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add"/>
 
-    
-    <form action="rankofprofofsub.jsp" method="POST">
-            Select subject - 
-            <% if (subject.distinctSubjectNames.size() > 0) { %>
-            <select name="subjectname">
-                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
-                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
-                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
-                    </option>
-                <% } %>
-            </select><br>
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Remove a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form  action="professor/removeProf.jsp" method="POST">
+                            <% prof.loadRecord(); %>
+                            <div class="form-group">
+                                <label>Professor - </label><br/>
+                                <select class="form-select rounded p-2 w-75" name="professors">
+                                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                        %>
+                                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                    <% } %>
+                                </select>
+                                <br/>
+                                <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Remove"/>
 
-            <label for="subject_year">Subject Year:</label>
-            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                            </div>
+                        </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Modify a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/modProf.jsp" method="POST">
+                            
+                                    <label>Professor - </label><br/>
+                                    <select class="form-select rounded p-2 w-75 mb-2" name="professors">
+                                        <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                            %>
+                                                <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                        <% } %>
+                                    </select>
 
-            <input type="submit" value="Rankings of Professors per subject in a year" />
-            <% } 
-            else {%>
-            No available subjects to rank by in general
-            <% } %>
-        </form>
-            <br>
-    
-    <h2>Rankings of Professors per subject based on a single attribute in a year</h2>
-    <form action="" method="POST">
-            Select subject - 
-            <% if (subject.distinctSubjectNames.size() > 0) { %>
-            <select name="subjectname">
-                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
-                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
-                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
-                    </option>
-                <% } %>
-            </select><br>
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
+
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Modify"/>
+
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+            </div>                                 
+                                    
+        </div>
+              
+        <div class="album py-5 bg-light">
             
-            <label for="subject_year">Subject Year:</label>
-            <input type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
-            
-            <button type="submit" formaction="rankofprofbyexplanation.jsp">Explanation</button>
-            <button type="submit" formaction="rankofprofbykindness.jsp">Kindness</button>
-            <button type="submit" formaction="rankofprofbyknowledgability.jsp">Knowledgeability</button>
-            <button type="submit" formaction="rankofprofbyapproachability.jsp">Approachability</button>
-            <% } 
-            else {%>
-            No available subjects to rank by a specific attribute
-            <% } %>
+            <div class="text-center mb-4">
+            <h1 class="align-self-center">Student</h1>
+            </div>
+            <div class="container">
+
+            <div class="row">
+
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Search for a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form  action="professor/searchProf.jsp" method="POST">
+                            <% prof.loadRecord(); %>
+                            <div class="form-group">
+                                <label>Professor - </label><br/>
+                                <select class="form-select rounded p-2 w-75" name="professors">
+                                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                        %>
+                                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                    <% } %>
+                                </select>
+                                <br/>
+                                <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
+
+                            </div>
+                        </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Filter Professor Last Names</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/lastFilterProf.jsp" method="POST">
+
+                                     <label for="lastname">Last name - </label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+
+
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
+                        </form>       
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Filter Professor Full Name</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/filterProf.jsp" method="POST">
+
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
+
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
+
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Add a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/addProf.jsp" method="POST">
+
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
+
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add"/>
+
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Remove a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form  action="professor/removeProf.jsp" method="POST">
+                            <% prof.loadRecord(); %>
+                            <div class="form-group">
+                                <label>Professor - </label><br/>
+                                <select class="form-select rounded p-2 w-75" name="professors">
+                                    <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                        %>
+                                            <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                    <% } %>
+                                </select>
+                                <br/>
+                                <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Remove"/>
+
+                            </div>
+                        </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Modify a Professor</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/modProf.jsp" method="POST">
+                            
+                                    <label>Professor - </label><br/>
+                                    <select class="form-select rounded p-2 w-75 mb-2" name="professors">
+                                        <% for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                            %>
+                                                <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                        <% } %>
+                                    </select>
+
+                                     <label class="m-1" for="firstname">First name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="firstname" placeholder="First Name" required>
+
+                                     <label class="m-1" for="lastname">Last name:</label><br/>
+                                     <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+
+                                    <input style="bottom: 15px; width: 90%" class="position-absolute btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Modify"/>
+
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+            </div>                                 
+                                    
+        </div>
         
-    </form>
-    
-  
-        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>
-
-<script>
-    function changeGPAValue(value) {
-        document.getElementById("gpa-label").innerHTML = value;
-    }
-
-    function changeGPAValueModify(value) {
-        document.getElementById("gpa-label-modify").innerHTML = value;
-    }
-    
-</script>
-    

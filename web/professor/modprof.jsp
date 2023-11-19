@@ -31,6 +31,6 @@
                 First Name: <%=prof.first_name%><br>
                 Last Name: <%=prof.last_name%><br>
         <br>
-        click <a href="homepage.jsp">here to go back to home page</a><br>
+        click <a href="../homepage.jsp">here to go back to home page</a><br>
     </body>
 </html>

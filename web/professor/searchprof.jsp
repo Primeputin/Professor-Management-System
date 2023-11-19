@@ -1,24 +1,24 @@
 <%-- 
-    Document   : lastfilterprof
-    Created on : 11 15, 23, 2:58:35 PM
+    Document   : searchprof
+    Created on : 11 10, 23, 8:05:10 PM
     Author     : ccslearner
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "java.util.*, profmanagement.*"%>
-<!DOCTYPE html>
+<!DOCTYPE html>S
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Filter and list professors</title>
+        <title>Search and view professor</title>
     </head>
     <body>
-        <h1>Filter and list professors</h1>
+        <h1>Search and view professor</h1>
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
         <%
-            String last_name = request.getParameter("lastname");
-            prof.last_name = last_name;
-            prof.viewLastNameFilterRecord();
+            String prof_id = request.getParameter("professors");
+            prof.professor_id = Integer.parseInt(prof_id);
+            prof.viewRecord();
         %>    
         Searched Results <br>
         <% 
@@ -27,6 +27,6 @@
                 First Name: <%=prof.first_nameList.get(i)%><br>
                 Last Name: <%=prof.last_nameList.get(i)%><br>
         <%  } %><br>
-        click <a href="homepage.jsp">here to go back to home page</a><br>
+        click <a href="../homepage.jsp">here to go back to home page</a><br>
     </body>
 </html>

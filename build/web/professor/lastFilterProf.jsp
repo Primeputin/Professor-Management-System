@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addprof
-    Created on : 11 10, 23, 8:36:44 PM
+    Document   : lastfilterprof
+    Created on : 11 15, 23, 2:58:35 PM
     Author     : ccslearner
 --%>
 
@@ -10,23 +10,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add a professor</title>
+        <title>Filter and list professors</title>
     </head>
     <body>
-        <h1>Added Professor</h1>
+        <h1>Filter and list professors</h1>
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
         <%
-            String first_name = request.getParameter("firstname");
             String last_name = request.getParameter("lastname");
-            prof.first_name = first_name;
             prof.last_name = last_name;
-            prof.addRecord();
+            prof.viewLastNameFilterRecord();
         %>    
-        Added details Success! <br>
-
-                First Name: <%=prof.first_name%><br>
-                Last Name: <%=prof.last_name%><br>
-        <br>
+        Searched Results <br>
+        <% 
+            for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                Professor ID: <%=prof.professor_idList.get(i)%><br>
+                First Name: <%=prof.first_nameList.get(i)%><br>
+                Last Name: <%=prof.last_nameList.get(i)%><br>
+        <%  } %><br>
         click <a href="../homepage.jsp">here to go back to home page</a><br>
     </body>
 </html>

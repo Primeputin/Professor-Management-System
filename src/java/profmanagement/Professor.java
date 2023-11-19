@@ -27,12 +27,7 @@ public class Professor {
     
     public int addRecord () {           // Method add a Record
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
             
             // 4. Get new id
             PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(professor_id) + 1 as new_id FROM professor" );
@@ -61,13 +56,8 @@ public class Professor {
     public int modRecord () {           // Method modify a Record
         
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;     
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("UPDATE professor          " +
                                                             "SET    first_name   = ?," + 
                                                             "last_name   = ? " + 
@@ -89,12 +79,7 @@ public class Professor {
 
     public int delRecord () {           // Method delete a Record
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
             
             // get all subjects handled by the professor
             ArrayList<Integer> subject_idList = new ArrayList<>();
@@ -142,13 +127,8 @@ public class Professor {
 
     public int viewRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor WHERE professor_id=?");
             // 5. Supply the statement with values
             pstmt.setInt    (1, professor_id);
@@ -180,13 +160,8 @@ public class Professor {
     
     public int viewLastNameFilterRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor WHERE last_name = ?");
             // 5. Supply the statement with values
             pstmt.setString    (1, last_name);
@@ -257,13 +232,9 @@ public class Professor {
     
     public int loadRecord() {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor");
             // 5. Execute the SQL Statement
             ResultSet rs = pstmt.executeQuery();
@@ -293,13 +264,9 @@ public class Professor {
     
     public int loadRecordByRatings(int student_id) {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor p JOIN ratings r ON p.professor_id = r.professor_id WHERE r.student_id=?");
             pstmt.setInt    (1, student_id);
             // 5. Execute the SQL Statement
@@ -330,13 +297,8 @@ public class Professor {
     
     public int loadRecordByEnrolled(int student_id) {           // Method viewing a  - Getting something
         try {
-            // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            // 3. Indicate a notice of successful connection
-            System.out.println("Connection Successful");
-            // 4. Prepare our INSERT Statement
+            Connection conn = ConnectionUtil.connect();
+            
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor p JOIN subject sb ON p.professor_id = sb.professor_id JOIN subject_list sl ON sb.subject_id = sl.subject_id WHERE sl.student_id=? AND p.professor_id NOT IN (SELECT r.professor_id FROM ratings r WHERE r.student_id=?)");
             pstmt.setInt    (1, student_id);
             pstmt.setInt    (2, student_id);

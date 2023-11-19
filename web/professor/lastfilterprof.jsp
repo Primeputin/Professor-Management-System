@@ -1,6 +1,6 @@
 <%-- 
-    Document   : filterprof
-    Created on : 11 10, 23, 8:31:29 PM
+    Document   : lastfilterprof
+    Created on : 11 15, 23, 2:58:35 PM
     Author     : ccslearner
 --%>
 
@@ -16,11 +16,9 @@
         <h1>Filter and list professors</h1>
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
         <%
-            String first_name = request.getParameter("firstname");
             String last_name = request.getParameter("lastname");
-            prof.first_name = first_name;
             prof.last_name = last_name;
-            prof.viewFilterRecord();
+            prof.viewLastNameFilterRecord();
         %>    
         Searched Results <br>
         <% 
@@ -29,6 +27,6 @@
                 First Name: <%=prof.first_nameList.get(i)%><br>
                 Last Name: <%=prof.last_nameList.get(i)%><br>
         <%  } %><br>
-        click <a href="homepage.jsp">here to go back to home page</a><br>
+        click <a href="../homepage.jsp">here to go back to home page</a><br>
     </body>
 </html>
