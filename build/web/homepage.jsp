@@ -230,7 +230,6 @@
                         
                         <h5 class="card-title">Search for a Student</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form  action="professor/searchProf.jsp" method="POST">
                             <form action="student/searchstudent.jsp" method="POST">
                                 <label>Select a student - </label><br/>
                                 <select class="form-select rounded p-2 w-75 my-2" name="student">
@@ -241,7 +240,7 @@
                                 </select><br><br>
 
                                 <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
-                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
+                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
                                 </div>                            
                             </form>
                                 
