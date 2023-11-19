@@ -158,7 +158,7 @@ public class Subject {
     
     public void loadDistinctSubjects() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            Connection conn = ConnectionUtil.connect();
 
             PreparedStatement pstmt = conn.prepareStatement("SELECT DISTINCT subject_name FROM subject");
             ResultSet rs = pstmt.executeQuery();

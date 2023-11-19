@@ -12,7 +12,7 @@
         
         <style>
             #card-component {
-                height: 570px;
+                height: 650px;
             }
         </style>
         
@@ -600,7 +600,7 @@
                         
                         <h5 class="card-title">Add Subject</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="addsubject.jsp" method="POST">
+                        <form action="subject/addSubject.jsp" method="POST">
 
                             <label for="subjectname">Subject Name:</label><br/>
                             <input class="border rounded p-2 w-75 my-2" type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
@@ -639,20 +639,20 @@
                   <div class="card mb-4 shadow-sm box-shadow" id="card-component">
                     <div class="card-body" >
                         
-                        <h5 class="card-title">Rate a Professor</h5>
+                        <h5 class="card-title">Remove Subject</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="rating/addRatingMenu.jsp" method="POST">
-
-                            <label>Select a student - </label><br/>
-                            <select class="form-select rounded p-2 w-75 my-2" name="student_id">
-                                <% for (int i=0; i < student.student_idList.size(); i++) {
-                                                    %>
-                                        <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
+                        <form action="subject/rmSubject.jsp" method="POST">
+                            Select subject -
+                            <select class="form-select rounded p-2 w-75 my-2" name="subject">
+                                <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                                    <option value="<%=subject.subject_idList.get(i)%>">
+                                        <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                                    </option>
                                 <% } %>
-                             </select>
+                            </select><br>
 
                             <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
-                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Rate"/>
+                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
                             </div> 
                         </form>   
                     </div>
@@ -665,54 +665,164 @@
                   <div class="card mb-4 shadow-sm box-shadow" id="card-component">
                     <div class="card-body" >
                         
-                        <h5 class="card-title">Remove a Rating</h5>
+                        <h5 class="card-title">Modify a Subject</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="rating/rmRatingMenu.jsp" method="POST">
-
-                            <label>Select a student - </label><br/>
-                            <select class="form-select rounded p-2 w-75 my-2" name="student_id">
-                                <% for (int i=0; i < student.student_idList.size(); i++) {
-                                                    %>
-                                        <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
-                                <% } %>
+                        <form action="subject/modSubject.jsp" method="POST">
+                             Select a subject -
+                             <select class="form-select rounded p-2 w-75 my-2" name="subjects">
+                                 <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                                     <option value="<%=subject.subject_idList.get(i)%>">
+                                         <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
+                                     </option>
+                                 <% } %>
                              </select>
 
-                            <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
-                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Remove"/>
-                            </div> 
-                        </form>   
-                    </div>
-                  </div>
-                </div>
-                <!-- Component End -->
-                
-                <!-- Component Start -->
-                <div class="col-md-4 h-100">
-                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
-                    <div class="card-body" >
-                        
-                        <h5 class="card-title">Modify a Rating</h5>
-                        <p class="card-text">Please enter the details below.</p>
-                        <form action="rating/modRatingMenu.jsp" method="POST">
-
-                            <label>Select a student - </label><br/>
-                            <select class="form-select rounded p-2 w-75 my-2" name="student_id">
-                                <% for (int i=0; i < student.student_idList.size(); i++) {
-                                                    %>
-                                        <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
-                                <% } %>
+                             <label for="subjectname">New Subject Name:</label><br/>
+                            <input class="border rounded p-2 w-75 my-2" type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
+                            <br/>
+                            <label for="units">Units:</label><br/>
+                            <input class="border rounded p-2 w-75 my-2" type="number" min="1" max="5" name="units" placeholder="Units" required>
+                             <br>
+                             <label for="professor">New Professor - </label><br/>
+                             <select name="professor" class="form-select rounded p-2 w-75 my-2">
+                                 <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                                     <option value="<%=prof.professor_idList.get(i)%>">
+                                         <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
+                                     </option>
+                                 <% } %>
                              </select>
+
+                            <label for="subject_year">New Subject Year:</label><br/>
+                            <input class="border rounded p-2 w-75 my-2" type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                            <br/>
+                            <label for="term">New Term:</label><br/>
+                            <input class="border rounded p-2 w-75 my-2" type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
 
                             <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
                                 <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Modify"/>
                             </div> 
-                        </form>   
+
+                         </form>
                     </div>
                   </div>
                 </div>
                 <!-- Component End -->
                 
             </div>  
+                             
+        <div class="album py-5 bg-light">
+            
+            <div class="text-center mb-4">
+            <h1 class="align-self-center">Enrollment and Ranking</h1>
+            <% subject.loadDistinctSubjects(); %>
+            </div>
+            <div class="container">
+
+            <div class="row">
+
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Enroll in a Subject</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="enroll.jsp" method="POST">
+                                <label>Select a student - </label><br/>
+                                <select class="form-select rounded p-2 w-75 my-2" name="student">
+                                    <% for (int i=0; i < student.student_idList.size(); i++) {
+                                                        %>
+                                            <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
+                                    <% } %>
+                                </select><br><br>
+
+                            <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Enroll"/>
+                            </div> 
+
+                         </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">See Professor Rankings</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="rankofprofofsub.jsp" method="POST">
+                            <label>Select subject - </label><br/>
+                            <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
+                                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
+                                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
+                                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
+                                    </option>
+                                <% } %>
+                            </select>
+
+                            <label>Subject Year:</label><br/>
+                            <input class="border rounded p-2 w-75 my-2" type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+
+                            <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="See Rankings"/>
+                            </div> 
+
+                        </form>  
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
+                        <h5 class="card-title">Ranking of Professor by Attribute</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="" method="POST">
+                            <label>Select subject - </label><br/>
+                            <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
+                                <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
+                                    <option value="<%=subject.distinctSubjectNames.get(i)%>">
+                                        <%=(i+1) + " - " + subject.distinctSubjectNames.get(i)%>
+                                    </option>
+                                <% } %>
+                            </select>
+
+                            <label for="subject_year">Subject Year:</label>
+                            <input class="border rounded p-2 w-75 my-2" type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+
+                            <label>Select attribute - </label><br/>
+                            <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
+                                <option value="approachability">
+                                    Approachability
+                                </option>
+                                <option value="Explanation">
+                                    Explanation
+                                </option>
+                                <option value="Kindness">
+                                    Kindness
+                                </option>
+                                <option value="Knowledgability">
+                                    Knowledgability
+                                </option> 
+                            </select>
+
+                            <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="See Rankings"/>
+                            </div> 
+                        </form>   
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->                
+                
+            </div>   
                         
                                     
         </div>               
