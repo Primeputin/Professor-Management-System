@@ -9,6 +9,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Filter Rating by Professor</title>
     </head>
@@ -21,23 +25,33 @@
             rating.viewFilterRecordProf();
             nr.retrieveProfName(rating.professor_id);
         %> 
-         Searched Results <br>
-         Professor ID: <%=rating.professor_id%><br>
-         Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%><br><br>
-        <% 
+        
+        <div class="text-center">
+            <h1 class="m-5">Search Results</h1>
+        </div>
+        <h1> Professor ID: <%=rating.professor_id%></h1><br/>
+        <h1> Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%> </h1> <br><br> 
+        
+         <% 
             for (int i=0; i < rating.professor_idlist.size(); i++) { 
                 nr.retrieveStudentName(rating.student_idlist.get(i));
-        %>
-                
-                Student ID: <%=rating.student_idlist.get(i)%><br>
-                Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%><br>
-                Explanation: <%=rating.explanationlist.get(i)%><br>
-                Kindness: <%=rating.kindnesslist.get(i)%><br>
-                Knowledgability: <%=rating.knowledgabilitylist.get(i)%><br>
-                Approachability: <%=rating.approachabilitylist.get(i)%><br>
-                Review Description: <%=rating.reviewlist.get(i)%><br>
-                Date of Rating: <%=rating.rate_datelist.get(i)%><br><br><br>
+         %>
+            <main class="d-flex">
+                <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
+                    <label class="h5">Student ID: <%=rating.student_idlist.get(i)%></label><br/>
+                    <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%></label><br/>
+                    <label class="h5">Explanation: <%=rating.explanationlist.get(i)%></label><br/>
+                    <label class="h5">Kindness: <%=rating.kindnesslist.get(i)%></label><br/>
+                    <label class="h5">Knowledgability:  <%=rating.knowledgabilitylist.get(i)%></label><br/>
+                    <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
+                    <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
+                    <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
+                <br>
+                 </div>
+            </main>
         <%  } %><br>
-        click <a href="homepage.jsp">here to go back to home page</a><br>
+        
+        <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+
     </body>
 </html>
