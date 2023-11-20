@@ -29,15 +29,34 @@
             prof.last_name = last_name;
             prof.viewFilterRecord();
         %>    
-        <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
-            <main class="d-flex justify-content-center">
-                <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
-                    <h1><%=prof.last_nameList.get(i)%>, <%=prof.first_nameList.get(i)%></h1><br/>
-                    <label class="h5">Professor ID: <%=prof.professor_idList.get(i)%></label><br/>
-                <br>
-                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-                 </div>
-            </main>
-        <%  } %><br>
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Professor ID</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Department</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+              <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                    <tr>
+                        <th scope="row"><%=prof.professor_idList.get(i)%></th>
+                        <td><%=prof.first_nameList.get(i)%></td>
+                        <td><%=prof.last_nameList.get(i)%></td>
+                        <td><%=prof.departmentList.get(i)%></td>
+                    </tr>
+               <%  } %><br> 
+              
+            </tbody>
+          </table>
+        
+        
+        
+        <div class = "text-center">
+            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+        </div>
     </body>
 </html>

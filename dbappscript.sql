@@ -6,7 +6,7 @@ USE db_app;
 DROP TABLE IF EXISTS professor;
 CREATE TABLE IF NOT EXISTS professor (
   professor_id INT PRIMARY KEY,
-  department ENUM("CCS", "COB", "CLA"),
+  department ENUM("CCS", "COB", "CLA", "COS", "GCOE"),
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL
 );
@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS subject_list (
 );
 
 INSERT INTO professor
-	VALUES (1, 'Nick', 'Gurr'),
-		   (2, 'Fah', 'Get'),
-           (3, 'Kura', 'Kurr'),
-           (4, 'Yo', 'Bama');
+	VALUES (1, 'CCS', 'Nick', 'Gurr'),
+		   (2, 'CCS', 'Fah', 'Get'),
+           (3, 'CCS', 'Kura', 'Kurr'),
+           (4, 'CCS', 'Yo', 'Bama');
            
 INSERT INTO student
 	VALUES (1, 'John', 'Smith', 4.0, '2021'),

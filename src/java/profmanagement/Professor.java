@@ -20,10 +20,12 @@ public class Professor {
     public int professor_id;
     public String first_name;
     public String last_name;
+    public String department;
     
     public ArrayList<Integer> professor_idList = new ArrayList<>();
     public ArrayList<String> first_nameList = new ArrayList<>();
     public ArrayList<String> last_nameList = new ArrayList<>();
+    public ArrayList<String> departmentList = new ArrayList<>();
     
     public int addRecord () {           // Method add a Record
         try {
@@ -37,11 +39,12 @@ public class Professor {
             }
             
             // 5. Prepare our INSERT Statement
-            pstmt = conn.prepareStatement("INSERT INTO professor VALUES (?,?,?)");
+            pstmt = conn.prepareStatement("INSERT INTO professor VALUES (?,?,?,?)");
             // 6. Supply the statement with values
             pstmt.setInt    (1, professor_id);
-            pstmt.setString (2, first_name);
-            pstmt.setString    (3, last_name);
+            pstmt.setString (2, department);
+            pstmt.setString (3, first_name);
+            pstmt.setString (4, last_name);
             // 7. Execute the SQL Statement
             pstmt.executeUpdate();
             pstmt.close();
@@ -60,12 +63,14 @@ public class Professor {
             
             PreparedStatement pstmt = conn.prepareStatement("UPDATE professor          " +
                                                             "SET    first_name   = ?," + 
-                                                            "last_name   = ? " + 
+                                                            "last_name   = ?," + 
+                                                            "department  = ?" + 
                                                             "WHERE  professor_id = ? ");
             // 5. Supply the statement with values
             pstmt.setString (1, first_name);
             pstmt.setString (2, last_name);
-            pstmt.setInt    (3, professor_id);
+            pstmt.setString (3, department);
+            pstmt.setInt    (4, professor_id);
             // 6. Execute the SQL Statement
             pstmt.executeUpdate();   
             pstmt.close();
@@ -139,14 +144,17 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();
@@ -172,14 +180,53 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
+    public int viewDepartmentFilterRecord() {           // Method viewing a  - Getting something
+        try {
+            Connection conn = ConnectionUtil.connect();
+            
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM professor WHERE department = ?");
+            // 5. Supply the statement with values
+            pstmt.setString    (1, department);
+            // 6. Execute the SQL Statement
+            ResultSet rs = pstmt.executeQuery();
+
+            // 7. Get the results
+            professor_idList.clear();
+            first_nameList.clear();
+            last_nameList.clear();
+            departmentList.clear();
+            while (rs.next()) {
+                professor_id  = rs.getInt("professor_id");
+                first_name  = rs.getString("first_name");
+                last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
+                
+                professor_idList.add(professor_id);
+                first_nameList.add(first_name);
+                last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();
@@ -208,14 +255,17 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();
@@ -240,14 +290,18 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
+                
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();
@@ -273,14 +327,17 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();
@@ -306,14 +363,17 @@ public class Professor {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             while (rs.next()) {
                 professor_id  = rs.getInt("professor_id");
                 first_name  = rs.getString("first_name");
                 last_name    = rs.getString("last_name");
+                department    = rs.getString("department");
                 
                 professor_idList.add(professor_id);
                 first_nameList.add(first_name);
                 last_nameList.add(last_name);
+                departmentList.add(department);
             }
             rs.close();
             pstmt.close();

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : lastfilterprof
-    Created on : 11 15, 23, 2:58:35 PM
+    Document   : filterDepartmentProf
+    Created on : 11 10, 23, 8:31:29 PM
     Author     : ccslearner
 --%>
 
@@ -13,6 +13,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Filter and list professors</title>
     </head>
     <body>
@@ -20,13 +22,12 @@
             <h1 class="m-5">Search Results</h1>
         </div>
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
-        
         <%
-            String last_name = request.getParameter("lastname");
-            prof.last_name = last_name;
-            prof.viewLastNameFilterRecord();
-        %>  
-
+            String department = request.getParameter("department");
+            prof.department = department;
+            prof.viewDepartmentFilterRecord();
+        %>    
+        
         <table class="table">
             <thead>
               <tr>
@@ -49,7 +50,9 @@
               
             </tbody>
           </table>
-
+        
+        
+        
         <div class = "text-center">
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
         </div>

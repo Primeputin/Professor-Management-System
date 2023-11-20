@@ -32,6 +32,7 @@
           <div class="bg-light p-5 rounded shadow-sm w-50">
                 <h1><%=prof.last_nameList.get(0)%>, <%=prof.first_nameList.get(0)%></h1><br/>
                 <label class="h5">Professor ID: <%=prof.professor_idList.get(0)%></label><br/>
+                <label class="h5">Department: <%=prof.departmentList.get(0)%></label><br/>
             <br>
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
           </div>

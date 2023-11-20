@@ -24,8 +24,10 @@
         <%
             String first_name = request.getParameter("firstname");
             String last_name = request.getParameter("lastname");
+            String department = request.getParameter("department");
             prof.first_name = first_name;
             prof.last_name = last_name;
+            prof.department = department;
             prof.addRecord();
         %>
         <main class="d-flex justify-content-center">
@@ -33,6 +35,7 @@
                 <h1> Added details Success! </h1><br/>
                 <label class="h5">First Name: <%=prof.first_name%><br></label><br/>
                 <label class="h5">Last Name: <%=prof.last_name%><br></label><br/>
+                <label class="h5">Department: <%=prof.department%><br></label><br/>
             <br>
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
              </div>

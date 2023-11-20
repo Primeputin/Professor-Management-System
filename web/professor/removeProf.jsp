@@ -28,6 +28,7 @@
             prof.viewRecord();
             String first_name = prof.first_nameList.get(0);
             String last_name = prof.last_nameList.get(0);
+            String department = prof.departmentList.get(0);
             prof.delRecord();
         %>    
         
@@ -36,6 +37,7 @@
                 <h1> Removed professor Success! </h1><br/>
                 <label class="h5">First Name: <%=prof.first_name%><br></label><br/>
                 <label class="h5">Last Name: <%=prof.last_name%><br></label><br/>
+                <label class="h5">Department: <%=prof.department%><br></label><br/>
             <br>
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
              </div>

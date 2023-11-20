@@ -127,6 +127,34 @@
                   <div class="card mb-4 shadow-sm box-shadow" id="card-component">
                     <div class="card-body" >
                         
+                        <h5 class="card-title">Filter Professor By Department</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                        <form action="professor/filterDepartmentProf.jsp" method="POST">
+
+                                     <label>Department - </label><br/>
+                                     <select class="form-select rounded p-2 w-75" name="department">
+                                         <option value= "CCS"> CCS </option>            
+                                         <option value= "COB"> COB </option> 
+                                         <option value= "CLA"> CLA </option> 
+                                         <option value= "COS"> COS </option> 
+                                         <option value= "GCOE"> GCOE </option>
+                                    </select>
+
+                                    <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                        <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Filter"/>
+                                    </div>
+
+                        </form>     
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body" >
+                        
                         <h5 class="card-title">Add a Professor</h5>
                         <p class="card-text">Please enter the details below.</p>
                         <form action="professor/addProf.jsp" method="POST">
@@ -136,7 +164,16 @@
                                      <br/>
                                      <label class="m-1" for="lastname">Last name:</label><br/>
                                      <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
-
+                                     <br/>
+                                     <label>Department - </label><br/>
+                                     <select class="form-select rounded p-2 w-75" name="department">
+                                         <option value= "CCS"> CCS </option>            
+                                         <option value= "COB"> COB </option> 
+                                         <option value= "CLA"> CLA </option> 
+                                         <option value= "COS"> COS </option> 
+                                         <option value= "GCOE"> GCOE </option>
+                                    </select>
+          
                                     <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
                                         <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add"/>
                                     </div>
@@ -198,6 +235,15 @@
                                      <br/>
                                      <label class="m-1" for="lastname">Last name:</label><br/>
                                      <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
+                                     
+                                     <label>Department - </label><br/>
+                                     <select class="form-select rounded p-2 w-75" name="department">
+                                         <option value= "CCS"> CCS </option>            
+                                         <option value= "COB"> COB </option> 
+                                         <option value= "CLA"> CLA </option> 
+                                         <option value= "COS"> COS </option> 
+                                         <option value= "GCOE"> GCOE </option>
+                                    </select>
 
                                     <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
                                         <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Modify"/>
