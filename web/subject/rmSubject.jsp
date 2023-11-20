@@ -16,7 +16,7 @@
         <title>Remove a Subject</title>
     </head>
     <body>
-        <h1>Removed Subject</h1>
+
         <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" />
         <jsp:useBean id="professor" class="profmanagement.Professor" scope="session" />
 
@@ -36,7 +36,7 @@
             subject.delRecord();
         %>    
         
-        <main class="d-flex justify-content-center">
+        <main class="my-5 d-flex justify-content-center">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
                 <h1> Removed Subject Success! </h1><br/>
                 <label class="h5">Subject Name: <%=subject.subject_name%><br></label><br/>

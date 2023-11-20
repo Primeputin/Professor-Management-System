@@ -17,6 +17,11 @@
         <title>Remove Equivalent</title>
     </head>
     <body>
+        
+        <div class="text-center">
+            <h1 class="m-5">Removed Equivalent!</h1>
+        </div>
+        
         <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <%
@@ -31,7 +36,7 @@
         
         <main class="d-flex justify-content-center">
           <div class="bg-light p-5 rounded shadow-sm w-50">
-                <h1>Removed Equivalent!</h1><br/>
+                <h2>Successfully removed equivalent!</h2><br/>
                 <label class="h5">Score: <%=rr.score%></label><br/>
             <br>
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
@@ -40,13 +45,7 @@
             
         <%}else{
         %>
-            <main class="d-flex justify-content-center">
-          <div class="bg-light p-5 rounded shadow-sm w-50">
-                <h1>Equivalent cannot be deleted!</h1><br/>
-            <br>
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-          </div>
-        </main>
+            <script>window.location.href=`../error.jsp?errorMsg=${'Equivalent cannot be deleted! It is in use!'}`;</script>
         <%}%>
     </body>
 </html>

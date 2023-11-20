@@ -17,6 +17,10 @@
         <title>Search Equivalent</title>
     </head>
     <body>
+        <div class="text-center">
+            <h1 class="m-5">Search Results</h1>
+        </div>
+        
         <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <%
             rr.score = Integer.parseInt(request.getParameter("score"));

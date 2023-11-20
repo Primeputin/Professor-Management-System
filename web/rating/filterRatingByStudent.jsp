@@ -35,8 +35,8 @@
          %>
             <main class="d-flex flex-column justify-content-center">
                 
-                <h1 class="align-self-center"> Student ID: <%=rating.student_id%></h1><br/><br/>
-                <h1 class="align-self-center"> Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%> </h1> <br><br> 
+                <h4 class="align-self-center"> Student ID: <%=rating.student_id%></h4>
+                <h4 class="align-self-center"> Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%> </h4> <br/>
                 
                 <div class="bg-light p-5 rounded shadow-sm w-50 mb-2 align-self-center ">
                     <label class="h5">Professor ID: <%=rating.professor_idlist.get(i)%></label><br/>

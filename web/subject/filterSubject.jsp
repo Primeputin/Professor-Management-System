@@ -17,7 +17,7 @@
         <title>Filter and list subjects</title>
     </head>
     <body>
-        <h1>Filter and list subjects</h1>
+
         <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" />
         <jsp:useBean id="professor" class="profmanagement.Professor" scope="session" />
 
@@ -26,41 +26,45 @@
             subject.viewFilterRecord(prefix);
         %>    
         
-        <h3>Subjects starting with <%=prefix%> </h3><br>
-        
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Subject name</th>
-                <th scope="col">Units</th>
-                <th scope="col">Professor name</th>
-                <th scope="col">Year</th>
-              </tr>
-            </thead>
-            <tbody>
-                
-              <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                    <tr>
-                        <% 
-                            professor.professor_id = subject.professor_idList.get(i);
-                            professor.viewRecord();
-                        %>
-                        <th scope="row"><%= i%></th>
-                        <td><%=subject.subject_nameList.get(i)%></td>
-                        <td><%=subject.unitsList.get(i)%></td>
-                        <td><%=professor.first_name%> <%=professor.last_name%></td>
-                        <td><%=subject.subject_yearList.get(i)%>, Term <%=subject.termList.get(i)%></td>
-                    </tr>
-               <%  } %><br> 
-              
-            </tbody>
-          </table>
 
-        
-        <div class = "text-center">
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+ 
+        <div class="my-5 container bg-light p-5 rounded shadow-sm w-50" style="min-height: 300px">
+            <h3>Subjects starting with <%=prefix%> </h3><br>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Subject name</th>
+                    <th scope="col">Units</th>
+                    <th scope="col">Professor name</th>
+                    <th scope="col">Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                        <tr>
+                            <% 
+                                professor.professor_id = subject.professor_idList.get(i);
+                                professor.viewRecord();
+                            %>
+                            <th scope="row"><%= i%></th>
+                            <td><%=subject.subject_nameList.get(i)%></td>
+                            <td><%=subject.unitsList.get(i)%></td>
+                            <td><%=professor.first_name%> <%=professor.last_name%></td>
+                            <td><%=subject.subject_yearList.get(i)%>, Term <%=subject.termList.get(i)%></td>
+                        </tr>
+                   <%  } %><br> 
+
+                </tbody>
+            </table>
+                   
+            <div>
+                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+            </div>
         </div>
+
+
         
       
 

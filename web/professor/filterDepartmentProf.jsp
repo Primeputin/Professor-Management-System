@@ -27,34 +27,35 @@
             prof.department = department;
             prof.viewDepartmentFilterRecord();
         %>    
-        
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Professor ID</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Department</th>
-              </tr>
-            </thead>
-            <tbody>
-                
-              <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
-                    <tr>
-                        <th scope="row"><%=prof.professor_idList.get(i)%></th>
-                        <td><%=prof.first_nameList.get(i)%></td>
-                        <td><%=prof.last_nameList.get(i)%></td>
-                        <td><%=prof.departmentList.get(i)%></td>
-                    </tr>
-               <%  } %><br> 
-              
-            </tbody>
-          </table>
-        
-        
-        
-        <div class = "text-center">
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+
+        <div class="container bg-light p-5 rounded shadow-sm w-50" style="min-height: 300px">          
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Professor ID</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Department</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                        <tr>
+                            <th scope="row"><%=prof.professor_idList.get(i)%></th>
+                            <td><%=prof.first_nameList.get(i)%></td>
+                            <td><%=prof.last_nameList.get(i)%></td>
+                            <td><%=prof.departmentList.get(i)%></td>
+                        </tr>
+                   <%  } %><br> 
+
+                </tbody>
+            </table>
+                   
+            <div style="bottom: 10px" class="mt-5">
+                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+            </div>
         </div>
+        
     </body>
 </html>

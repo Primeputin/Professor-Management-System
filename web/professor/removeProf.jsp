@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="text-center">
-            <h1 class="m-5">Removed Professor</h1>
+            <h1 class="m-5">Removed Professor!</h1>
         </div>
         
         <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />

@@ -20,20 +20,20 @@
         <div class="text-center">
             <h1 class="m-5">Add Equivalent</h1>
         </div>
-        <main class="d-flex flex-column justify-content-center align-i-center">
+        <main class="d-flex justify-content-center">
+          <div class="bg-light p-5 rounded shadow-sm w-25">
                 <form class="mx-auto" action="addEquivalent.jsp" method="POST">
                     <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
                     <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
 
-<!--                     Use rr.viewRecordAll()-->
-<!--                     Display table of entries in ratings_ref-->
-                                <label for="score">Enter a Score - </label></br>
-                                <input class="border rounded p-2 w-75" type="number" name="score" placeholder="Score" required><br>
-                                <label for="score">Enter an Equivalent - </label></br>
-                                <input class="border rounded p-2 w-75" type="text" name="equivalent" placeholder="Equivalent" required><br><br>
+                    <label for="score">Enter a Score - </label></br>
+                    <input class="border rounded p-2 w-100" type="number" name="score" placeholder="###" required><br>
+                    <label for="score">Enter an Equivalent - </label></br>
+                    <input class="border rounded p-2 w-100" type="text" name="equivalent" placeholder="Extremely Poor." required><br><br>
 
-                                <input type="submit" value="Add"/>                            
+                    <input class="btn btn-primary" type="submit" value="Add"/>                            
                 </form>
+          </div>
         </main>
     </body>
 </html>

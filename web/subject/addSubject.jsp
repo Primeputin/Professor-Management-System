@@ -16,7 +16,7 @@
         <title>Add a Subject</title>
     </head>
     <body>
-        <h1>Added Subject</h1>
+
         <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" />
         <jsp:useBean id="professor" class="profmanagement.Professor" scope="session" />
 
@@ -39,7 +39,7 @@
             subject.addRecord();
         %> 
         
-        <main class="d-flex justify-content-center">
+        <main class="d-flex justify-content-center my-5">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
                 <h1> Added details Success! </h1><br/>
                 <label class="h5">Subject Name: <%=subject.subject_name%><br></label><br/>

@@ -17,6 +17,11 @@
         <title>Modify Equivalent</title>
     </head>
     <body>
+        
+        <div class="text-center">
+            <h1 class="m-5">Added Equivalent!</h1>
+        </div>
+        
         <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <%
             rr.score = Integer.parseInt(request.getParameter("score"));
@@ -30,7 +35,7 @@
         
         <main class="d-flex justify-content-center">
           <div class="bg-light p-5 rounded shadow-sm w-50">
-                <h1>Added Equivalent!</h1><br/>
+                <h2>Successfully added equivalent!</h2><br/>
                 <label class="h5">Score: <%=rr.score%></label><br/>
                 <label class="h5">New Equivalent: <%=rr.equivalent%></label><br/>
             <br>
@@ -40,12 +45,7 @@
             
         <%}else{
         %>
-            <main class="d-flex justify-content-center">
-          <div class="bg-light p-5 rounded shadow-sm w-50">
-                <h1>Equivalent already exists!</h1><br/>
-            <br>
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-          </div>
+        <script>window.location.href=`../error.jsp?errorMsg=${'Score equivalent already exists!'}`;</script>
         </main>
         <%}%>
     </body>

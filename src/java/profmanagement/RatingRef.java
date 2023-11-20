@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class RatingRef {
     public int score;
     public String equivalent;
-    
+    public int maxScore;
     
     public HashMap<Integer, String> equivalentList = new HashMap<>();
     
@@ -40,6 +40,29 @@ public class RatingRef {
             System.out.println(e.getMessage());
             return 0;
         }
+    }
+    
+    public int getMaxRating() {
+        
+        try {
+            Connection conn = ConnectionUtil.connect();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(score) AS maxScore FROM ratings_ref");
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                maxScore = rs.getInt("maxScore");
+            }
+            
+            pstmt.close();
+            conn.close();
+            
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+
     }
     
     public int modRecord(){

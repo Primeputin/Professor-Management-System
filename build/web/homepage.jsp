@@ -52,11 +52,11 @@
 
             </div>
         </nav>
-        
+         
         <section class="jumbotron text-center">
             <div class="container py-5">
-              <h1 class="jumbotron-heading">Welcome to the Professor Management System.</h1>
-              <p class="lead text-muted">To get started, kindly select an option from functions below.</p>
+                <h1 class="jumbotron-heading">Welcome to the Professor Management System.</h1>
+                <p class="lead text-muted">To get started, kindly select an option from the navigation bar.</p>
             </div>
         </section>
 
@@ -187,7 +187,7 @@
                                              <label class="m-1" for="lastname">Last name:</label><br/>
                                              <input class="border rounded p-2 w-75" type="text"  name="lastname" placeholder="Last Name" required>
                                              <br/>
-                                             <label>Department - </label><br/>
+                                             <label class="m-1">Department - </label><br/>
                                              <select class="form-select rounded p-2 w-75" name="department">
                                                  <option value= "CCS"> CCS </option>            
                                                  <option value= "COB"> COB </option> 
@@ -895,9 +895,9 @@
 
                                 <h5 class="card-title">Enroll in a Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="enroll.jsp" method="POST">
+                                <form action="subject/enroll.jsp" method="POST">
                                         <label>Select a student - </label><br/>
-                                        <select class="form-select rounded p-2 w-75 my-2" name="student">
+                                        <select class="form-select rounded p-2 w-75 my-2" name="studentid">
                                             <% for (int i=0; i < student.student_idList.size(); i++) {
                                                                 %>
                                                     <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
@@ -962,7 +962,7 @@
                                         <% } %>
                                     </select>
 
-                                    <label for="subject_year">Subject Year:</label>
+                                    <label for="subject_year">Subject Year:</label><br/>
                                     <input class="border rounded p-2 w-75 my-2" type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
 
                                     <label>Select attribute - </label><br/>
@@ -1011,6 +1011,7 @@
             }
             
             $(document).ready(function() {
+                
                 $('#profButton').click(function() {
                     $('#professorDiv').show();
                     $('#studentDiv').hide();

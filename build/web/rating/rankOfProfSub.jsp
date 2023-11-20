@@ -16,7 +16,9 @@
         <title>Ranking of professors </title>
     </head>
     <body>
-        <h1>Rankings of professors in a subject</h1>
+        <div class="text-center">
+            <h1 class="m-5">Rankings</h1>
+        </div>
         <jsp:useBean id="rank" class="profmanagement.Ranking" scope="session" />
        
         <%
@@ -27,36 +29,38 @@
             rank.showRanking();
         %>    
         
-        
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Professor ID</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Total Average Rate</th>
-              </tr>
-            </thead>
-            <tbody>
-                
-              <% for (int i=0; i < rank.professor_idList.size(); i++) { %>
-                    <tr>
-                        <th scope="row"><%=rank.professor_idList.get(i)%></th>
-                        <td><%=rank.first_nameList.get(i)%></td>
-                        <td> <%=rank.last_nameList.get(i)%></td>
-                        <td> <%=rank.departmentList.get(i)%></td>
-                        <td> <%=rank.total_avgList.get(i)%></td>
-                    </tr>
-               <%  } %><br> 
-              
-            </tbody>
-          </table>
-       
-        
-        <div class = "text-center">
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+        <div class="container bg-light p-5 rounded shadow-sm w-50" style="min-height: 300px">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Professor ID</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Total Average Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <% for (int i=0; i < rank.professor_idList.size(); i++) { %>
+                        <tr>
+                            <th scope="row"><%=rank.professor_idList.get(i)%></th>
+                            <td><%=rank.first_nameList.get(i)%></td>
+                            <td> <%=rank.last_nameList.get(i)%></td>
+                            <td> <%=rank.departmentList.get(i)%></td>
+                            <td> <%=rank.total_avgList.get(i)%></td>
+                        </tr>
+                   <%  } %><br> 
+
+                </tbody>
+            </table>
+                   
+            <div style="bottom: 10px" class="mt-5">
+                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+            </div>
         </div>
+        
+
 
     </body>
 </html>

@@ -289,9 +289,7 @@ public class Subject {
     public int queryValidSubjects(int student_id) {
         try {
             // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
+            Connection conn = ConnectionUtil.connect();
             System.out.println("Connection Successful");
             
             // validate first
@@ -318,6 +316,8 @@ public class Subject {
                 values.add(currSubjectName);
                 values.add(professorName);
                 
+                System.out.println(currSubjectName);
+                
                 notTakenSubjects.put(currSubjectId, values);
             }     
             
@@ -334,10 +334,7 @@ public class Subject {
 
         try {
              // 1. Instantiate a connection variable
-            Connection conn;
-            // 2. Connect to your DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
 
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO subject_list VALUES (?,?)");
             pstmt.setInt(1, student_id);
@@ -357,9 +354,7 @@ public class Subject {
     public int getSubjectName(int subject_id) {
         
         try {
-            Connection conn;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_app?useTimezone=true&serverTimezone=UTC&user=root&password=12345678");
-            System.out.println("Connection Successful");
+            Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT subject_name FROM subject WHERE subject_id = ?");
             
             pstmt.setInt(1, subject_id);
@@ -375,6 +370,15 @@ public class Subject {
             System.out.println(e.getMessage());
             return 0;
         }
+        
+    }
+    
+    public static void main(String[] args) {
+        
+        Subject s = new Subject();
+        
+        int res = s.queryValidSubjects(1);
+        System.out.println(s.notTakenSubjects.get(1));
         
     }
     
