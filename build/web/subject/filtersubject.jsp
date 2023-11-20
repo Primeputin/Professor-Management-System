@@ -9,6 +9,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Filter and list subjects</title>
     </head>
@@ -21,19 +25,44 @@
             String prefix = request.getParameter("prefix");
             subject.viewFilterRecord(prefix);
         %>    
-        Subjects starting with <%=prefix%> <br><br>
-        <% 
-            for (int i=0; i < subject.subject_idList.size(); i++) { %>
-                Subject Name: <%=subject.subject_nameList.get(i)%><br>
-                Units: <%=subject.unitsList.get(i)%><br>
+        
+        <h3>Subjects starting with <%=prefix%> </h3><br>
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Subject name</th>
+                <th scope="col">Units</th>
+                <th scope="col">Professor name</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody>
                 
-                <% 
-                    professor.professor_id = subject.professor_idList.get(i);
-                    professor.viewRecord();
-                %>
-                Professor Name: <%=professor.first_name%> <%=professor.last_name%><br>
-                Year: <%=subject.subject_yearList.get(i)%>, Term <%=subject.termList.get(i)%><br><br>
-            <% } %><br><br>
-        click <a href="homepage.jsp">here to go back to home page</a><br>
+              <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
+                    <tr>
+                        <% 
+                            professor.professor_id = subject.professor_idList.get(i);
+                            professor.viewRecord();
+                        %>
+                        <th scope="row"><%= i%></th>
+                        <td><%=subject.subject_nameList.get(i)%></td>
+                        <td><%=subject.unitsList.get(i)%></td>
+                        <td><%=professor.first_name%> <%=professor.last_name%></td>
+                        <td><%=subject.subject_yearList.get(i)%>, Term <%=subject.termList.get(i)%></td>
+                    </tr>
+               <%  } %><br> 
+              
+            </tbody>
+          </table>
+
+        
+        <div class = "text-center">
+            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+        </div>
+        
+      
+
     </body>
 </html>
