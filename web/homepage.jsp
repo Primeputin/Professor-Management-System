@@ -401,10 +401,103 @@
                   </div>
                 </div>
                 <!-- Component End -->
+        
+                <div class="album py-5 bg-light">
+            
+            <div class="text-center mb-4">
+            <h1 class="align-self-center">Rating Equivalent Settings</h1>
+            </div>
+            <div class="container">
+
+            <div class="row">
+                 
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Search Equivalent</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                            <form action="ratings_ref/searchEquivalent.jsp" method="POST">
+                                <label for="score">Enter a Score - </label></br>
+                                <input class="border rounded p-2 w-75" type="number" name="score" placeholder="Score" required><br><br>
+
+                                <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
+                                </div>                            
+                            </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Add New Equivalent</h5>
+                        <p class="card-text">Proceed to the next page.</p>
+                        <form  action="ratings_ref/addEquivalentMenu.jsp" method="POST">
+                                <br/>
+                                <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add"/>
+                                </div>
+
+                            </div>
+                        </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
                 
                 
-            </div>           
-                             
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Delete Equivalent</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                            <form action="ratings_ref/rmEquivalent.jsp" method="POST">
+                                <label for="score">Enter a Score - </label></br>
+                                <input class="border rounded p-2 w-75" type="number" name="score" placeholder="Score" required><br><br>
+
+                                <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Remove"/>
+                                </div>                            
+                            </form>
+                                
+                    </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+                <!-- Component Start -->
+                <div class="col-md-4 h-100">
+                  <div class="card mb-4 shadow-sm box-shadow" id="card-component">
+                    <div class="card-body">
+                        
+                        <h5 class="card-title">Modify Equivalent</h5>
+                        <p class="card-text">Please enter the details below.</p>
+                            <form action="ratings_ref/modEquivalent.jsp" method="POST">
+                                <label for="score">Enter a Score - </label></br>
+                                <input class="border rounded p-2 w-75" type="number" name="score" placeholder="Score" required><br>
+                                <label for="score">Enter an Equivalent - </label></br>
+                                <input class="border rounded p-2 w-75" type="text" name="equivalent" placeholder="Equivalent" required><br><br>
+
+                                <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                                    <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Modify"/>
+                                </div>                            
+                            </form>
+                        </div>
+                  </div>
+                </div>
+                <!-- Component End -->
+                
+            </div>                   
         <div class="album py-5 bg-light">
             
             <div class="text-center mb-4">

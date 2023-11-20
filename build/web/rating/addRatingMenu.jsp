@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="text-center">
-            <h1 class="m-5">Search and View a Rating</h1>
+            <h1 class="m-5">Add a Rating</h1>
         </div>
         <main class="d-flex flex-column justify-content-center align-i-center">
                 <form class="mx-auto" action="rating/addrating.jsp" method="POST">

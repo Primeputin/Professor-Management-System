@@ -168,6 +168,61 @@ public class Rating {
         }
     }
     
+    public int viewRecordByScore(int score){
+        try{
+            Connection conn = ConnectionUtil.connect();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ratings WHERE explanation=? OR kindness=? OR knowledgability=? OR approachability=?");
+            // 5. Supply the statement with values
+            pstmt.setInt    (1, score);
+            pstmt.setInt    (2, score);
+            pstmt.setInt    (3, score);
+            pstmt.setInt    (4, score);
+            
+            // 6. Execute the SQL Statement
+            ResultSet rs = pstmt.executeQuery();
+            
+            // 7. Get the results
+            student_idlist.clear();
+            professor_idlist.clear();
+            explanationlist.clear();
+            kindnesslist.clear();
+            knowledgabilitylist.clear();
+            approachabilitylist.clear();
+            reviewlist.clear();
+            rate_datelist.clear();
+            
+            while(rs.next()){
+                student_id = rs.getInt("student_id");
+                professor_id = rs.getInt("professor_id");
+                
+                explanation = rs.getInt("explanation");
+                kindness = rs.getInt("kindness");
+                knowledgability = rs.getInt("knowledgability");
+                approachability = rs.getInt("approachability");
+                review = rs.getString("review");
+                rate_date = rs.getString("rate_date");
+                
+                student_idlist.add(student_id);
+                professor_idlist.add(professor_id);
+                
+                explanationlist.add(explanation);
+                kindnesslist.add(kindness);
+                knowledgabilitylist.add(knowledgability);
+                approachabilitylist.add(approachability);
+                reviewlist.add(review);
+                rate_datelist.add(rate_date);
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            return 1;
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+    
     public int delRecord (){
         try{
             Connection conn = ConnectionUtil.connect();
@@ -284,5 +339,10 @@ public class Rating {
         }
     }
 
+    public static void main(String args[]){
+        Rating rate = new Rating();
+        rate.viewRecordByScore(10);
+        System.out.println(rate.student_idlist.size());
+    }
 }
     

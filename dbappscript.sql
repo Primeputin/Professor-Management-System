@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS student (
 DROP TABLE IF EXISTS ratings_ref;
 CREATE TABLE IF NOT EXISTS ratings_ref (
 	score INT PRIMARY KEY,
-    equivalent VARCHAR(30) NOT NULL
+    equivalent VARCHAR(30)
 );
 
 DROP TABLE IF EXISTS ratings;
