@@ -20,6 +20,12 @@ CREATE TABLE IF NOT EXISTS student (
   cur_year YEAR NOT NULL
 );
 
+DROP TABLE IF EXISTS ratings_ref;
+CREATE TABLE IF NOT EXISTS ratings_ref (
+	score INT PRIMARY KEY,
+    equivalent VARCHAR(30) NOT NULL
+);
+
 DROP TABLE IF EXISTS ratings;
 CREATE TABLE IF NOT EXISTS ratings (
   student_id INT NOT NULL,
@@ -33,7 +39,15 @@ CREATE TABLE IF NOT EXISTS ratings (
   FOREIGN KEY	(student_id)
     REFERENCES	student(student_id),
   FOREIGN KEY	(professor_id)
-    REFERENCES	professor(professor_id)
+    REFERENCES	professor(professor_id),
+  FOREIGN KEY   (explanation)
+	REFERENCES  ratings_ref(score),
+  FOREIGN KEY   (kindness)
+	REFERENCES  ratings_ref(score),
+  FOREIGN KEY   (knowledgability)
+	REFERENCES  ratings_ref(score),
+  FOREIGN KEY   (approachability)
+	REFERENCES  ratings_ref(score)
 );
 
 
@@ -72,6 +86,18 @@ INSERT INTO student
            (3, 'Light', 'Yagami', 3.90, '2020'),
            (4, 'hei', 'gui', 2.69, '2021'),
            (5, 'Schneider', 'Dan', 1.2, 2020);
+
+INSERT INTO ratings_ref
+	VALUES (1, 'extremely poor'),
+		   (2, 'poor'),
+           (3, 'not the worst'),
+           (4, 'mediocre'),
+           (5, 'decent'),
+           (6, 'satisfactory'),
+           (7, 'good'),
+           (8, 'pretty good'),
+           (9, 'incredible'),
+           (10, 'top tier');
 
 INSERT INTO ratings
 	VALUES (1, 1, 4, 5, 6, 4, 'Mid', '2020-03-05'),
