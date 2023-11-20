@@ -24,18 +24,20 @@ public class Ranking {
     public ArrayList<Integer> professor_idList = new ArrayList<>();
     public ArrayList<String> first_nameList = new ArrayList<>();
     public ArrayList<String> last_nameList = new ArrayList<>();
+    public ArrayList<String> departmentList = new ArrayList<>();
     public ArrayList<Double> total_avgList = new ArrayList<>();
     public ArrayList<Double> explanationAvgList = new ArrayList<>();
     public ArrayList<Double> kindnessAvgList = new ArrayList<>();
     public ArrayList<Double> knowledgabilityAvgList = new ArrayList<>();
     public ArrayList<Double> approachabilityAvgList = new ArrayList<>();
+    public ArrayList<Double> attrList = new ArrayList<>();
     
     
     public int showRanking()
     {
         try {
             Connection conn = ConnectionUtil.connect();
-            PreparedStatement pstmt = conn.prepareStatement("SELECT professor.professor_id, professor.first_name, professor.last_name, AVG((explanation + kindness +  knowledgability + approachability)) AS total_avg_rate " +
+            PreparedStatement pstmt = conn.prepareStatement("SELECT professor.professor_id, professor.first_name, professor.last_name, professor.department, AVG((explanation + kindness +  knowledgability + approachability)) AS total_avg_rate " +
                                                                                     "FROM ratings JOIN student ON ratings.student_id = student.student_id " +
                                                                                     "			 JOIN subject_list ON student.student_id = subject_list.student_id " +
                                                                                     "             JOIN subject ON subject_list.subject_id = subject.subject_id " +
@@ -53,11 +55,13 @@ public class Ranking {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             total_avgList.clear();
             while (rs.next()) {
                 professor_idList.add(rs.getInt("professor_id"));
                 first_nameList.add(rs.getString("first_name"));
                 last_nameList.add(rs.getString("last_name"));
+                departmentList.add(rs.getString("department"));
                 total_avgList.add(rs.getDouble("total_avg_rate"));
 
             }
@@ -78,6 +82,7 @@ public class Ranking {
             PreparedStatement pstmt = conn.prepareStatement("SELECT     professor.professor_id, " +
                                                                        "professor.first_name, " +
                                                                        "professor.last_name, " +
+                                                                       "professor.department, " +
                                                                        "AVG(" + attributeType + ") AS avg_attr_rate" +
                                                            " FROM       ratings " +
                                                                        "JOIN student ON ratings.student_id = student.student_id " +
@@ -98,6 +103,7 @@ public class Ranking {
             professor_idList.clear();
             first_nameList.clear();
             last_nameList.clear();
+            departmentList.clear();
             explanationAvgList.clear();
             kindnessAvgList.clear();
             knowledgabilityAvgList.clear();
@@ -107,6 +113,7 @@ public class Ranking {
                 professor_idList.add(rs.getInt("professor_id"));
                 first_nameList.add(rs.getString("first_name"));
                 last_nameList.add(rs.getString("last_name"));
+                departmentList.add(rs.getString("department"));
 
                 if (attributeType.equals("explanation")) {
                     explanationAvgList.add(rs.getDouble("avg_attr_rate"));
@@ -119,6 +126,22 @@ public class Ranking {
                 }
 
         }
+            switch(attributeType)
+            {
+                case "approachability":
+                    attrList = approachabilityAvgList;
+                    break;
+                case "explanation":
+                    attrList = explanationAvgList;
+                    break;
+                case "kindness":
+                    attrList = kindnessAvgList;
+                    break;
+                case "knowledgability":
+                    attrList = knowledgabilityAvgList;
+
+
+            }
             rs.close();
             pstmt.close();
             conn.close();

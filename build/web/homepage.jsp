@@ -799,7 +799,7 @@
                         
                         <h5 class="card-title">See Professor Rankings</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="rankofprofofsub.jsp" method="POST">
+                        <form action="rating/rankOfProfSub.jsp" method="POST">
                             <label>Select subject - </label><br/>
                             <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
                                 <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
@@ -829,7 +829,7 @@
                         
                         <h5 class="card-title">Ranking of Professor by Attribute</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="" method="POST">
+                        <form action="rating/rankOfProfAttr.jsp" method="POST">
                             <label>Select subject - </label><br/>
                             <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
                                 <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
@@ -843,17 +843,17 @@
                             <input class="border rounded p-2 w-75 my-2" type="text" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
 
                             <label>Select attribute - </label><br/>
-                            <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
+                            <select class="form-select rounded p-2 w-75 my-2" name="attribute">
                                 <option value="approachability">
                                     Approachability
                                 </option>
-                                <option value="Explanation">
+                                <option value="explanation">
                                     Explanation
                                 </option>
-                                <option value="Kindness">
+                                <option value="kindness">
                                     Kindness
                                 </option>
-                                <option value="Knowledgability">
+                                <option value="knowledgability">
                                     Knowledgability
                                 </option> 
                             </select>
