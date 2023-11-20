@@ -16,36 +16,43 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Search and View a Rating</title>
     </head>
+    
+    <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
+    <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
+    
     <body>
         <div class="text-center">
             <h1 class="m-5">Search and View a Rating</h1>
         </div>
-        <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
-        <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
-        
-        <h3 class="m-5">Please enter the details below.</h3>
 
         <%
             rating.student_id = Integer.parseInt(request.getParameter("student_id"));
             prof.loadRecordByRatings(rating.student_id);
         %>
 
-        <form action="searchRating.jsp" method="POST">
-            <div class="form-group">
-              <label for="prof_id" class = "display-5">Professor - </label>
-              <div class="d-flex">
-                <select class="form-select rounded p-2 w-25" name="prof_id" id="prof_id">
-                  <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
-                    <option value="<%=prof.professor_idList.get(i)%>">
-                      <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
-                    </option>            
-                  <% } %>
-                </select>
-                <button style="width: 23%" class="btn btn-primary btn-block rounded mt-3 px-3 shadow-none ml-2" type="submit">Search</button>
-              </div>
-            </div>
-      </form>
+
                 
+        <main class="d-flex justify-content-center">
+            <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
+            
+                <form action="searchRating.jsp" method="POST">
+                    <div class="form-group">
+                        <label for="prof_id">Professor - </label>
+                        <div class="d-flex">
+                          <select class="form-select rounded p-1" name="prof_id" id="prof_id">
+                            <% for (int i=0; i < prof.professor_idList.size(); i++) { %>
+                              <option value="<%=prof.professor_idList.get(i)%>">
+                                <%=prof.professor_idList.get(i) + " - " + prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%>
+                              </option>            
+                            <% } %>
+                          </select>
+                        </div>
+                        <input class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
+                    </div>
+                </form>
+
+            </div>
+        </main>
                 
 
     </body>

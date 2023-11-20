@@ -14,10 +14,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>search and View Rating</title>
+        <title>Search and View Rating</title>
     </head>
     <body>
-        <h1>Search and View Rating</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
          <%
@@ -36,7 +35,7 @@
                 nr.retrieveStudentName(rating.student_idlist.get(i));
                 nr.retrieveProfName(rating.professor_idlist.get(i));
          %>
-            <main class="d-flex">
+           <main class="d-flex justify-content-center">
                 <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
                     <label class="h5">Student ID: <%=rating.student_idlist.get(i)%></label><br/>
                     <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%></label><br/>
@@ -48,8 +47,9 @@
                     <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
                     <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
                     <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
-                <br>
-                 </div>
+                    <br/>
+                    <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+                </div>
             </main>
         <%  } %><br>
         
@@ -60,6 +60,6 @@
             <% }
          %>
          <br>
-         <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+
     </body>
 </html>

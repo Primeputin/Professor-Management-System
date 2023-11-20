@@ -75,8 +75,8 @@ INSERT INTO student
 INSERT INTO ratings
 	VALUES (1, 1, 4, 5, 6, 4, 'Mid', '2020-03-05'),
 		   (2, 1, 8, 7, 5, 9, 'Very nice', '2020-03-05'),
-           (3, 1, 1, 2, 3, 1, 'I don\' like the vibe', '2020-03-07'),
-           (4, 1, 5, 5, 5, 5, 'gay', '2020-03-07');
+           (3, 1, 1, 2, 3, 1, 'I don\'t like the vibe', '2020-03-07'),
+           (4, 1, 5, 5, 5, 5, 'Too cool for me', '2020-03-07');
            
 INSERT INTO subject
 	VALUES (1, 'CCPROG1', 3, 1, '2019', 1),

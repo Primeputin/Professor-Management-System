@@ -17,7 +17,6 @@
         <title>Filter Rating by Student</title>
     </head>
     <body>
-        <h1>Filter and list ratings by student</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
         <%
@@ -29,15 +28,17 @@
         <div class="text-center">
             <h1 class="m-5">Search Results</h1>
         </div>
-        <h1> Student ID: <%=rating.student_id%></h1><br/>
-        <h1> Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%> </h1> <br><br> 
         
          <% 
             for (int i=0; i < rating.student_idlist.size(); i++) {
                 nr.retrieveProfName(rating.professor_idlist.get(i));
          %>
-            <main class="d-flex">
-                <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
+            <main class="d-flex flex-column justify-content-center">
+                
+                <h1 class="align-self-center"> Student ID: <%=rating.student_id%></h1><br/><br/>
+                <h1 class="align-self-center"> Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%> </h1> <br><br> 
+                
+                <div class="bg-light p-5 rounded shadow-sm w-50 mb-2 align-self-center ">
                     <label class="h5">Professor ID: <%=rating.professor_idlist.get(i)%></label><br/>
                     <label class="h5">Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%></label><br/>
                     <label class="h5">Explanation: <%=rating.explanationlist.get(i)%></label><br/>
@@ -47,11 +48,12 @@
                     <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
                     <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
                 <br>
-                 </div>
+                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+                </div>
             </main>
         <%  } %><br>
         
-        <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+
         
 
     </body>

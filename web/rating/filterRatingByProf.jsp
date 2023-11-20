@@ -17,7 +17,6 @@
         <title>Filter Rating by Professor</title>
     </head>
     <body>
-        <h1>Filter and list ratings by professor</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
         <%
@@ -29,29 +28,32 @@
         <div class="text-center">
             <h1 class="m-5">Search Results</h1>
         </div>
-        <h1> Professor ID: <%=rating.professor_id%></h1><br/>
-        <h1> Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%> </h1> <br><br> 
-        
-         <% 
-            for (int i=0; i < rating.professor_idlist.size(); i++) { 
-                nr.retrieveStudentName(rating.student_idlist.get(i));
-         %>
-            <main class="d-flex">
-                <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
-                    <label class="h5">Student ID: <%=rating.student_idlist.get(i)%></label><br/>
-                    <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%></label><br/>
-                    <label class="h5">Explanation: <%=rating.explanationlist.get(i)%></label><br/>
-                    <label class="h5">Kindness: <%=rating.kindnesslist.get(i)%></label><br/>
-                    <label class="h5">Knowledgability:  <%=rating.knowledgabilitylist.get(i)%></label><br/>
-                    <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
-                    <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
-                    <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
-                <br>
-                 </div>
-            </main>
+
+        <main class="d-flex flex-column justify-content-center align-i-center">
+            <h1 class="align-self-center"> Professor ID: <%=rating.professor_id%></h1><br/>
+            <h1 class="align-self-center"> Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%> </h1> <br><br> 
+
+            <% 
+               for (int i=0; i < rating.professor_idlist.size(); i++) { 
+                   nr.retrieveStudentName(rating.student_idlist.get(i));
+            %>
+
+            <div class="mx-auto bg-light p-5 rounded shadow-sm w-50 mb-2">
+                <label class="h5">Student ID: <%=rating.student_idlist.get(i)%></label><br/>
+                <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%></label><br/>
+                <label class="h5">Explanation: <%=rating.explanationlist.get(i)%></label><br/>
+                <label class="h5">Kindness: <%=rating.kindnesslist.get(i)%></label><br/>
+                <label class="h5">Knowledgability:  <%=rating.knowledgabilitylist.get(i)%></label><br/>
+                <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
+                <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
+                <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
+                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+            <br/>
+            </div>
+        </main>
         <%  } %><br>
         
-        <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+
 
     </body>
 </html>

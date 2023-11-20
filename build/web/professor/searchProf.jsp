@@ -36,7 +36,7 @@
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
           </div>
         </main>
-            <div/>
+
 
     </body>
 </html>

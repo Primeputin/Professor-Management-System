@@ -230,7 +230,7 @@
                         
                         <h5 class="card-title">Search for a Student</h5>
                         <p class="card-text">Please enter the details below.</p>
-                            <form action="student/searchstudent.jsp" method="POST">
+                            <form action="student/searchStudent.jsp" method="POST">
                                 <label>Select a student - </label><br/>
                                 <select class="form-select rounded p-2 w-75 my-2" name="student">
                                     <% for (int i=0; i < student.student_idList.size(); i++) {
@@ -256,7 +256,7 @@
                         
                         <h5 class="card-title">Add a Student</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="student/addstudent.jsp" method="POST">
+                        <form action="student/addStudent.jsp" method="POST">
 
                             <label for="firstname">First name:</label></br>
                             <input class="border rounded p-2 w-75" type="text" name="firstname" placeholder="First Name" required>
@@ -293,7 +293,7 @@
                         
                         <h5 class="card-title">Remove Student</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="student/rmstudent.jsp" method="POST">
+                        <form action="student/rmStudent.jsp" method="POST">
                                 <label>Select a student - </label><br/>
                                 <select class="form-select rounded p-2 w-75 my-2" name="student">
                                     <% for (int i=0; i < student.student_idList.size(); i++) {
@@ -319,7 +319,7 @@
                         
                         <h5 class="card-title">Modify Student</h5>
                         <p class="card-text">Please enter the details below.</p>
-                        <form action="student/modstudent.jsp" method="POST">
+                        <form action="student/modStudent.jsp" method="POST">
 
                             <label>Select a student - </label><br/>
                             <select class="form-select rounded p-2 w-75 my-2" name="student">
