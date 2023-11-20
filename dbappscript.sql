@@ -6,6 +6,7 @@ USE db_app;
 DROP TABLE IF EXISTS professor;
 CREATE TABLE IF NOT EXISTS professor (
   professor_id INT PRIMARY KEY,
+  department ENUM("CCS", "COB", "CLA"),
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL
 );
