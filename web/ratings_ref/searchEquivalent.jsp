@@ -42,7 +42,7 @@
             
         <%}else{
         %>
-            <main class="d-flex justify-content-center">
+        <main class="d-flex justify-content-center">
           <div class="bg-light p-5 rounded shadow-sm w-50">
                 <h1>Equivalent not found!</h1><br/>
             <br>
