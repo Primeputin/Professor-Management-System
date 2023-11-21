@@ -25,8 +25,8 @@
         <jsp:useBean id="student" class="profmanagement.Student" scope="session" />
         <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" />
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand mx-4" href="#">Professor Management System</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <a class="navbar-brand mx-4" href="#" id = "mainButton">Professor Management System</a>
 
             <div>
                 <ul class="navbar-nav mr-auto">
@@ -341,7 +341,7 @@
                                     <br/>
 
                                     <label for="lastname">Current year:</label></br>
-                                    <input class="border rounded p-2 w-75" type="number" name="cur_year" placeholder="Current Year" required>
+                                    <input class="border rounded p-2 w-75" type="number" min = "0" name="cur_year" placeholder="Current Year" required>
 
                                     <br/><br/>
                                     <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
@@ -409,7 +409,7 @@
                                     <input class="form-range w-75" type="range" min="0.0" max="4.0" step="0.1" value="0.0" oninput="changeGPAValueModify(this.value)" name="gpa" placeholder="Last Name" required>
 
                                     <label class="m-1" for="lastname">Current year:</label><br/>
-                                    <input class="border rounded p-2 w-75" type="number"  name="cur_year" placeholder="Current Year" required>
+                                    <input class="border rounded p-2 w-75" type="number" min = "0" name="cur_year" placeholder="Current Year" required>
                                     <br/>
 
                                      <br/><br/>
@@ -783,7 +783,7 @@
                                     </select>
 
                                     <label for="subject_year">Subject Year:</label><br/>
-                                    <input class="border rounded p-2 w-75 my-2" type="number" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                                    <input class="border rounded p-2 w-75 my-2" type="number" min = "0" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
                                     <br/>
                                     <label for="term">Term:</label><br/>
                                     <input class="border rounded p-2 w-75 my-2" type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
@@ -857,7 +857,7 @@
                                      </select>
 
                                     <label for="subject_year">New Subject Year:</label><br/>
-                                    <input class="border rounded p-2 w-75 my-2" type="number" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                                    <input class="border rounded p-2 w-75 my-2" type="number" min = "0" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
                                     <br/>
                                     <label for="term">New Term:</label><br/>
                                     <input class="border rounded p-2 w-75 my-2" type="number" name="term" min="1" max="3" placeholder="1, 2, or 3" required>
@@ -933,7 +933,7 @@
                                     </select>
 
                                     <label>Subject Year:</label><br/>
-                                    <input class="border rounded p-2 w-75 my-2" type="number" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                                    <input class="border rounded p-2 w-75 my-2" type="number" min = "0" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
 
                                     <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
                                         <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="See Rankings"/>
@@ -963,7 +963,7 @@
                                     </select>
 
                                     <label for="subject_year">Subject Year:</label><br/>
-                                    <input class="border rounded p-2 w-75 my-2" type="number" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
+                                    <input class="border rounded p-2 w-75 my-2" type="number" min = "0" name="subject_year" pattern="[0-9]{4}" placeholder="YYYY" required>
 
                                     <label>Select attribute - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="attribute">
@@ -1012,6 +1012,14 @@
             
             $(document).ready(function() {
                 
+                $('#mainButton').click(function() {
+                    $('#professorDiv').show();
+                    $('#studentDiv').show();
+                    $('#ratingEquivalentDiv').show();
+                    $('#ratingsDiv').show();
+                    $('#subjectsDiv').show();
+                    $('#enrollmentDiv').show();
+                });
                 $('#profButton').click(function() {
                     $('#professorDiv').show();
                     $('#studentDiv').hide();

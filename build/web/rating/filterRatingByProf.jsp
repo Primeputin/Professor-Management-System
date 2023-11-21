@@ -29,29 +29,45 @@
             <h1 class="m-5">Search Results</h1>
         </div>
 
-        <main class="d-flex flex-column justify-content-center align-i-center">
-            <h1 class="align-self-center"> Professor ID: <%=rating.professor_id%></h1><br/>
-            <h1 class="align-self-center"> Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%> </h1> <br><br> 
+        <div class="container bg-light p-5 rounded shadow-sm w-50" style="min-height: 300px">        
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Explanation</th>
+                    <th scope="col">Kindness</th>
+                    <th scope="col">Knowledgability</th>
+                    <th scope="col">Approachability</th>
+                    <th scope="col">Review Description</th>
+                    <th scope="col">Date of Rating</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
 
-            <% 
-               for (int i=0; i < rating.professor_idlist.size(); i++) { 
-                   nr.retrieveStudentName(rating.student_idlist.get(i));
-            %>
+                  <% for (int i=0; i < rating.professor_idlist.size(); i++) { 
+                        nr.retrieveStudentName(rating.student_idlist.get(i));
+                  %>
+                        <tr>
+                            <td scope="row"><%=rating.student_idlist.get(i)%></td>
+                            <td><%=nr.student_first_name%> <%=nr.student_last_name%></td>
+                            <td><%=rating.explanationlist.get(i)%></td>
+                            <td><%=rating.kindnesslist.get(i)%></td>
+                            <td><%=rating.knowledgabilitylist.get(i)%></td>
+                            <td><%=rating.approachabilitylist.get(i)%></td>
+                            <td><%=rating.reviewlist.get(i)%></td>
+                            <td><%=rating.rate_datelist.get(i)%></td>
+                        </tr>
+                   <%  } %><br> 
 
-            <div class="mx-auto bg-light p-5 rounded shadow-sm w-50 mb-2">
-                <label class="h5">Student ID: <%=rating.student_idlist.get(i)%></label><br/>
-                <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%></label><br/>
-                <label class="h5">Explanation: <%=rating.explanationlist.get(i)%></label><br/>
-                <label class="h5">Kindness: <%=rating.kindnesslist.get(i)%></label><br/>
-                <label class="h5">Knowledgability:  <%=rating.knowledgabilitylist.get(i)%></label><br/>
-                <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
-                <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
-                <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
+                </tbody>
+              </table>
+                   
+            <div style="bottom: 10px" class="mt-5">
                 <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-            <br/>
             </div>
-        </main>
-        <%  } %><br>
+        </div>
         
         
 
