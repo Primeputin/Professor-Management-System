@@ -816,7 +816,7 @@
                                     </select><br>
 
                                     <div style="bottom: 15px;" class="position-absolute w-100 d-flex justify-content-between align-items-center">
-                                        <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Search"/>
+                                        <input style="width: 92%" class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Remove"/>
                                     </div> 
                                 </form>   
                             </div>
