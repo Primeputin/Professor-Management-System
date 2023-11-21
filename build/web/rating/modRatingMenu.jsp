@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="text-center">
-            <h1 class="m-5">Added Professor</h1>
+            <h1 class="m-5">Modify Rating</h1>
         </div>
         
         <main class="d-flex justify-content-center">
@@ -50,8 +50,8 @@
                     <label id="kindness-label">5</label><br/>
                     <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
-                    <label for="approachability">Knowledgability:</label>
-                    <label id="approachability-label">5</label><br/>
+                    <label for="knowledgability">Knowledgability:</label>
+                    <label id="knowledgability-label">5</label><br/>
                     <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
                     <label for="approachability">Approachability:</label>

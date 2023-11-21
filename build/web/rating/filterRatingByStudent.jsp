@@ -47,11 +47,13 @@
                     <label class="h5">Approachability: <%=rating.approachabilitylist.get(i)%></label><br/>
                     <label class="h5">Review Description: <%=rating.reviewlist.get(i)%></label><br/>
                     <label class="h5">Date of Rating: <%=rating.rate_datelist.get(i)%></label><br/>
+                    <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
                 <br>
-                <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+                
                 </div>
             </main>
         <%  } %><br>
+        
         
 
         
