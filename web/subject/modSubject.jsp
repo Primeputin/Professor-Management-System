@@ -17,6 +17,10 @@
     </head>
     <body>
         
+        <div class="text-center">
+            <h1 class="m-5">Modification Success</h1>
+        </div>
+        
         <jsp:useBean id="subject" class="profmanagement.Subject" scope="session" />
         <jsp:useBean id="professor" class="profmanagement.Professor" scope="session" />
 
@@ -43,7 +47,7 @@
         
         <main class="my-5 d-flex justify-content-center">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
-                <h1> Modified successfully! </h1><br/>
+                <h4> Modified successfully! </h4><br/>
                 <label class="h5">Subject Name: <%=subject.subject_name%><br></label><br/>
                 <label class="h5">Units: <%=subject.units%><br></label><br/>
                 <label class="h5">Professor Name: <%=professor.first_name%> <%=professor.last_name%><br></label><br/>

@@ -16,10 +16,15 @@
         <title>Add a Rating</title>
     </head>
     <body>
-        <h1>Added Rating</h1>
+        
+        <div class="text-center">
+            <h1 class="m-5">Added Ratings</h1>
+        </div>
+
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
+        <jsp:useBean id="rref" class="profmanagement.RatingRef" scope="session" />
         <%
             int prof_id = Integer.parseInt(request.getParameter("prof_id"));
             int explanation = Integer.parseInt(request.getParameter("explanation"));
@@ -31,7 +36,7 @@
             if (rr.inRatingRef(explanation) && rr.inRatingRef(kindness) && rr.inRatingRef(knowledgability) && rr.inRatingRef(approachability))
             {
                         
-            
+                
                 rating.professor_id = prof_id;
                 rating.explanation = explanation;
                 rating.kindness = kindness;
@@ -43,23 +48,43 @@
                 nr.retrieveProfName(rating.professor_id);
                 int res = rating.addRating();
 
-
+                
 
                 if(res == 1){
         %>    
         
+        <% rref.getMaxRating(); %>
         <main class="d-flex justify-content-center">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
-                <h1> Added Ratings Success! </h1><br/>
+                <h4> Added Ratings Success! </h4><br/>
                 <label class="h5">Student ID: <%=rating.student_id%><br></label><br/>
                 <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%><br></label><br/>
                 <label class="h5">Professor ID: <%=rating.professor_id%><br></label><br/>
                 <label class="h5">Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%><br></label><br/>
-                <label class="h5">Explanation: <%=rating.explanation%><br></label><br/>
-                <label class="h5">Kindness: <%=rating.kindness%><br></label><br/>
-                <label class="h5">Approachability: <%=rating.approachability%><br></label><br/>
-                <label class="h5">Review Description: <%=rating.review%><br></label><br/>
                 <label class="h5">Date of Rating: <%=rating.rate_date%><br></label><br/>
+                
+                <label class="h5">Explanation: <%=rating.explanation%></label><br/>
+                <div class="progress my-2 w-25">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: <%=rating.explanation * (rref.maxScore)%>%" aria-valuenow="<%=rating.explanation * (rref.maxScore)%>" aria-valuemin="0" aria-valuemax="<%=rref.maxScore%>"></div>
+                </div>
+
+                <label class="h5">Kindness: <%=rating.kindness%></label><br/>
+                <div class="progress my-2 w-25">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: <%=rating.kindness * (rref.maxScore)%>%" aria-valuenow="<%=rating.kindness * (rref.maxScore)%>" aria-valuemin="0" aria-valuemax="<%=rref.maxScore%>"></div>
+                </div>
+
+                <label class="h5">Knowledgability: <%=rating.knowledgability%></label><br/>
+                <div class="progress my-2 w-25">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: <%=rating.knowledgability * (rref.maxScore)%>%" aria-valuenow="<%=rating.knowledgability * (rref.maxScore)%>" aria-valuemin="0" aria-valuemax="<%=rref.maxScore%>"></div>
+                </div>
+
+                <label class="h5">Approachability: <%=rating.approachability%></label><br/>
+                <div class="progress my-2 w-25">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <%=rating.approachability * (rref.maxScore)%>%" aria-valuenow="<%=rating.approachability * (rref.maxScore)%>" aria-valuemin="0" aria-valuemax="<%=rref.maxScore%>"></div>
+                </div>
+                
+                <label class="h5">Review Description: <%=rating.review%><br></label><br/>
+
             <br>
             <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back to homepage</a>
 

@@ -21,8 +21,8 @@
         <div class="text-center">
             <h1 class="m-5">Add a Rating</h1>
         </div>
-        <main class="d-flex flex-column justify-content-center align-i-center">
-                
+        <main class="d-flex justify-content-center">
+            <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">    
                     <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
                     <jsp:useBean id="rating_ref" class="profmanagement.RatingRef" scope="session" />
                     <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
@@ -34,7 +34,7 @@
                     %>
 
                      <%if(prof.professor_idList.size() != 0){%>
-                        <form class="mx-auto" action="addRating.jsp" method="POST">
+                        <form class="mx-auto" action="addRating.jsp" method="POST" onSubmit="return validateDropdown('prof_id', 'No professors found! Add some first!')">
                             Select professor - 
                                <select class="form-select rounded p-2 w-75 my-2" name="prof_id"> 
                                    <% 
@@ -47,42 +47,35 @@
                            <% rating_ref.getMaxRating(); 
                            rating_ref.getMinRating();%>
                            <label id="explanation-label">5</label>
-                           <label for="explanation">Explanation:</label>
+                           <label for="explanation">Explanation:</label><br/>
                            <input class="form-range w-75" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
 
                            <label id="kindness-label">5</label>
-                           <label for="kindness">Kindness:</label>
+                           <label for="kindness">Kindness:</label><br/>
                            <input class="form-range w-75" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
                            <label id="knowledgability-label">5</label>
-                           <label for="knowledgability">Knowledgability:</label>
+                           <label for="knowledgability">Knowledgability:</label><br/>
                            <input class="form-range w-75" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
                            <label id="approachability-label">5</label>
-                           <label for="approachability">Approachability:</label>
+                           <label for="approachability">Approachability:</label><br/>
                            <input class="form-range w-75" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
                            <h4>Review Description</h4>
                            <input class="rounded p-2 w-75 my-2" type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
 
+                            <input class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add Rating"/>
 
-                           <div class="position-absolute w-100 d-flex justify-content-between align-items-center">
-                               <input class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add Rating"/>
-                           </div> 
                         </form>
 
                     <% } else{ %>
 
-                    <div class="mx-auto">
-                        <h1 class="h1">Student cannot add a rating!</h1><br/>
-                        <div style="bottom: 10px" class="mt-5">
-                            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-                        </div>
-                    </div>
+                    <script>window.location.href=`../error.jsp?errorMsg=${'Student cannot add rating!'}`;</script>
                    <% } %>
 
                
-               
+            </div>
         </main>
     </body>
 </html>
@@ -102,6 +95,20 @@
     
     function changeKnowledgabilityValue(value) {
         document.getElementById("knowledgability-label").innerHTML = value;
+    }
+    
+    function validateDropdown(elementId, error) {  
+
+        error = error.replace(/ /g, '%20');
+
+        if (document.getElementById(elementId).value === undefined || 
+                document.getElementById(elementId).value === "") {
+            // The error message goes here
+            var url = "../error.jsp?errorMsg=" + error;
+            window.location.href=url;
+            return false;
+        }
+        return true;
     }
     
 </script>

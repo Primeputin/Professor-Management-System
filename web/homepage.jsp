@@ -77,11 +77,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">Search for a Professor</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form  action="professor/searchProf.jsp" method="POST">
+                                <form  action="professor/searchProf.jsp" method="POST" onSubmit="return validateDropdown('professorDropDownId', 'No professors found! Add some!')">
 
                                     <div class="form-group">
                                         <label>Professor - </label><br/>
-                                        <select class="form-select rounded p-2 w-75" name="professors">
+                                        <select class="form-select rounded p-2 w-75" name="professors" id="professorDropDownId">
                                             <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                                                 %>
                                                     <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
@@ -213,7 +213,7 @@
 
                                 <h5 class="card-title">Remove a Professor</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form  action="professor/removeProf.jsp" method="POST">
+                                <form  action="professor/removeProf.jsp" method="POST" onSubmit="return validateDropdown('professorDropDownId', 'No professors found! Add some!')">
                                     <div class="form-group">
                                         <label>Professor - </label><br/>
                                         <select class="form-select rounded p-2 w-75" name="professors">
@@ -241,10 +241,10 @@
                             <div class="card-body" >
                                 <h5 class="card-title">Modify a Professor</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="professor/modProf.jsp" method="POST">
+                                <form action="professor/modProf.jsp" method="POST" onSubmit="return validateDropdown('modProfId', 'No professors found! Add some!')">
 
                                             <label>Professor - </label><br/>
-                                            <select class="form-select rounded p-2 w-75 my-2" name="professors">
+                                            <select class="form-select rounded p-2 w-75 my-2" name="professors" id="modProfId">
                                                 <% for (int i=0; i < prof.professor_idList.size(); i++) { 
                                                                     %>
                                                         <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
@@ -298,9 +298,9 @@
 
                                 <h5 class="card-title">Search for a Student</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="student/searchStudent.jsp" method="POST">
+                                <form action="student/searchStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
                                     <label>Select a student - </label><br/>
-                                    <select class="form-select rounded p-2 w-75 my-2" name="student">
+                                    <select class="form-select rounded p-2 w-75 my-2" name="student" id="studentDropDownId">
                                         <% for (int i=0; i < student.student_idList.size(); i++) {
                                                             %>
                                                 <option value="<%=student.student_idList.get(i)%>"><%=student.student_idList.get(i) + " - " +student.first_nameList.get(i) + " " + student.last_nameList.get(i)%></option>
@@ -360,8 +360,8 @@
 
                                 <h5 class="card-title">Remove Student</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="student/rmStudent.jsp" method="POST">
-                                    <label>Select a student - </label><br/>
+                                <form action="student/rmStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
+                                    <label>Select a student - </label><br/> 
                                     <select class="form-select rounded p-2 w-75 my-2" name="student">
                                         <% for (int i=0; i < student.student_idList.size(); i++) {
                                                             %>
@@ -386,7 +386,7 @@
 
                                 <h5 class="card-title">Modify Student</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="student/modStudent.jsp" method="POST">
+                                <form action="student/modStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')>
 
                                     <label>Select a student - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="student">
@@ -540,7 +540,7 @@
 
                                 <h5 class="card-title">Search and View Rating</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/searchRatingMenu.jsp" method="POST">
+                                <form action="rating/searchRatingMenu.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
                                         <label>Select a student - </label><br/>
                                         <select class="form-select rounded p-2 w-75 my-2" name="student_id">
                                             <% for (int i=0; i < student.student_idList.size(); i++) {
@@ -566,7 +566,7 @@
 
                                 <h5 class="card-title">Filter Rating by Student</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/filterRatingByStudent.jsp" method="POST">
+                                <form action="rating/filterRatingByStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
                                         <label>Select a student - </label><br/>
                                         <select class="form-select rounded p-2 w-75 my-2" name="student_id">
                                             <% for (int i=0; i < student.student_idList.size(); i++) {
@@ -592,7 +592,7 @@
 
                                 <h5 class="card-title">Filter Rating by Professor</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form  action="rating/filterRatingByProf.jsp" method="POST">
+                                <form  action="rating/filterRatingByProf.jsp" method="POST" onSubmit="return validateDropdown('professorDropDownId', 'No professors found! Add some!')">
                                     <div class="form-group">
                                         <label>Professor - </label><br/>
                                         <select class="form-select rounded p-2 w-75 my-2" name="prof_id">
@@ -620,7 +620,7 @@
 
                                 <h5 class="card-title">Rate a Professor</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/addRatingMenu.jsp" method="POST">
+                                <form action="rating/addRatingMenu.jsp" method="POST" onSubmit="return validateDropdown('professorDropDownId', 'No professors found! Add some!')">
 
                                     <label>Select a student - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="student_id">
@@ -646,7 +646,7 @@
 
                                 <h5 class="card-title">Remove a Rating</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/rmRatingMenu.jsp" method="POST">
+                                <form action="rating/rmRatingMenu.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
 
                                     <label>Select a student - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="student_id">
@@ -672,7 +672,7 @@
 
                                 <h5 class="card-title">Modify a Rating</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/modRatingMenu.jsp" method="POST">
+                                <form action="rating/modRatingMenu.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
 
                                     <label>Select a student - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="student_id">
@@ -710,10 +710,10 @@
 
                                 <h5 class="card-title">Search and View Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/searchSubject.jsp" method="POST">
+                                <form action="subject/searchSubject.jsp" method="POST" onSubmit="return validateDropdown('subjectsDropDownId', 'No subjects found! Add some!')">
                                     Select subject -
 
-                                    <select class="form-select rounded p-2 w-75 my-2" name="subjects">
+                                    <select class="form-select rounded p-2 w-75 my-2" name="subjects" id="subjectsDropDownId">
                                         <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
                                             <option value="<%=subject.subject_idList.get(i)%>">
                                                 <%=subject.subject_idList.get(i) + " - " + subject.subject_nameList.get(i)%>
@@ -737,7 +737,7 @@
 
                                 <h5 class="card-title">Filter Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/filterSubject.jsp" method="POST">
+                                <form action="subject/filterSubject.jsp" method="POST" onSubmit="return validateDropdown('subjectsDropDownId', 'No subjects found! Add some!')">
                                     Select subject prefix-
                                     <select class="form-select rounded p-2 w-75 my-2" name="prefix">
                                         <%
@@ -764,7 +764,7 @@
 
                                 <h5 class="card-title">Add Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/addSubject.jsp" method="POST">
+                                <form action="subject/addSubject.jsp" method="POST" onSubmit="return validateDropdown('professorDropDownId', 'No professors available to teach this subject!')">
 
                                     <label for="subjectname">Subject Name:</label><br/>
                                     <input class="border rounded p-2 w-75 my-2" type="text" name="subjectname" pattern="[A-Za-z0-9]{7}" placeholder="ex. CCPROG1" required>
@@ -805,7 +805,7 @@
 
                                 <h5 class="card-title">Remove Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/rmSubject.jsp" method="POST">
+                                <form action="subject/rmSubject.jsp" method="POST" onSubmit="return validateDropdown('subjectsDropDownId', 'No subjects found! Add some!')">
                                     Select subject -
                                     <select class="form-select rounded p-2 w-75 my-2" name="subject">
                                         <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
@@ -831,7 +831,7 @@
 
                                 <h5 class="card-title">Modify a Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/modSubject.jsp" method="POST">
+                                <form action="subject/modSubject.jsp" method="POST" onSubmit="return (validateDropdown('subjectsDropDownId', 'No subjects found! Add some!') && validateDropdown('professorDropDownId', 'No subjects found! Add some!'))">
                                      Select a subject -
                                      <select class="form-select rounded p-2 w-75 my-2" name="subjects">
                                          <% for (int i=0; i < subject.subject_idList.size(); i++) { %>
@@ -895,7 +895,7 @@
 
                                 <h5 class="card-title">Enroll in a Subject</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="subject/enroll.jsp" method="POST">
+                                <form action="subject/enroll.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
                                         <label>Select a student - </label><br/>
                                         <select class="form-select rounded p-2 w-75 my-2" name="studentid">
                                             <% for (int i=0; i < student.student_idList.size(); i++) {
@@ -922,7 +922,7 @@
 
                                 <h5 class="card-title">See Professor Rankings</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/rankOfProfSub.jsp" method="POST">
+                                <form action="rating/rankOfProfSub.jsp" method="POST" onSubmit="return validateDropdown('subjectsDropDownId', 'No subjects found! Add some!')">
                                     <label>Select subject - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
                                         <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
@@ -952,7 +952,7 @@
 
                                 <h5 class="card-title">Ranking of Professor by Attribute</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="rating/rankOfProfAttr.jsp" method="POST">
+                                <form action="rating/rankOfProfAttr.jsp" method="POST" onSubmit="return validateDropdown('subjectsDropDownId', 'No subjects found! Add some!')">
                                     <label>Select subject - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="subjectname">
                                         <% for (int i=0; i <subject.distinctSubjectNames.size(); i++) { %>
@@ -1075,6 +1075,22 @@
                 });
                 
             });
+            
+            
+
+            function validateDropdown(elementId, error) {  
+                
+                error = error.replace(/ /g, '%20');
+                
+                if (document.getElementById(elementId).value === undefined || 
+                        document.getElementById(elementId).value === "") {
+                    // The error message goes here
+                    var url = "error.jsp?errorMsg=" + error;
+                    window.location.href=url;
+                    return false;
+                }
+                return true;
+            }
 
         </script>
         

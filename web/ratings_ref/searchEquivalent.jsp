@@ -42,13 +42,7 @@
             
         <%}else{
         %>
-        <main class="d-flex justify-content-center">
-          <div class="bg-light p-5 rounded shadow-sm w-50">
-                <h1>Equivalent not found!</h1><br/>
-            <br>
-            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
-          </div>
-        </main>
+            <script>window.location.href=`../error.jsp?errorMsg=${'Equivalent not found!'}`;</script>
         <%}%>
     </body>
 </html>

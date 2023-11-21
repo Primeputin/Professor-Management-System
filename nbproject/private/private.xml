@@ -25,6 +25,7 @@
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/removeProf.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/src/java/profmanagement/ConnectionUtil.java</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/error.jsp</file>
+            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/ratings_ref/modEquivalent.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/rankOfProfAttr.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/student/modStudent.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/professor/lastFilterProf.jsp</file>
@@ -45,6 +46,7 @@
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/subject/searchSubject.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/student/rmStudent.jsp</file>
             <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/searchRatingMenu.jsp</file>
+            <file>file:/C:/Users/hans/Desktop/INFOM/Professor-Management-System/web/rating/addRating.jsp</file>
         </group>
     </open-files>
 </project-private>

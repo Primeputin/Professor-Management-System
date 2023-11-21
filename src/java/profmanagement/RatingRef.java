@@ -119,6 +119,28 @@ public class RatingRef {
         } 
     }
     
+    public int modRecord(){
+        try {
+            Connection conn = ConnectionUtil.connect();
+
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE ratings_ref " +
+                                                            "SET equivalent = ? " +
+                                                            "WHERE  score = ?");
+            // 5. Supply the statement with values
+
+            pstmt.setInt    (2, score);
+            pstmt.setString (1,equivalent);
+            // 6. Execute the SQL Statement
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        } 
+    }
+    
     public int viewRecord(){
         try{
             Connection conn = ConnectionUtil.connect();

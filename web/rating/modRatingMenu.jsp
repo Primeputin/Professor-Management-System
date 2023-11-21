@@ -34,7 +34,7 @@
 
                     <%if(prof.professor_idList.size() != 0){%>
                     Select professor - 
-                       <select name="prof_id"> 
+                       <select name="prof_id" class="form-select rounded p-2 w-75"> 
                            <% 
                                for (int i=0; i < prof.professor_idList.size(); i++) { 
                                                %>
@@ -59,16 +59,16 @@
                     <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
                     <h4>Review Description</h4>
-                    <input type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
+                    <input class="border rounded p-2 w-75" type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
 
                     <a href ="" class="button_link">
-                    <button>
-                       Modify rating
-                    </button>
+                        <button class="btn btn-primary">
+                           Modify rating
+                        </button>
                     </a>
 
                      <% } else{ %>
-                        Student has not rated any Professors!<br>
+                        <script>window.location.href=`../error.jsp?errorMsg=${'Student has not rated any professors!'}`;</script>
                         <% } %>
                      <br><br>
                      

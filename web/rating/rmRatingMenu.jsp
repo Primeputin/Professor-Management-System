@@ -30,7 +30,7 @@
         <main class="d-flex justify-content-center mt-5">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
                 <h3 class="mx-auto">Remove a Rating</h3>
-                <form action="rmRating.jsp" method="POST">
+                <form action="rmRating.jsp" method="POST" onSubmit="return validateDropdown('prof_id', 'No more ratings to remove!')">
                     <div class="form-group">
                         <label for="prof_id">Professor - </label>
                         <div class="d-flex">
@@ -48,6 +48,24 @@
 
             </div>
         </main>
+                          
+        <script>
+            
+            function validateDropdown(elementId, error) {  
+                
+                error = error.replace(/ /g, '%20');
+                
+                if (document.getElementById(elementId).value === undefined || 
+                        document.getElementById(elementId).value === "") {
+                    // The error message goes here
+                    var url = "../error.jsp?errorMsg=" + error;
+                    window.location.href=url;
+                    return false;
+                }
+                return true;
+            }
+
+        </script
              
     </body>
 </html>

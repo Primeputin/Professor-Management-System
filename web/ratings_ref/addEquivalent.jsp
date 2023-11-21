@@ -45,7 +45,7 @@
             
         <%}else{
         %>
-        <script>window.location.href=`../error.jsp?errorMsg=${'Score equivalent already exists!'}`;</script>
+          <script>window.location.href=`../error.jsp?errorMsg=${'Score equivalent already exists!'}`;</script>
         </main>
         <%}%>
     </body>

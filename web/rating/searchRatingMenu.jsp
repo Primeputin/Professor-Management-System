@@ -35,7 +35,7 @@
         <main class="d-flex justify-content-center">
             <div class="bg-light p-5 rounded shadow-sm w-50 mb-2">
             
-                <form action="searchRating.jsp" method="POST">
+                <form action="searchRating.jsp" method="POST" onSubmit="return validateDropdown('prof_id', 'This student has not rated any professors yet!')">
                     <div class="form-group">
                         <label for="prof_id">Professor - </label>
                         <div class="d-flex">
@@ -53,7 +53,24 @@
 
             </div>
         </main>
+                          
+        <script>
+            
+            function validateDropdown(elementId, error) {  
                 
+                error = error.replace(/ /g, '%20');
+                
+                if (document.getElementById(elementId).value === undefined || 
+                        document.getElementById(elementId).value === "") {
+                    // The error message goes here
+                    var url = "../error.jsp?errorMsg=" + error;
+                    window.location.href=url;
+                    return false;
+                }
+                return true;
+            }
+
+        </script>
 
     </body>
 </html>
