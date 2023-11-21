@@ -27,6 +27,7 @@
                    <h3>Modify a Rating</h3>
                    <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
                    <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
+                   <jsp:useBean id="rating_ref" class="profmanagement.RatingRef" scope="session" />
                    <%
                     rating.student_id = Integer.parseInt(request.getParameter("student_id"));
                     prof.loadRecordByRatings(rating.student_id);
@@ -41,22 +42,23 @@
                                    <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
                            <% } %>
                        </select><br>
-                    
+                    <% rating_ref.getMaxRating(); 
+                       rating_ref.getMinRating();%>
                     <label for="explanation">Explanation:</label>
                     <label id="explanation-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+                    <input class="form-range w-25" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
 
                    <label for="kindness">Kindness:</label>
                     <label id="kindness-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+                    <input class="form-range w-25" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
                     <label for="knowledgability">Knowledgability:</label>
                     <label id="knowledgability-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+                    <input class="form-range w-25" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
                     <label for="approachability">Approachability:</label>
                     <label id="approachability-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+                    <input class="form-range w-25" type="range" min="<%=rating_ref.minScore%>" max="<%=rating_ref.maxScore%>" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
                     <h4>Review Description</h4>
                     <input class="border rounded p-2 w-75" type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
@@ -95,6 +97,20 @@
     
     function changeKnowledgabilityValue(value) {
         document.getElementById("knowledgability-label").innerHTML = value;
+    }
+    
+    function validateDropdown(elementId, error) {  
+
+        error = error.replace(/ /g, '%20');
+
+        if (document.getElementById(elementId).value === undefined || 
+                document.getElementById(elementId).value === "") {
+            // The error message goes here
+            var url = "../error.jsp?errorMsg=" + error;
+            window.location.href=url;
+            return false;
+        }
+        return true;
     }
     
 </script>

@@ -22,6 +22,7 @@
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
         <jsp:useBean id="rref" class="profmanagement.RatingRef" scope="session" />
+        <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         
         <div class="text-center">
             <h1 class="m-5">Modified Rating!</h1>
@@ -37,18 +38,21 @@
                 int approachability = Integer.parseInt(request.getParameter("approachability"));
                 String review = request.getParameter("description");
 
-                rating.professor_id = prof_id;
-                rating.explanation = explanation;
-                rating.kindness = kindness;
-                rating.approachability = approachability;
-                rating.knowledgability = knowledgability;
-                rating.review = review;
+                if (rr.inRatingRef(explanation) && rr.inRatingRef(kindness) && rr.inRatingRef(knowledgability) && rr.inRatingRef(approachability))
+                {
+                
+                    rating.professor_id = prof_id;
+                    rating.explanation = explanation;
+                    rating.kindness = kindness;
+                    rating.approachability = approachability;
+                    rating.knowledgability = knowledgability;
+                    rating.review = review;
 
-                nr.retrieveStudentName(rating.student_id);
-                nr.retrieveProfName(rating.professor_id);
-                rating.modRecord();
+                    nr.retrieveStudentName(rating.student_id);
+                    nr.retrieveProfName(rating.professor_id);
+                    rating.modRecord();
 
-                rref.getMaxRating();
+                    rref.getMaxRating();
 
             %>
             
@@ -86,6 +90,12 @@
                     <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
                 </div>
             </main>
+            <% } else{
+         %>
+         Add Ratings Failed!<br>
+         <script>window.location.href=`../error.jsp?errorMsg=${'Mod ratings failed!'}`;</script>
+
+         <% } %>
 
         </main>
         

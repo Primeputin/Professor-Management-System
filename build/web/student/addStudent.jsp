@@ -37,7 +37,7 @@
         <main class="d-flex justify-content-center">
           <div class="bg-light p-5 rounded shadow-sm w-50">
                 <h1><%=student.last_name%>, <%=student.first_name%></h1><br/>
-                <label class="h5">Student ID: <%=student.student_idList.get(0)%></label><br/>
+                <label class="h5">Student ID: <%=student.student_id%></label><br/>
                 <label class="h5">GPA: <%=student.gpa%></label><br/>
                 <label class="h5">Current Year: <%=student.cur_year%></label><br/>
             <br>

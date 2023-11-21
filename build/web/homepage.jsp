@@ -386,7 +386,7 @@
 
                                 <h5 class="card-title">Modify Student</h5>
                                 <p class="card-text">Please enter the details below.</p>
-                                <form action="student/modStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')>
+                                <form action="student/modStudent.jsp" method="POST" onSubmit="return validateDropdown('studentDropDownId', 'No students found! Add some!')">
 
                                     <label>Select a student - </label><br/>
                                     <select class="form-select rounded p-2 w-75 my-2" name="student">
