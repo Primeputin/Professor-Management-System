@@ -44,19 +44,19 @@
                     
                     <label for="explanation">Explanation:</label>
                     <label id="explanation-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
 
                    <label for="kindness">Kindness:</label>
                     <label id="kindness-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
                     <label for="knowledgability">Knowledgability:</label>
                     <label id="knowledgability-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
                     <label for="approachability">Approachability:</label>
                     <label id="approachability-label">5</label><br/>
-                    <input class="form-range w-25" type="range" min="1" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+                    <input class="form-range w-25" type="range" min="0" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
                     <h4>Review Description</h4>
                     <input type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>

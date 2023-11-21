@@ -46,19 +46,19 @@
                            <% rating_ref.getMaxRating(); %>
                            <label id="explanation-label">5</label>
                            <label for="explanation">Explanation:</label>
-                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+                           <input class="form-range w-75" type="range" min="0" max="<%=rating_ref.maxScore%>" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
 
                            <label id="kindness-label">5</label>
                            <label for="kindness">Kindness:</label>
-                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+                           <input class="form-range w-75" type="range" min="0" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
                            <label id="knowledgability-label">5</label>
                            <label for="knowledgability">Knowledgability:</label>
-                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+                           <input class="form-range w-75" type="range" min="0" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
                            <label id="approachability-label">5</label>
                            <label for="approachability">Approachability:</label>
-                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+                           <input class="form-range w-75" type="range" min="0" max="<%=rating_ref.maxScore%>" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
                            <h4>Review Description</h4>
                            <input class="rounded p-2 w-75 my-2" type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
