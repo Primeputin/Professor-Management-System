@@ -17,6 +17,7 @@
     </head>
     <body>
         <jsp:useBean id="rank" class="profmanagement.Ranking" scope="session" />
+        <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <%
             
             String subject_name = request.getParameter("subjectname");
@@ -25,7 +26,7 @@
             rank.subject_name = subject_name;
             rank.year = year;
             rank.showRankAttribute(attributeType);
-            
+            rr.viewRecordAll();
 
         %> 
 
@@ -42,6 +43,7 @@
                     <th scope="col">Last name</th>
                     <th scope="col">Department</th>
                     <th scope="col"><%= attributeType.substring(0, 1).toUpperCase() + attributeType.substring(1)%> Average Rate</th>
+                    <th scope="col">Equivalent</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,6 +55,7 @@
                             <td> <%=rank.last_nameList.get(i)%></td>
                             <td> <%=rank.departmentList.get(i)%></td>
                             <td> <%=rank.attrList.get(i)%></td>
+                            <td> <%=rr.equivalentList.get((int) Math.floor(rank.attrList.get(i)))%></td>
                         </tr>
                    <%  } %><br> 
 

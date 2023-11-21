@@ -20,13 +20,14 @@
             <h1 class="m-5">Rankings</h1>
         </div>
         <jsp:useBean id="rank" class="profmanagement.Ranking" scope="session" />
-       
+        <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <%
             String subject_name = request.getParameter("subjectname");
             String year = request.getParameter("subject_year");
             rank.subject_name = subject_name;
             rank.year = year;
             rank.showRanking();
+            rr.viewRecordAll();
         %>    
         
         <div class="container bg-light p-5 rounded shadow-sm w-50" style="min-height: 300px">
@@ -38,6 +39,7 @@
                     <th scope="col">Last name</th>
                     <th scope="col">Department</th>
                     <th scope="col">Total Average Rate</th>
+                    <th scope="col">Equivalent</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,6 +51,7 @@
                             <td> <%=rank.last_nameList.get(i)%></td>
                             <td> <%=rank.departmentList.get(i)%></td>
                             <td> <%=rank.total_avgList.get(i)%></td>
+                            <td> <%=rr.equivalentList.get((int) Math.floor(rank.total_avgList.get(i)))%></td>
                         </tr>
                    <%  } %><br> 
 

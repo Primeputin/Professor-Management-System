@@ -120,8 +120,6 @@ public class RatingRef {
         try{
             Connection conn = ConnectionUtil.connect();
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ratings_ref");
-            // 5. Supply the statement with values
-            pstmt.setInt    (1, score);
             // 6. Execute the SQL Statement
             ResultSet rs = pstmt.executeQuery();
             

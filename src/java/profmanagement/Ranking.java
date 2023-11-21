@@ -37,7 +37,7 @@ public class Ranking {
     {
         try {
             Connection conn = ConnectionUtil.connect();
-            PreparedStatement pstmt = conn.prepareStatement("SELECT professor.professor_id, professor.first_name, professor.last_name, professor.department, AVG((explanation + kindness +  knowledgability + approachability)) AS total_avg_rate " +
+            PreparedStatement pstmt = conn.prepareStatement("SELECT professor.professor_id, professor.first_name, professor.last_name, professor.department, AVG((explanation + kindness +  knowledgability + approachability))/4 AS total_avg_rate " +
                                                                                     "FROM ratings JOIN student ON ratings.student_id = student.student_id " +
                                                                                     "			 JOIN subject_list ON student.student_id = subject_list.student_id " +
                                                                                     "             JOIN subject ON subject_list.subject_id = subject.subject_id " +

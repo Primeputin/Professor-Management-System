@@ -49,7 +49,6 @@
                 <label class="h5">Student ID: <%=rating.student_id%><br></label><br/>
                 <label class="h5">Student Name: <%=nr.student_first_name%> <%=nr.student_last_name%><br></label><br/>
                 <label class="h5">Professor ID: <%=rating.professor_id%><br></label><br/>
-                <label class="h5">Professor ID: <%=rating.professor_id%><br></label><br/>
                 <label class="h5">Professor Name: <%=nr.prof_first_name%> <%=nr.prof_last_name%><br></label><br/>
                 <label class="h5">Explanation: <%=rating.explanation%><br></label><br/>
                 <label class="h5">Kindness: <%=rating.kindness%><br></label><br/>
