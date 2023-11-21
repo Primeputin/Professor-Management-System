@@ -18,6 +18,7 @@
     <body>
         <h1>Added Rating</h1>
         <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
+        <jsp:useBean id="rr" class="profmanagement.RatingRef" scope="session" />
         <jsp:useBean id="nr" class="profmanagement.NameRetriever" scope="session" />
         <%
             int prof_id = Integer.parseInt(request.getParameter("prof_id"));
@@ -27,20 +28,24 @@
             int approachability = Integer.parseInt(request.getParameter("approachability"));
             String review = request.getParameter("description");
             
-            rating.professor_id = prof_id;
-            rating.explanation = explanation;
-            rating.kindness = kindness;
-            rating.approachability = approachability;
-            rating.knowledgability = knowledgability;
-            rating.review = review;
+            if (rr.inRatingRef(explanation) && rr.inRatingRef(kindness) && rr.inRatingRef(knowledgability) && rr.inRatingRef(approachability))
+            {
+                        
             
-            nr.retrieveStudentName(rating.student_id);
-            nr.retrieveProfName(rating.professor_id);
-            int res = rating.addRating();
-            
-            
-            
-            if(res == 1){
+                rating.professor_id = prof_id;
+                rating.explanation = explanation;
+                rating.kindness = kindness;
+                rating.approachability = approachability;
+                rating.knowledgability = knowledgability;
+                rating.review = review;
+
+                nr.retrieveStudentName(rating.student_id);
+                nr.retrieveProfName(rating.professor_id);
+                int res = rating.addRating();
+
+
+
+                if(res == 1){
         %>    
         
         <main class="d-flex justify-content-center">
@@ -64,8 +69,12 @@
          <% } else{
          %>
          Add Ratings Failed!<br>
-         <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back to homepage</a>
+         <script>window.location.href=`../error.jsp?errorMsg=${'Add ratings failed!'}`;</script>
 
+         <% } } else {
+         %>
+         Add Ratings Failed!<br>
+         <script>window.location.href=`../error.jsp?errorMsg=${'Add ratings failed!'}`;</script>
          <% }
          %>
         <br>

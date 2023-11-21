@@ -19,6 +19,7 @@ public class RatingRef {
     public int score;
     public String equivalent;
     public int maxScore;
+    public int minScore;
     
     public HashMap<Integer, String> equivalentList = new HashMap<>();
     
@@ -42,18 +43,18 @@ public class RatingRef {
         }
     }
     
-    public int getMaxRating() {
+    public int getMinRating() {
         
         try {
             Connection conn = ConnectionUtil.connect();
-            PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(score) AS maxScore FROM ratings_ref");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT MIN(score) FROM ratings_ref");
             
             ResultSet rs = pstmt.executeQuery();
             
             while(rs.next()){
-                maxScore = rs.getInt("maxScore");
+                minScore = rs.getInt("MIN(score)");
             }
-            
+            rs.close();
             pstmt.close();
             conn.close();
             
@@ -65,25 +66,56 @@ public class RatingRef {
 
     }
     
-    public int modRecord(){
+    public int getMaxRating() {
+        
+        try {
+            Connection conn = ConnectionUtil.connect();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT MAX(score) AS maxScore FROM ratings_ref");
+            
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                maxScore = rs.getInt("maxScore");
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+
+    }
+    
+    public boolean inRatingRef(int value){
         try {
             Connection conn = ConnectionUtil.connect();
             
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE ratings_ref " +
-                                                            "SET equivalent = ? " +
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * " +
+                                                            "FROM ratings_ref " +
                                                             "WHERE  score = ?");
             // 5. Supply the statement with values
             
-            pstmt.setInt    (2, score);
-            pstmt.setString (1,equivalent);
+            pstmt.setInt    (1, value);
             // 6. Execute the SQL Statement
+            ResultSet rs = pstmt.executeQuery();
+            
+            // 7. Get the results
+            equivalentList.clear();
+            
+            while(rs.next()){
+                return true;
+            }
+            rs.close();
             pstmt.executeUpdate();   
             pstmt.close();
             conn.close();
-            return 1;
+            return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());  
-            return 0;
+            return false;
         } 
     }
     
