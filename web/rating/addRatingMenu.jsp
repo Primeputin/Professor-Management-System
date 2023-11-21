@@ -8,11 +8,12 @@
 <%@page import = "java.util.*, profmanagement.*"%>
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <
     
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add a Rating</title>
     </head>
@@ -21,8 +22,9 @@
             <h1 class="m-5">Add a Rating</h1>
         </div>
         <main class="d-flex flex-column justify-content-center align-i-center">
-                <form class="mx-auto" action="rating/addrating.jsp" method="POST">
+                
                     <jsp:useBean id="rating" class="profmanagement.Rating" scope="session" />
+                    <jsp:useBean id="rating_ref" class="profmanagement.RatingRef" scope="session" />
                     <jsp:useBean id="prof" class="profmanagement.Professor" scope="session" />
 
                     <%
@@ -31,49 +33,54 @@
                     %>
 
                      <%if(prof.professor_idList.size() != 0){%>
-                     Select professor - 
-                        <select name="prof_id"> 
-                            <% 
-                                for (int i=0; i < prof.professor_idList.size(); i++) { 
-                                                %>
-                                    <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
-                            <% } %>
-                        </select><br>
+                        <form class="mx-auto" action="addRating.jsp" method="POST">
+                            Select professor - 
+                               <select class="form-select rounded p-2 w-75 my-2" name="prof_id"> 
+                                   <% 
+                                       for (int i=0; i < prof.professor_idList.size(); i++) { 
+                                                       %>
+                                           <option value="<%=prof.professor_idList.get(i)%>"><%=prof.professor_idList.get(i) + " - " +prof.first_nameList.get(i) + " " + prof.last_nameList.get(i)%></option>            
+                                   <% } %>
+                               </select><br>
 
-                    <label id="explanation-label">5</label>
-                    <label for="explanation">Explanation:</label>
-                    <input type="range" min="1" max="10" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
+                           <% rating_ref.getMaxRating(); %>
+                           <label id="explanation-label">5</label>
+                           <label for="explanation">Explanation:</label>
+                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeExplanationValue(this.value)" name="explanation" required><br>
 
-                    <label id="kindness-label">5</label>
-                    <label for="kindness">Kindness:</label>
-                    <input type="range" min="1" max="10" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
+                           <label id="kindness-label">5</label>
+                           <label for="kindness">Kindness:</label>
+                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKindnessValue(this.value)" name="kindness" required><br>
 
-                    <label id="knowledgability-label">5</label>
-                    <label for="knowledgability">Knowledgability:</label>
-                    <input type="range" min="1" max="10" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
+                           <label id="knowledgability-label">5</label>
+                           <label for="knowledgability">Knowledgability:</label>
+                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeKnowledgabilityValue(this.value)" name="knowledgability" required><br>
 
-                    <label id="approachability-label">5</label>
-                    <label for="approachability">Approachability:</label>
-                    <input type="range" min="1" max="10" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
+                           <label id="approachability-label">5</label>
+                           <label for="approachability">Approachability:</label>
+                           <input class="form-range w-75" type="range" min="1" max="<%=rating_ref.maxScore%>" step="1" oninput="changeApproachabilityValue(this.value)" name="approachability" required><br>
 
-                    <h4>Review Description</h4>
-                    <input type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
+                           <h4>Review Description</h4>
+                           <input class="rounded p-2 w-75 my-2" type="text" name="description" placeholder="Describe your experience" required/> <br/><br/>
 
-                    <a href ="" class="button_link">
-                        <button>
-                        Add Rating
-                    </button>
-                    </a>
+
+                           <div class="position-absolute w-100 d-flex justify-content-between align-items-center">
+                               <input class=" btn btn-primary btn-block rounded mt-3 px-3 shadow-none" type="submit" value="Add Rating"/>
+                           </div> 
+                        </form>
 
                     <% } else{ %>
 
                     <div class="mx-auto">
                         <h1 class="h1">Student cannot add a rating!</h1><br/>
-                        Click <a href="../homepage.jsp">here to go back to home page</a><br>
+                        <div style="bottom: 10px" class="mt-5">
+                            <a class="btn btn-lg btn-secondary" href="../homepage.jsp" role="button">Back</a>
+                        </div>
                     </div>
                    <% } %>
 
-               </form>
+               
+               
         </main>
     </body>
 </html>

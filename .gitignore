@@ -25,4 +25,5 @@ replay_pid*
 /dist/
 
 # remove unnecessary .jsp files in build/
-build/*
+build/
+nbproject/
